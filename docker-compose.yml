@@ -1,0 +1,15 @@
+version: "3.7"
+
+networks:
+  default:
+    external:
+      name: assistant-backend
+
+volumes:
+  go-modules: # Define the volume
+
+services:
+  arch:
+    image: archlinux:latest
+    tty: true
+
