@@ -1,0 +1,34 @@
+- name: install stow
+  become: yes
+  pacman:
+    name: "stow"
+    state: present
+  tags:
+    - install
+    - dotfiles
+    - stow
+
+- name: dotfiles exists
+  stat:
+    path: "{{ home }}/.dotfiles"
+  register: dotfiles
+  tags:
+    - install
+    - dotfiles
+    - stow
+- name: cloning dotfiles
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/dotfiles.git'
+    bare: false
+    dest: "{{ home }}/.dotfiles"
+  tags:
+    - install
+    - dotfiles
+    - stow
+  when: dotfiles.stat.exists == False
+- name: Stow dotfiles
+  shell: cd $HOME/.dotfiles && stow -R .
+  tags:
+    - install
+    - dotfiles
+    - stow

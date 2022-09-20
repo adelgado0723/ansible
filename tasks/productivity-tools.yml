@@ -1,0 +1,9 @@
+- name: Install productivity tools
+  become: yes
+  pacman:
+    name: [ "tmux", "wireshark-qt", "fzf", "kdenlive", "gimp", "xclip", "screenkey", "tldr", "ripgrep", "shutter" ]
+    state: present
+  tags:
+    - install
+    - productivity
+

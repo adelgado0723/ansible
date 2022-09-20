@@ -1,0 +1,97 @@
+- name: dmenu exists
+  stat:
+    path: "{{ home }}/.config/dmenu/dmenu"
+  register: dmenu
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+- name: create dmenu folder
+  shell: mkdir -p "{{ home }}/.config/dmenu/dmenu"
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+  when: dmenu.stat.exists == False
+
+- name: Personal Project Patched Dmenu
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/dmenu.git'
+    bare: false
+    dest: "{{ home }}/.config/dmenu/dmenu"
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+  when: dmenu.stat.exists == False
+
+- name: dmscripts exists
+  stat:
+    path: "{{ home }}/.config/dmenu/dmscripts"
+  register: dmscripts
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+- name: personal project dmenu scripts
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/dmscripts.git'
+    bare: false
+    dest: "{{ home }}/.config/dmenu/dmscripts"
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+  when: dmscripts.stat.exists == False
+
+- name: slock exists
+  stat:
+    path: "{{ home }}/.config/slock"
+  register: slock
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+- name: personal project slock
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/slock.git'
+    bare: false
+    dest: "{{ home }}/.config/slock"
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+  when: slock.stat.exists == False
+- name: slock ansible
+  stat:
+    path: "{{ home }}/.config/slock"
+  register: slock
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+- name: personal project ansible
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/slock.git'
+    bare: false
+    dest: "{{ home }}/.config/slock"
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+  when: slock.stat.exists == False
+
