@@ -20,7 +20,6 @@
 - name: Personal Project Patched Dmenu
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dmenu.git'
-    bare: false
     dest: "{{ home }}/.config/dmenu/dmenu"
   tags:
     - install
@@ -42,7 +41,6 @@
 - name: personal project dmenu scripts
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dmscripts.git'
-    bare: false
     dest: "{{ home }}/.config/dmenu/dmscripts"
   tags:
     - install
@@ -64,29 +62,6 @@
 - name: personal project slock
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/slock.git'
-    bare: false
-    dest: "{{ home }}/.config/slock"
-  tags:
-    - install
-    - dotfiles
-    - neovim
-    - personal-project
-
-  when: slock.stat.exists == False
-- name: slock ansible
-  stat:
-    path: "{{ home }}/.config/slock"
-  register: slock
-  tags:
-    - install
-    - dotfiles
-    - neovim
-    - personal-project
-
-- name: personal project ansible
-  ansible.builtin.git:
-    repo: 'git@github.com:adelgado0723/slock.git'
-    bare: false
     dest: "{{ home }}/.config/slock"
   tags:
     - install
@@ -94,4 +69,3 @@
     - neovim
     - personal-project
   when: slock.stat.exists == False
-

@@ -1,4 +1,4 @@
-- name: install stow
+- name: install stow - Arch
   become: yes
   pacman:
     name: "stow"
@@ -7,6 +7,15 @@
     - install
     - dotfiles
     - stow
+  when: ansible_os_family == "Archlinux"
+
+- name: install stow - Debian
+  apt: name=stow
+  tags:
+    - install
+    - dotfiles
+    - stow
+  when: ansible_os_family == "Debian"
 
 - name: dotfiles exists
   stat:

@@ -34,7 +34,7 @@
     - install
     - neovim
 
-- name: Neovim Plugin Development 1
+- name: Neovim Plugin Development 1 - Arch
   become: yes
   pacman:
     name: "luarocks"
@@ -42,8 +42,17 @@
   tags:
     - install
     - neovim
+  when: ansible_os_family == "Archlinux"
 
-- name: Neovim Plugin Development 1
+- name: Neovim Plugin Development 1 - Debian
+  become: true
+  apt: name=luarocks
+  tags:
+    - install
+    - neovim
+  when: ansible_os_family == "Debian"
+
+- name: Neovim Plugin Development 2 luacheck
   become: true
   shell: luarocks install luacheck
   tags:

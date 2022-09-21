@@ -1,4 +1,4 @@
-- name: install node and npm
+- name: install node and npm - Arch
   become: yes
   pacman:
     name: ["nodejs", "npm"]
@@ -6,7 +6,19 @@
   tags:
     - install
     - node
+  when: ansible_os_family == "Archlinux"
 
+
+- name: install nodejs and npm - Debian
+  become: true
+  apt:
+    name: ["nodejs", "npm"]
+  tags:
+    - install
+    - node
+  when: ansible_os_family == "Debian"
+
+  when: ansible_o
 - name: npmjs prefix
   shell: mkdir -p ~/.local/.npm-global
   tags:

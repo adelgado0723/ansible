@@ -1,0 +1,62 @@
+- name: Install tmux - Arch
+  become: yes
+  pacman:
+    name: "tmux"
+    state: present
+  tags:
+    - install
+    - dotfiles
+    - tmux
+  when: ansible_os_family == "Archlinux"
+
+- name: Install tmux - Debian
+  become: true
+  apt:
+    name: "tmux"
+  tags:
+    - install
+    - dotfiles
+    - tmux
+  when: ansible_os_family == "Debian"
+
+- name: tpm folder exists
+  stat:
+    path: "{{ home }}/.tmux/plugins/tpm"
+  register: tpm
+  tags:
+    - install
+    - dotfiles
+    - tmux
+
+- name: clone tpm
+  ansible.builtin.git:
+    repo: 'git@github.com:tmux-plugins/tpm.git'
+    dest: "{{ home }}/.config/.tmux/plugins/tpm"
+  tags:
+    - install
+    - dotfiles
+    - tmux
+  when: tpm.stat.exists == False
+
+- name: source tmux config
+  shell: "tmux source ~/.tmux.conf"
+  tags:
+    - install
+    - dotfiles
+    - tmux
+
+- name: install tpm plugins
+  shell: "{{ home }}/.tmux/plugins/tpm/bin/install_plugins"
+  tags:
+    - install
+    - dotfiles
+    - tmux
+
+- name: source tmux config again
+  shell: "tmux source {{ home }}/.tmux.conf"
+  tags:
+    - install
+    - dotfiles
+    - tmux
+
+

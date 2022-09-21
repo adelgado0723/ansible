@@ -1,4 +1,4 @@
-- name: Install System Packages 1 (base-devel, cmake, pkgconf)
+- name: Install System Packages 1 - Arch (base-devel, cmake, pkgconf)
   become: yes
   pacman:
     name: ["base-devel", "cmake", "pkgconf"]
@@ -7,9 +7,8 @@
     - install
     - neovim
     - core
-#  libpthread-stubs available in AUR
-#
-- name: Install System Packages 2 (lua, unzip, libtool, gettext)
+  when: ansible_os_family == "Archlinux"
+- name: Install System Packages 2 - Arch (lua, unzip, libtool, gettext)
   become: yes
   pacman:
     name: ["lua", "unzip", "libtool", "gettext"]
@@ -18,8 +17,9 @@
     - install
     - neovim
     - core
+  when: ansible_os_family == "Archlinux"
 
-- name: Install System Packages 3
+- name: Install System Packages 3 - Arch 
   become: yes
   pacman:
     name: ["picom", "curl", "htop", "go", "lsof", "qtile", "ccache", "ninja", "python-pip", "dconf-editor", "nvidia-settings", "pavucontrol", "moreutils", "clang"]
@@ -28,3 +28,58 @@
     - install
     - neovim
     - core
+  when: ansible_os_family == "Archlinux"
+
+
+- name: Install System Packages 1 - Debian (build-essential, cmake, pkg-config, pthread)
+  become: true
+  apt:
+    name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev"]
+  tags:
+    - install
+    - neovim
+    - core
+  when: ansible_os_family == "Debian"
+
+- name: Install System Packages 2 - Debian (lua, unzip, libtool, libtool-bin, gettext)
+  become: true
+  apt:
+    name: [ "lua5.1", "unzip", "libtool", "libtool-bin", "gettext"]
+  tags:
+    - install
+    - neovim
+    - core
+  when: ansible_os_family == "Debian"
+
+- name: Install System Packages 3 - Debian (the rest)
+  become: true
+  apt:
+    name: [ "picom", "curl", "htop", "golang", "lsof", "qtile", "ccache", "ninja-build", "python3-pip", "dconf-editor", "nvidia-settings", "pavucontrol", "moreutils", "clangd", "ubuntu-mate-desktop" ]
+  tags:
+    - install
+    - core
+  when: ansible_os_family == "Debian"
+
+- name: Install Clang - Debian
+  become: true
+  apt:
+    name: ["clang", "clang-11", "clang-12", "clangd", "clangd-10", "clangd-11", "clangd-12"]
+  tags:
+    - install
+    - neovim
+    - core
+  when: ansible_os_family == "Debian"
+
+- name: dconf qtile
+  shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'qtile'"
+  tags:
+    - install
+    - core
+  when: ansible_os_family == "Debian"
+
+- name: dconf qtile
+  shell: dconf write /org/mate/desktop/background/show-desktop-icons "false"
+  tags:
+    - install
+    - core
+  when: ansible_os_family == "Debian"

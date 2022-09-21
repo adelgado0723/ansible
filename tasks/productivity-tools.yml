@@ -1,9 +1,40 @@
-- name: Install productivity tools
+- name: Install productivity tools - Arch
   become: yes
   pacman:
-    name: [ "tmux", "wireshark-qt", "fzf", "kdenlive", "gimp", "xclip", "screenkey", "tldr", "ripgrep", "shutter" ]
+    name: [ "wireshark-qt", "fzf", "kdenlive", "gimp", "xclip", "screenkey", "tldr", "ripgrep", "shutter" ]
     state: present
   tags:
     - install
     - productivity
+  when: ansible_os_family == "Archlinux"
 
+- name: kdenlive ppa (ppa:kdenlive/kdenlive-stable)
+  become: true
+  apt_repository:
+   repo: ppa:kdenlive/kdenlive-stable
+   state: present
+   update_cache: True
+  tags:
+    - install
+    - productivity
+  when: ansible_os_family == "Debian"
+
+- name: shutter ppa (ppa:linuxuprising/shutter)
+  become: true
+  apt_repository:
+   repo: ppa:linuxuprising/shutter
+   state: present
+   update_cache: True
+  tags:
+    - install
+    - productivity
+  when: ansible_os_family == "Debian"
+
+- name: Install productivity tools - Debian
+  become: true
+  apt:
+    name: [ "wireshark", "fzf", "kdenlive", "gimp", "xclip", "screenkey", "tldr", "ripgrep", "shutter" ]
+  tags:
+    - install
+    - productivity
+  when: ansible_os_family == "Debian"
