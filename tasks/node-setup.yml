@@ -18,6 +18,17 @@
     - node
   when: ansible_os_family == "Debian"
 
+- name: install nodejs and npm - macOS
+  homebrew:
+    name: "node"
+    state: present
+  tags:
+    - install
+    - node
+  when: ansible_distribution == "MacOSX"
+
+
+
   when: ansible_o
 - name: npmjs prefix
   shell: mkdir -p ~/.local/.npm-global
