@@ -1,9 +1,18 @@
-- name: Install ZSH
+- name: install zsh - Arch
   become: yes
   pacman:
-    name: zsh
+    name: "zsh"
     state: present
   tags: &tags_for_zsh_tasks ['install', 'productivity', 'dotfiles', 'zsh']
+  when: ansible_os_family == "Archlinux"
+
+- name: install zsh - Debian
+  become: true
+  apt:
+    name: "zsh"
+  tags: *tags_for_zsh_tasks
+  when: ansible_os_family == "Debian"
+
 
 - name: Change shell to zsh
   become: yes

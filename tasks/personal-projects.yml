@@ -1,4 +1,4 @@
-- name: dmenu exists
+- name: dmenu - exists
   stat:
     path: "{{ home }}/.config/dmenu/dmenu"
   register: dmenu
@@ -8,8 +8,8 @@
     - neovim
     - personal-project
 
-- name: create dmenu folder
-  shell: mkdir -p "{{ home }}/.config/dmenu/dmenu"
+- name: dmenu - create folder
+  shell: mkdir -p "{{ home }}/.config/dmenu/"
   tags:
     - install
     - dotfiles
@@ -17,7 +17,7 @@
     - personal-project
   when: dmenu.stat.exists == False
 
-- name: Personal Project Patched Dmenu
+- name: dmenu - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dmenu.git'
     dest: "{{ home }}/.config/dmenu/dmenu"
@@ -26,9 +26,17 @@
     - dotfiles
     - neovim
     - personal-project
-  when: dmenu.stat.exists == False
 
-- name: dmscripts exists
+- name: dmenu - build and install
+  become: yes
+  shell: cd "{{ home }}/.config/dmenu/dmenu" && sudo make clean install
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+- name: dmscripts - exists
   stat:
     path: "{{ home }}/.config/dmenu/dmscripts"
   register: dmscripts
@@ -38,7 +46,7 @@
     - neovim
     - personal-project
 
-- name: personal project dmenu scripts
+- name: dmscripts - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dmscripts.git'
     dest: "{{ home }}/.config/dmenu/dmscripts"
@@ -49,7 +57,17 @@
     - personal-project
   when: dmscripts.stat.exists == False
 
-- name: slock exists
+- name: dmscripts - build and install
+  become: yes
+  shell: cd "{{ home }}/.config/dmenu/dmscripts" && sudo make clean build install
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+
+- name: slock - exists
   stat:
     path: "{{ home }}/.config/slock"
   register: slock
@@ -59,7 +77,7 @@
     - neovim
     - personal-project
 
-- name: personal project slock
+- name: slock - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/slock.git'
     dest: "{{ home }}/.config/slock"
@@ -69,3 +87,14 @@
     - neovim
     - personal-project
   when: slock.stat.exists == False
+
+- name: slock - build and install
+  become: yes
+  shell: cd "{{ home }}/.config/slock" && sudo make clean install
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+# Extend to fetch scripts and other repos

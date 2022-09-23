@@ -16,6 +16,17 @@
         - core
       when: ansible_os_family == "Archlinux"
 
+    - name: Update Package Manager - Debian - Apt
+      become: true
+      apt:
+        force_apt_get: true
+        update_cache: true
+        state: present
+      tags:
+        - install
+        - core
+      when: ansible_os_family == "Debian"
+ 
   tasks:
     #    - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
