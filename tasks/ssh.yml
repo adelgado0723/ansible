@@ -1,37 +1,114 @@
 - name: Ensure .ssh directory exists.
   file:
-    dest: "{{ dest_key | dirname }}"
+    dest: "{{ home }}/.ssh"
     mode: 0700
+    owner: "{{ user }}"
     state: directory
   tags:
     - dotfiles
     - install
     - ssh
 
-- name: Install ssh key
+- name: Install ssh key - id_rsa
   copy:
-    src: "{{ source_key }}"
-    dest: "{{ dest_key }}"
+    src: "../.ssh/id_rsa"
+    dest: "{{ home }}/.ssh/id_rsa"
     mode: 0600
+    owner: "{{ user }}"
   tags:
     - dotfiles
     - install
     - ssh
-
-- name: Install ssh key public
+- name: Install ssh key public - id_rsa
   copy:
-    src: "{{ source_key }}.pub"
-    dest: "{{ dest_key }}.pub"
+    src: "../.ssh/id_rsa.pub"
+    dest: "{{ home }}/.ssh/id_rsa.pub"
     mode: 0644
+    owner: "{{ user }}"
   tags:
     - dotfiles
     - install
     - ssh
 
+- name: Install ssh key - adelg
+  copy:
+    src: "../.ssh/adelg"
+    dest: "{{ home }}/.ssh/adelg"
+    mode: 0600
+    owner: "{{ user }}"
+  tags:
+    - dotfiles
+    - install
+    - ssh
+- name: Install ssh key public - adelg
+  copy:
+    src: "../.ssh/adelg.pub"
+    dest: "{{ home }}/.ssh/adelg.pub"
+    mode: 0644
+    owner: "{{ user }}"
+  tags:
+    - dotfiles
+    - install
+    - ssh
+
+- name: Install ssh key - id_rsa_vult1
+  copy:
+    src: "../.ssh/id_rsa_vult1"
+    dest: "{{ home }}/.ssh/id_rsa_vult1"
+    mode: 0600
+    owner: "{{ user }}"
+  tags:
+    - dotfiles
+    - install
+    - ssh
+- name: Install ssh key public - id_rsa_vult1
+  copy:
+    src: "../.ssh/id_rsa_vult1.pub"
+    dest: "{{ home }}/.ssh/id_rsa_vult1.pub"
+    mode: 0644
+    owner: "{{ user }}"
+  tags:
+    - dotfiles
+    - install
+    - ssh
+
+- name: Install ssh key - id_rsa_vult2
+  copy:
+    src: "../.ssh/id_rsa_vult2"
+    dest: "{{ home }}/.ssh/id_rsa_vult2"
+    mode: 0600
+    owner: "{{ user }}"
+  tags:
+    - dotfiles
+    - install
+    - ssh
+- name: Install ssh key public - id_rsa_vult2
+  copy:
+    src: "../.ssh/id_rsa_vult2.pub"
+    dest: "{{ home }}/.ssh/id_rsa_vult2.pub"
+    mode: 0644
+    owner: "{{ user }}"
+  tags:
+    - dotfiles
+    - install
+    - ssh
+#
+# - name: Set authorized key took from file
+#   authorized_key:
+#     user: "{{ user }}"
+#     state: present
+#     key: "{{ home }}/.ssh/adelg.pub"
+#   with_fileglob:
+#   - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
+#
 - name: Set authorized key took from file
   authorized_key:
-    user: "{{ lookup('env', 'USER') }}"
+    user: "{{ user }}"
     state: present
-    key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
-  with_fileglob:
-  - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
+    key: "{{ item }}"
+  with_file:
+  - "{{ home }}/.ssh/adelg.pub"
+  - "{{ home }}/.ssh/id_rsa.pub"
+  - "{{ home }}/.ssh/id_rsa_vult1.pub"
+  - "{{ home }}/.ssh/id_rsa_vult2.pub"
+

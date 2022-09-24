@@ -1,9 +1,7 @@
 - hosts: localhost
   vars:
     home: "{{ lookup('env', 'HOME') }}"
-   #   source_key: "./.ssh/id_rsa"
-   #   dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-   #
+    user: "{{ lookup('env', 'USER') }}"
   pre_tasks:
   
     - name: Update Package Manager - Arch - Pacman -Syu
@@ -28,7 +26,7 @@
       when: ansible_os_family == "Debian"
  
   tasks:
-    #    - include: tasks/ssh.yml
+    # - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
     - include: tasks/core-setup.yml
     - include: tasks/node-setup.yml

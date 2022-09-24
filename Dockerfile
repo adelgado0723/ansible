@@ -18,10 +18,11 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN echo 'adelg:test' | chpasswd
 
 USER adelg
-WORKDIR /home/adelg
+WORKDIR /home/adelg/ansible
 
 FROM adelggroup
 COPY . .
-CMD ["sh", "-c", "ansible-playbook $TAGS --extra-vars \"ansible_sudo_pass=test\" local.yml"]
+CMD ["sh", "-c", "ansible-playbook $TAGS  --extra-vars \"ansible_sudo_pass=test\" local.yml"]
+# CMD ["sh", "-c", "ansible-playbook $TAGS --ask-vault-pass --extra-vars \"ansible_sudo_pass=test\" local.yml"]
 
 # CMD ["sh", "-c", "ansible-playbook $TAGS --ask-become-pass local.yml"]

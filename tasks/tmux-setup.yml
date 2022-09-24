@@ -39,7 +39,7 @@
   when: tpm.stat.exists == False
 
 - name: source tmux config
-  shell: "tmux source ~/.tmux.conf"
+  shell: "tmux source {{ home }}/.tmux.conf"
   tags:
     - install
     - dotfiles

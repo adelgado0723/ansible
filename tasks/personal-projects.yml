@@ -1,6 +1,6 @@
 - name: dmenu - exists
   stat:
-    path: "{{ home }}/.config/dmenu/dmenu"
+    path: "{{ home }}/.config/dmenu/"
   register: dmenu
   tags:
     - install
@@ -66,7 +66,6 @@
     - neovim
     - personal-project
 
-
 - name: slock - exists
   stat:
     path: "{{ home }}/.config/slock"
@@ -91,6 +90,65 @@
 - name: slock - build and install
   become: yes
   shell: cd "{{ home }}/.config/slock" && sudo make clean install
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+- name: personal scripts - exists
+  stat:
+    path: "{{ home }}/scripts"
+  register: scripts
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+- name: personal scripts - create folder
+  shell: mkdir -p "{{ home }}/scripts"
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+  when: scripts.stat.exists == False
+
+- name: personal scripts - clone from github
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/scripts.git'
+    dest: "{{ home }}/scripts/"
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+
+- name: wallpapers - exists
+  stat:
+    path: "{{ home }}/wallpapers"
+  register: wallpapers 
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+
+- name: wallpapers - create folder
+  shell: mkdir -p "{{ home }}/wallpapers"
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+  when: wallpapers.stat.exists == False
+
+- name: wallpapers - clone from github
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/wallpapers.git'
+    dest: "{{ home }}/wallpapers_public/"
   tags:
     - install
     - dotfiles
