@@ -127,7 +127,7 @@
 # black - formatting
 - name: install black python formatter
   ansible.builtin.pip:
-    name: pyright
+    name: black
   tags:
     - install
     - lsp

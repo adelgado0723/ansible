@@ -1,7 +1,7 @@
 - name: Install System Packages 1 - Arch (base-devel, cmake, pkgconf)
-  become: yes
+  become: true
   pacman:
-    name: ["base-devel", "cmake", "pkgconf"]
+    name: ['base-devel', 'cmake', 'pkgconf']
     state: present
   tags:
     - install
@@ -9,9 +9,9 @@
     - core
   when: ansible_os_family == "Archlinux"
 - name: Install System Packages 2 - Arch (lua, unzip, libtool, gettext)
-  become: yes
+  become: true
   pacman:
-    name: ["lua", "unzip", "libtool", "gettext"]
+    name: ['lua', 'unzip', 'libtool', 'gettext']
     state: present
   tags:
     - install
@@ -19,22 +19,37 @@
     - core
   when: ansible_os_family == "Archlinux"
 
-- name: Install System Packages 3 - Arch 
-  become: yes
+- name: Install System Packages 3 - Arch
+  become: true
   pacman:
-    name: ["picom", "curl", "htop", "go", "lsof", "qtile", "ccache", "ninja", "python-pip", "dconf-editor", "nvidia-settings", "pavucontrol", "moreutils", "clang"]
+    name:
+      [
+        'picom',
+        'curl',
+        'htop',
+        'go',
+        'lsof',
+        'qtile',
+        'ccache',
+        'ninja',
+        'python-pip',
+        'dconf-editor',
+        'nvidia-settings',
+        'pavucontrol',
+        'moreutils',
+        'clang',
+      ]
     state: present
   tags:
     - install
     - neovim
     - core
   when: ansible_os_family == "Archlinux"
-
 
 - name: Install System Packages 1 - Debian (build-essential, cmake, pkg-config, pthread)
   become: true
   apt:
-    name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev"]
+    name: ['build-essential', 'cmake', 'pkg-config', 'libpthread-stubs0-dev']
   tags:
     - install
     - neovim
@@ -44,7 +59,7 @@
 - name: Install System Packages 2 - Debian (lua, unzip, libtool, libtool-bin, gettext)
   become: true
   apt:
-    name: [ "lua5.1", "unzip", "libtool", "libtool-bin", "gettext"]
+    name: ['lua5.1', 'unzip', 'libtool', 'libtool-bin', 'gettext']
   tags:
     - install
     - neovim
@@ -54,7 +69,41 @@
 - name: Install System Packages 3 - Debian (the rest)
   become: true
   apt:
-    name: [ "picom", "curl", "htop", "golang", "lsof", "qtile", "ccache", "ninja-build", "python3-pip", "dconf-editor", "nvidia-settings", "pavucontrol", "moreutils", "clangd", "ubuntu-mate-desktop" ]
+    name:
+      [
+        'compton',
+        'curl',
+        'htop',
+        'golang',
+        'lsof',
+        'ccache',
+        'ninja-build',
+        'python3-pip',
+        'dconf-editor',
+        'nvidia-settings',
+        'pavucontrol',
+        'moreutils',
+        'clangd',
+        'ubuntu-mate-desktop',
+      ]
+  tags:
+    - install
+    - core
+  when: ansible_os_family == "Debian"
+
+# xcffib
+- name: install xcffiv
+  ansible.builtin.pip:
+    name: xcffib
+  tags:
+    - install
+    - core
+  when: ansible_os_family == "Debian"
+
+# qtile
+- name: install qtile
+  ansible.builtin.pip:
+    name: qtile
   tags:
     - install
     - core
@@ -63,7 +112,16 @@
 - name: Install Clang - Debian
   become: true
   apt:
-    name: ["clang", "clang-11", "clang-12", "clangd", "clangd-10", "clangd-11", "clangd-12"]
+    name:
+      [
+        'clang',
+        'clang-11',
+        'clang-12',
+        'clangd',
+        'clangd-10',
+        'clangd-11',
+        'clangd-12',
+      ]
   tags:
     - install
     - neovim
