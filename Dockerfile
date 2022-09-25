@@ -22,7 +22,7 @@ WORKDIR /home/adelg/ansible
 
 FROM adelggroup
 COPY . .
-CMD ["sh", "-c", "ansible-playbook $TAGS  --extra-vars \"ansible_sudo_pass=test\" local.yml"]
-# CMD ["sh", "-c", "ansible-playbook $TAGS --ask-vault-pass --extra-vars \"ansible_sudo_pass=test\" local.yml"]
+# CMD ["sh", "-c", "ansible-playbook $TAGS  --extra-vars \"ansible_sudo_pass=test\" local.yml"]
+CMD ["sh", "-c", "ansible-playbook $TAGS --ask-vault-pass --extra-vars \"ansible_sudo_pass=test\" local.yml"]
 
 # CMD ["sh", "-c", "ansible-playbook $TAGS --ask-become-pass local.yml"]

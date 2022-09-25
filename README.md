@@ -2,7 +2,7 @@
 
 Test the ansible script on a clean Arch Linux environment.
 
-## Download 
+## Download
 
 ```sh
 git clone https://github.com/adelgado0723/ansible.git

@@ -2,13 +2,13 @@
   git_config:
     name: user.email
     scope: global
-    value: "adelgado0723@gmail.com"
+    value: 'adelgado0723@gmail.com'
   tags:
-  - git-personal
+    - git-personal
 - name: Git personal setup name
   git_config:
     name: user.name
     scope: global
-    value: "adelgado"
+    value: 'adelgado'
   tags:
-  - git-personal
+    - git-personal

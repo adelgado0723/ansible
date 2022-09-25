@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 
 networks:
   default:
@@ -12,4 +12,3 @@ services:
   arch:
     image: archlinux:latest
     tty: true
-

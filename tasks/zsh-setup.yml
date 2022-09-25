@@ -1,7 +1,7 @@
 - name: install zsh - Arch
-  become: yes
+  become: true
   pacman:
-    name: "zsh"
+    name: 'zsh'
     state: present
   tags: &tags_for_zsh_tasks ['install', 'productivity', 'dotfiles', 'zsh']
   when: ansible_os_family == "Archlinux"
@@ -9,13 +9,12 @@
 - name: install zsh - Debian
   become: true
   apt:
-    name: "zsh"
+    name: 'zsh'
   tags: *tags_for_zsh_tasks
   when: ansible_os_family == "Debian"
 
-
 - name: Change shell to zsh
-  become: yes
+  become: true
   shell: chsh -s $(chsh -l | grep zsh | sort -r | awk '(NR == 1){print $1}')
   tags: *tags_for_zsh_tasks
 
@@ -26,7 +25,7 @@
   tags: *tags_for_zsh_tasks
 
 - name: Oh-My-Zsh
-  become: yes
+  become: true
   shell:
     cmd: 'curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh'
   tags: *tags_for_zsh_tasks
@@ -43,4 +42,3 @@
     repo: 'https://github.com/Aloxaf/fzf-tab.git'
     dest: '{{ home }}/.oh-my-zsh/plugins/fzf-tab'
   tags: *tags_for_zsh_tasks
-

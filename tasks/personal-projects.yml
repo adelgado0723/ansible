@@ -1,6 +1,6 @@
 - name: dmenu - exists
   stat:
-    path: "{{ home }}/.config/dmenu/"
+    path: '{{ home }}/.config/dmenu/'
   register: dmenu
   tags:
     - install
@@ -20,7 +20,7 @@
 - name: dmenu - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dmenu.git'
-    dest: "{{ home }}/.config/dmenu/dmenu"
+    dest: '{{ home }}/.config/dmenu/dmenu'
   tags:
     - install
     - dotfiles
@@ -28,7 +28,7 @@
     - personal-project
 
 - name: dmenu - build and install
-  become: yes
+  become: true
   shell: cd "{{ home }}/.config/dmenu/dmenu" && sudo make clean install
   tags:
     - install
@@ -38,7 +38,7 @@
 
 - name: dmscripts - exists
   stat:
-    path: "{{ home }}/.config/dmenu/dmscripts"
+    path: '{{ home }}/.config/dmenu/dmscripts'
   register: dmscripts
   tags:
     - install
@@ -49,7 +49,7 @@
 - name: dmscripts - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dmscripts.git'
-    dest: "{{ home }}/.config/dmenu/dmscripts"
+    dest: '{{ home }}/.config/dmenu/dmscripts'
   tags:
     - install
     - dotfiles
@@ -58,7 +58,7 @@
   when: dmscripts.stat.exists == False
 
 - name: dmscripts - build and install
-  become: yes
+  become: true
   shell: cd "{{ home }}/.config/dmenu/dmscripts" && sudo make clean build install
   tags:
     - install
@@ -68,7 +68,7 @@
 
 - name: slock - exists
   stat:
-    path: "{{ home }}/.config/slock"
+    path: '{{ home }}/.config/slock'
   register: slock
   tags:
     - install
@@ -79,7 +79,7 @@
 - name: slock - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/slock.git'
-    dest: "{{ home }}/.config/slock"
+    dest: '{{ home }}/.config/slock'
   tags:
     - install
     - dotfiles
@@ -88,7 +88,7 @@
   when: slock.stat.exists == False
 
 - name: slock - build and install
-  become: yes
+  become: true
   shell: cd "{{ home }}/.config/slock" && sudo make clean install
   tags:
     - install
@@ -98,7 +98,7 @@
 
 - name: personal scripts - exists
   stat:
-    path: "{{ home }}/scripts"
+    path: '{{ home }}/scripts'
   register: scripts
   tags:
     - install
@@ -118,18 +118,17 @@
 - name: personal scripts - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/scripts.git'
-    dest: "{{ home }}/scripts/"
+    dest: '{{ home }}/scripts/'
   tags:
     - install
     - dotfiles
     - neovim
     - personal-project
 
-
 - name: wallpapers - exists
   stat:
-    path: "{{ home }}/wallpapers"
-  register: wallpapers 
+    path: '{{ home }}/wallpapers'
+  register: wallpapers
   tags:
     - install
     - dotfiles
@@ -148,11 +147,10 @@
 - name: wallpapers - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/wallpapers.git'
-    dest: "{{ home }}/wallpapers_public/"
+    dest: '{{ home }}/wallpapers_public/'
   tags:
     - install
     - dotfiles
     - neovim
     - personal-project
-
 # Extend to fetch scripts and other repos

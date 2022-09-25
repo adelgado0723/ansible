@@ -1,0 +1,134 @@
+# LSP Setup - https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+#
+# "sumneko_lua"
+- name: clone sumneko lua lsp
+  ansible.builtin.git:
+    repo: 'git@github.com:sumneko/lua-language-server.git'
+    recursive: yes
+    dest: '{{ home }}/sumneko'
+  tags:
+    - install
+    - lsp
+
+- name: build sumenko lua lsp
+  ansible.builtin.shell:
+    cmd: ./compile/install.sh
+    chdir: '{{ home }}/sumneko/3rd/luamake'
+  tags:
+    - install
+    - lsp
+
+- name: rebuild using luamake
+  ansible.builtin.shell:
+    cmd: ./3rd/luamake/luamake rebuild
+    chdir: '{{ home }}/sumneko/'
+  tags:
+    - install
+    - lsp
+
+# https://github.com/hrsh7th/vscode-langservers-extracted
+- name: install vscode langservers (jsonls, html,  eslint  server)
+  npm:
+    name: vscode-langservers-extracted
+    global: yes
+  tags:
+    - install
+    - lsp
+
+# "pyright"
+- name: install pyright server
+  ansible.builtin.pip:
+    name: pyright
+  tags:
+    - install
+    - lsp
+
+# "gopls"
+- name: install gopls
+  shell: go install golang.org/x/tools/gopls@latest
+  tags:
+    - install
+    - lsp
+
+# "golangci_lint_ls"
+- name: install golangci_lint_ls
+  shell: go install github.com/nametake/golangci-lint-langserver@latest
+  tags:
+    - install
+    - lsp
+
+- name: install golangci_lint
+  shell: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.49.0
+  tags:
+    - install
+    - lsp
+
+# "clangd" # installed in core setup
+# "dockerls"
+- name: install dockerls
+  npm:
+    name: dockerfile-language-server-nodejs
+    global: yes
+  tags:
+    - install
+    - lsp
+
+# "svelte"
+- name: install svelte server
+  npm:
+    name: svelte-language-server
+    global: yes
+  tags:
+    - install
+    - lsp
+
+# "tsserver"
+- name: install Typescript server
+  npm:
+    name: typescript-language-server
+    global: yes
+  tags:
+    - install
+    - lsp
+
+# "bashls"
+- name: install bashls
+  npm:
+    name: bash-language-server
+    global: yes
+  tags:
+    - install
+    - lsp
+
+# "sqls"
+- name: install sqls
+  shell: go install github.com/lighttiger2505/sqls@latest
+  tags:
+    - install
+    - lsp
+
+# "yamlls"
+- name: install yamlls
+  shell: yarn global add yaml-language-server
+  tags:
+    - install
+    - lsp
+
+# null_ls #
+# prettier - formatting
+- name: install prettier formatter
+  npm:
+    name: prettier
+    global: yes
+  tags:
+    - install
+    - lsp
+
+# black - formatting
+- name: install black python formatter
+  ansible.builtin.pip:
+    name: pyright
+  tags:
+    - install
+    - lsp
+# flake8 diagnostics

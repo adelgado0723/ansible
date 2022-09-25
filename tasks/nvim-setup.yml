@@ -1,14 +1,13 @@
-
 - name: remove neovim
   shell: rm -rf {{ home }}/neovim
   tags:
-  - install
-  - neovim
+    - install
+    - neovim
 
 - name: Get Packer
   ansible.builtin.git:
     repo: 'https://github.com/wbthomason/packer.nvim'
-    dest: "{{ home }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    dest: '{{ home }}/.local/share/nvim/site/pack/packer/start/packer.nvim'
   tags:
     - install
     - neovim
@@ -16,28 +15,28 @@
 - name: Clone Neovim
   ansible.builtin.git:
     repo: 'https://github.com/neovim/neovim.git'
-    dest: "{{ home }}/neovim"
+    dest: '{{ home }}/neovim'
   tags:
     - install
     - neovim
 
 - name: Build neovim
-  shell: "cd {{ home }}/neovim && make -j 20"
+  shell: 'cd {{ home }}/neovim && make -j 20'
   tags:
     - install
     - neovim
 
 - name: Install neovim
   become: true
-  shell: "cd {{ home }}/neovim && make install"
+  shell: 'cd {{ home }}/neovim && make install'
   tags:
     - install
     - neovim
 
 - name: Neovim Plugin Development 1 - Arch
-  become: yes
+  become: true
   pacman:
-    name: "luarocks"
+    name: 'luarocks'
     state: present
   tags:
     - install
@@ -58,4 +57,3 @@
   tags:
     - install
     - neovim
-

@@ -1,18 +1,17 @@
 - name: install node and npm - Arch
-  become: yes
+  become: true
   pacman:
-    name: ["nodejs", "npm"]
+    name: ['nodejs', 'npm']
     state: present
   tags:
     - install
     - node
   when: ansible_os_family == "Archlinux"
 
-
 - name: install nodejs and npm - Debian
   become: true
   apt:
-    name: ["nodejs", "npm"]
+    name: ['nodejs', 'npm']
   tags:
     - install
     - node
@@ -20,7 +19,7 @@
 
 - name: install nodejs and npm - macOS
   homebrew:
-    name: "node"
+    name: 'node'
     state: present
   tags:
     - install
@@ -30,27 +29,27 @@
 - name: npmjs prefix
   shell: mkdir -p {{ home }}/.local/.npm-global
   tags:
-  - install
-  - node
+    - install
+    - node
 
 - name: add npmjs to path
   shell: PATH={{ home }}/.local/.npm-global/bin:$PATH
   tags:
-  - install
-  - node
+    - install
+    - node
 
 - name: npmjs global settings
   shell: npm config set prefix '{{ home }}/.local/.npm-global'
   tags:
-  - install
-  - node
+    - install
+    - node
 
 - name: npmjs global settings export path in case I don't have dotfiles installed
   shell: export PATH={{ home }}/.local/.npm-global/bin:$PATH
   tags:
-  - install
-  - node
-  - npm-path
+    - install
+    - node
+    - npm-path
 
 - name: install N interactive node manager
   npm:

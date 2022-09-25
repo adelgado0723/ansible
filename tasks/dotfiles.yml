@@ -1,7 +1,7 @@
 - name: install stow - Arch
-  become: yes
+  become: true
   pacman:
-    name: "stow"
+    name: 'stow'
     state: present
   tags:
     - install
@@ -19,7 +19,7 @@
 
 - name: dotfiles exists
   stat:
-    path: "{{ home }}/.dotfiles"
+    path: '{{ home }}/.dotfiles'
   register: dotfiles
   tags:
     - install
@@ -29,7 +29,7 @@
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dotfiles.git'
     bare: false
-    dest: "{{ home }}/.dotfiles"
+    dest: '{{ home }}/.dotfiles'
   tags:
     - install
     - dotfiles
