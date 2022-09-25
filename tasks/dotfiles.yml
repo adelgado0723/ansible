@@ -10,6 +10,7 @@
   when: ansible_os_family == "Archlinux"
 
 - name: install stow - Debian
+  become: true
   apt: name=stow
   tags:
     - install
@@ -35,6 +36,7 @@
     - dotfiles
     - stow
   when: dotfiles.stat.exists == False
+
 - name: Stow dotfiles
   shell: cd $HOME/.dotfiles && stow -R .
   tags:

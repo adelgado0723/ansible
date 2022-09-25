@@ -92,15 +92,7 @@
     - dotfiles
     - install
     - ssh
-#
-# - name: Set authorized key took from file
-#   authorized_key:
-#     user: "{{ user }}"
-#     state: present
-#     key: "{{ home }}/.ssh/adelg.pub"
-#   with_fileglob:
-#   - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
-#
+
 - name: Set authorized key took from file
   authorized_key:
     user: '{{ user }}'
@@ -111,3 +103,14 @@
     - '{{ home }}/.ssh/id_rsa.pub'
     - '{{ home }}/.ssh/id_rsa_vult1.pub'
     - '{{ home }}/.ssh/id_rsa_vult2.pub'
+
+- name: Install ssh config
+  copy:
+    src: '../.ssh/config'
+    dest: '{{ home }}/.ssh/config'
+    mode: 0644
+    owner: '{{ user }}'
+  tags:
+    - dotfiles
+    - install
+    - ssh
