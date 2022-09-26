@@ -25,7 +25,7 @@
       when: ansible_os_family == "Debian"
 
   tasks:
-    #    - include: tasks/ssh.yml
+          # - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
     - include: tasks/core-setup.yml
     - include: tasks/node-setup.yml

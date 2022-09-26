@@ -4,16 +4,12 @@
   register: dmenu
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: dmenu - create folder
   shell: mkdir -p "{{ home }}/.config/dmenu/"
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
   when: dmenu.stat.exists == False
 
@@ -23,8 +19,6 @@
     dest: '{{ home }}/.config/dmenu/dmenu'
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: dmenu - build and install
@@ -32,8 +26,6 @@
   shell: cd "{{ home }}/.config/dmenu/dmenu" && sudo make clean install
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: dmscripts - exists
@@ -42,8 +34,6 @@
   register: dmscripts
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: dmscripts - clone from github
@@ -52,8 +42,6 @@
     dest: '{{ home }}/.config/dmenu/dmscripts'
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
   when: dmscripts.stat.exists == False
 
@@ -62,8 +50,6 @@
   shell: cd "{{ home }}/.config/dmenu/dmscripts" && sudo make clean build install
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: slock - exists
@@ -72,8 +58,6 @@
   register: slock
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: slock - clone from github
@@ -82,8 +66,6 @@
     dest: '{{ home }}/.config/slock'
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
   when: slock.stat.exists == False
 
@@ -92,8 +74,6 @@
   shell: cd "{{ home }}/.config/slock" && sudo make clean install
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: personal scripts - exists
@@ -102,16 +82,12 @@
   register: scripts
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: personal scripts - create folder
   shell: mkdir -p "{{ home }}/scripts"
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
   when: scripts.stat.exists == False
 
@@ -121,8 +97,6 @@
     dest: '{{ home }}/scripts/'
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: wallpapers - exists
@@ -131,16 +105,12 @@
   register: wallpapers
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 
 - name: wallpapers - create folder
   shell: mkdir -p "{{ home }}/wallpapers"
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
   when: wallpapers.stat.exists == False
 
@@ -150,7 +120,5 @@
     dest: '{{ home }}/wallpapers_public/'
   tags:
     - install
-    - dotfiles
-    - neovim
     - personal-project
 # Extend to fetch scripts and other repos
