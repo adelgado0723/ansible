@@ -46,18 +46,18 @@
     - install
     - node
 
- # N needs to write to /usr/local/n 
+ # N needs to write to /usr/local
  # to avoid sudo, we can own the folder
 - name: create folder for n
   become: true
-  shell: mkdir -p /usr/local/n
+  shell: mkdir -p /usr/local/n/
   tags:
     - install
     - node
 
 - name: own the new folder
   become: true
-  shell: chown -R {{ user }} /usr/local/n/
+  shell: chown -R {{ user }} /usr/local/
   tags:
     - install
     - node
