@@ -38,6 +38,7 @@
         'pavucontrol',
         'moreutils',
         'clang',
+        'pandoc',
       ]
     state: present
   tags:
@@ -84,6 +85,13 @@
         'pavucontrol',
         'moreutils',
         'clangd',
+        'libx11-dev',
+        'libxinerama-dev',
+        'libxft-dev',
+        'apt-file',
+        'pandoc',
+        'libxrandr-dev',
+        'libxpm-dev',
         'ubuntu-mate-desktop',
       ]
   tags:

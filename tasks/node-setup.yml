@@ -32,24 +32,11 @@
     - install
     - node
 
-- name: add npmjs to path
-  shell: PATH={{ home }}/.local/.npm-global/bin:$PATH
-  tags:
-    - install
-    - node
-
 - name: npmjs global settings
   shell: npm config set prefix '{{ home }}/.local/.npm-global'
   tags:
     - install
     - node
-
-- name: npmjs global settings export path in case I don't have dotfiles installed
-  shell: export PATH={{ home }}/.local/.npm-global/bin:$PATH
-  tags:
-    - install
-    - node
-    - npm-path
 
 - name: install N interactive node manager
   npm:
@@ -59,8 +46,26 @@
     - install
     - node
 
+ # N needs to write to /usr/local/n 
+ # to avoid sudo, we can own the folder
+- name: create folder for n
+  become: true
+  shell: mkdir -p /usr/local/n
+  tags:
+    - install
+    - node
+
+- name: own the new folder
+  become: true
+  shell: chown -R {{ user }} /usr/local/n/
+  tags:
+    - install
+    - node
+
+
+
 - name: Install node 14
-  shell: n 14
+  shell: PATH={{ home }}/.local/.npm-global/bin:$PATH n 14
   tags:
     - install
     - node

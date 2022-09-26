@@ -15,7 +15,8 @@
 
 - name: Change shell to zsh
   become: true
-  shell: chsh -s $(chsh -l | grep zsh | sort -r | awk '(NR == 1){print $1}')
+  #  shell: chsh -s $(chsh -l | grep zsh | sort -r | awk '(NR == 1){print $1}')
+  shell: chsh -s $(which zsh)
   tags: *tags_for_zsh_tasks
 
 - name: Check that the somefile.conf exists

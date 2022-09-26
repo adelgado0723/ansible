@@ -28,6 +28,14 @@
     - dotfiles
     - tmux
 
+- name: create tpm plugins folder
+  shell: mkdir -p "{{ home }}/.tmux/plugins/"
+  tags:
+    - install
+    - dotfiles
+    - tmux
+  when: tpm.stat.exists == False
+
 - name: clone tpm
   ansible.builtin.git:
     repo: 'git@github.com:tmux-plugins/tpm.git'
@@ -36,7 +44,6 @@
     - install
     - dotfiles
     - tmux
-  when: tpm.stat.exists == False
 
 - name: source tmux config
   shell: 'tmux source {{ home }}/.tmux.conf'
