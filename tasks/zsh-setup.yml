@@ -13,32 +13,34 @@
   tags: *tags_for_zsh_tasks
   when: ansible_os_family == "Debian"
 
-- name: Change shell to zsh
+- name: change shell to zsh
   become: true
   #  shell: chsh -s $(chsh -l | grep zsh | sort -r | awk '(NR == 1){print $1}')
   shell: chsh -s $(which zsh)
   tags: *tags_for_zsh_tasks
 
-- name: Check that the somefile.conf exists
+- name: check if ~/.oh-my-zsh/ exists
   stat:
-    path: /home/adelg/.oh-my-zsh
+    path: '{{ home }}/.oh-my-zsh'
   register: oh_my_stats
   tags: *tags_for_zsh_tasks
 
-- name: Oh-My-Zsh
-  become: true
-  shell:
-    cmd: 'curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh'
+- name: install oh my zsh
+  ansible.builtin.git:
+    repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
+    dest: '{{ home }}/.oh-my-zsh'
+    depth: 1
   tags: *tags_for_zsh_tasks
   when: oh_my_stats.stat.exists == False
 
-- name: Install zsh-autosuggestions
+
+- name: install zsh-autosuggestions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: '{{ home }}/.oh-my-zsh/plugins/zsh-autosuggestions'
   tags: *tags_for_zsh_tasks
 
-- name: Install fzf-tab
+- name: install fzf-tab
   ansible.builtin.git:
     repo: 'https://github.com/Aloxaf/fzf-tab.git'
     dest: '{{ home }}/.oh-my-zsh/plugins/fzf-tab'

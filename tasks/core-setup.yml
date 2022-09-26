@@ -39,6 +39,7 @@
         'moreutils',
         'clang',
         'pandoc',
+        'figlet',
       ]
     state: present
   tags:
@@ -92,6 +93,7 @@
         'pandoc',
         'libxrandr-dev',
         'libxpm-dev',
+        'figlet',
         'ubuntu-mate-desktop',
       ]
   tags:
