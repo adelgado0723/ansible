@@ -1,17 +1,21 @@
-- name: dmenu - exists
-  stat:
+# - name: dmenu - exists
+#   stat:
+#     path: '{{ home }}/.config/dmenu/'
+#   register: dmenu
+#   tags:
+#     - install
+#     - personal-project
+#
+- name: dmenu - create folder if it doesn't exist
+  file:
     path: '{{ home }}/.config/dmenu/'
-  register: dmenu
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
   tags:
     - install
     - personal-project
-
-- name: dmenu - create folder
-  shell: mkdir -p "{{ home }}/.config/dmenu/"
-  tags:
-    - install
-    - personal-project
-  when: dmenu.stat.exists == False
+  # when: dmenu.stat.exists == False
 
 - name: dmenu - clone from github
   ansible.builtin.git:
@@ -23,7 +27,9 @@
 
 - name: dmenu - build and install
   become: true
-  shell: cd "{{ home }}/.config/dmenu/dmenu" && sudo make clean install
+  shell:
+    cmd: make clean install
+    chdir: '{{ home }}/.config/dmenu/dmenu'
   tags:
     - install
     - personal-project
@@ -47,7 +53,9 @@
 
 - name: dmscripts - build and install
   become: true
-  shell: cd "{{ home }}/.config/dmenu/dmscripts" && sudo make clean build install
+  shell:
+    cmd: make clean build install
+    chdir: '{{ home }}/.config/dmenu/dmscripts'
   tags:
     - install
     - personal-project
@@ -71,25 +79,31 @@
 
 - name: slock - build and install
   become: true
-  shell: cd "{{ home }}/.config/slock" && sudo make clean install
+  shell:
+    cmd: make clean install
+    chdir: '{{ home }}/.config/slock'
   tags:
     - install
     - personal-project
 
-- name: personal scripts - exists
-  stat:
-    path: '{{ home }}/scripts'
-  register: scripts
+# - name: personal scripts - exists
+#   stat:
+#     path: '{{ home }}/scripts'
+#   register: scripts
+#   tags:
+#     - install
+#     - personal-project
+#
+- name: personal scripts - create folder if it doesn't exist
+  file:
+    path: '{{ home }}/scripts/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
   tags:
     - install
     - personal-project
-
-- name: personal scripts - create folder
-  shell: mkdir -p "{{ home }}/scripts"
-  tags:
-    - install
-    - personal-project
-  when: scripts.stat.exists == False
+  # when: scripts.stat.exists == False
 
 - name: personal scripts - clone from github
   ansible.builtin.git:
@@ -99,20 +113,24 @@
     - install
     - personal-project
 
-- name: wallpapers - exists
-  stat:
+# - name: wallpapers - exists
+#   stat:
+#     path: '{{ home }}/wallpapers'
+#   register: wallpapers
+#   tags:
+#     - install
+#     - personal-project
+#
+- name: wallpapers - create folder if it doesn't exist
+  file:
     path: '{{ home }}/wallpapers'
-  register: wallpapers
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
   tags:
     - install
     - personal-project
-
-- name: wallpapers - create folder
-  shell: mkdir -p "{{ home }}/wallpapers"
-  tags:
-    - install
-    - personal-project
-  when: wallpapers.stat.exists == False
+  # when: wallpapers.stat.exists == False
 
 - name: wallpapers - clone from github
   ansible.builtin.git:

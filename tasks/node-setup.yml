@@ -26,8 +26,12 @@
     - node
   when: ansible_distribution == "MacOSX"
 
-- name: npmjs prefix
-  shell: mkdir -p {{ home }}/.local/.npm-global
+- name: create npmjs prefix folder if it doesn't exist
+  file:
+    path: '{{ home }}/.local/.npm-global'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
   tags:
     - install
     - node
@@ -46,26 +50,28 @@
     - install
     - node
 
- # N needs to write to /usr/local
- # to avoid sudo, we can own the folder
-- name: create folder for n
+  # N needs to write to /usr/local
+  # to avoid sudo, we can own the folder
+- name: create folder for n if it doesn't exist
   become: true
-  shell: mkdir -p /usr/local/n/
+  file:
+    path: '/usr/local/n/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
   tags:
     - install
     - node
 
-- name: own the new folder
-  become: true
-  shell: chown -R {{ user }} /usr/local/
-  tags:
-    - install
-    - node
+# - name: own the new folder
+#   become: true
+#   shell: chown -R {{ user }} /usr/local/
+#   tags:
+#     - install
+#     - node
 
-
-
-- name: Install node 14
-  shell: PATH={{ home }}/.local/.npm-global/bin:$PATH n 14
+- name: Install node 16
+  shell: PATH={{ home }}/.local/.npm-global/bin:$PATH n 16
   tags:
     - install
     - node

@@ -18,23 +18,27 @@
     - dotfiles
     - tmux
   when: ansible_os_family == "Debian"
-
-- name: tpm folder exists
-  stat:
-    path: '{{ home }}/.tmux/plugins/tpm'
-  register: tpm
+#
+# - name: tpm folder exists
+#   stat:
+#     path: '{{ home }}/.tmux/plugins/tpm'
+#   register: tpm
+#   tags:
+#     - install
+#     - dotfiles
+#     - tmux
+#
+- name: create tpm plugins folder if it doesn't exist
+  file:
+    path: '{{ home }}/.tmux/plugins/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
   tags:
     - install
     - dotfiles
     - tmux
-
-- name: create tpm plugins folder
-  shell: mkdir -p "{{ home }}/.tmux/plugins/"
-  tags:
-    - install
-    - dotfiles
-    - tmux
-  when: tpm.stat.exists == False
+  # when: tpm.stat.exists == False
 
 - name: clone tpm
   ansible.builtin.git:
