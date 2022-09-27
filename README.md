@@ -29,3 +29,12 @@ docker run --rm --tty archtestenv
 ```
 
 🙂
+
+
+## TO Do
+
+- install fonts
+- set up systemd timers
+- install lazygit
+
+
