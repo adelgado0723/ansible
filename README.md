@@ -32,12 +32,15 @@ docker run --rm --tty archtestenv
 
 ## TO Do
 
-- install fonts
-  - Fira Code
-  - Hack
-  - Fantasque
-- set up systemd timers
-- install lazygit
-- install notify-send
-- set up mpd and mpc
-- install hueadm tool
+- [ ] install fonts
+  - [ ] Fira Code
+  - [ ] Hack
+  - [ ] Fantasque
+- [ ] set up systemd timers
+- [ ] install lazygit
+- [ ] install notify-send
+- [ ] set up mpd and mpc
+- [ ] install hueadm tool
+- [ ] create {{home}}/dev folder
+- [ ] add more personal github repos to personal project setup
+- [ ] install dmscript dependencies

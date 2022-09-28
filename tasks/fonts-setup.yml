@@ -1,25 +1,23 @@
-- name: Update from git
-  ansible.builtin.git:
-    repo: "https://github.com/ryanoasis/nerd-fonts.git"
-    dest: "{{ ansible_env.HOME }}/src/ikon/nerd-fonts"
-    depth: 1
-    force: yes
+- name: install agave nerd font
+  ansible.builtin.shell:
+    cmd: curl -fLo "agave regular Nerd Font Complete.ttf"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Agave/complete/agave%20regular%20Nerd%20Font%20Complete.ttf
+    chdir: '{{ home }}/.fonts'
+  tags:
+    - install
+    - fonts
 
-- name: Select fonts to install
-  ansible.builtin.find:
-    recurse: yes
-    use_regex: yes
-    paths: "{{ ansible_env.HOME }}/src/ikon/nerd-fonts/patched-fonts"
-    patterns:
-      - '^.*?((?!Windows).)*?\.ttf$'
-  register: fonts_to_install
+- name: install big blue terminal font
+  ansible.builtin.shell:
+    cmd: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
+    chdir: '{{ home }}/.fonts'
+  tags:
+    - install
+    - fonts
 
-#- debug: var=fonts_to_install
-
-- ansible.builtin.copy:
-    dest: "{{ ansible_env.HOME }}/.local/share/fonts/{{ item.path | basename }}"
-    src: "{{ item.path }}"
-    remote_src: yes
-  loop: "{{ fonts_to_install.files }}"
-  notify:
-    - update font cache
+- name: update font cache
+  ansible.builtin.shell:
+    cmd: fc-cache -fv
+    chdir: '{{ home }}/.fonts'
+  tags:
+    - install
+    - fonts
