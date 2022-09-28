@@ -6,6 +6,7 @@
   tags:
     - install
     - neovim
+    - alacritty
     - core
   when: ansible_os_family == "Archlinux"
 - name: Install System Packages 2 - Arch (lua, unzip, libtool, gettext)
@@ -16,6 +17,7 @@
   tags:
     - install
     - neovim
+    - alacritty
     - core
   when: ansible_os_family == "Archlinux"
 
@@ -33,6 +35,7 @@
         'ccache',
         'ninja',
         'python-pip',
+        'python',
         'dconf-editor',
         'nvidia-settings',
         'pavucontrol',
@@ -40,11 +43,23 @@
         'clang',
         'pandoc',
         'figlet',
+        'cowsay',
+        'fortune-mod',
+        'nitrogen',
+        'freetype2',
+        'make',
+        'libxcb',
+        'libxkbcommon',
+        'pkg-config',
+        'fontconfig',
+        'mpd',
+        'brave-bin',
       ]
     state: present
   tags:
     - install
     - neovim
+    - alacritty
     - core
   when: ansible_os_family == "Archlinux"
 
@@ -55,6 +70,7 @@
   tags:
     - install
     - neovim
+    - alacritty
     - core
   when: ansible_os_family == "Debian"
 
@@ -65,6 +81,7 @@
   tags:
     - install
     - neovim
+    - alacritty
     - core
   when: ansible_os_family == "Debian"
 
@@ -81,6 +98,7 @@
         'ccache',
         'ninja-build',
         'python3-pip',
+        'python3',
         'dconf-editor',
         'nvidia-settings',
         'pavucontrol',
@@ -94,6 +112,14 @@
         'libxrandr-dev',
         'libxpm-dev',
         'figlet',
+        'cowsay',
+        'nitrogen',
+        'mpd',
+        'fortune',
+        'libfreetype6-dev',
+        'libfontconfig1-dev',
+        'libxcb-xfixes0-dev',
+        'libxkbcommon-dev ',
         'ubuntu-mate-desktop',
       ]
   tags:
@@ -135,6 +161,7 @@
   tags:
     - install
     - neovim
+    - alacritty
     - core
   when: ansible_os_family == "Debian"
 

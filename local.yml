@@ -1,4 +1,6 @@
 - hosts: localhost
+  gather_facts: true
+
   vars:
     home: "{{ lookup('env', 'HOME') }}"
     user: "{{ lookup('env', 'USER') }}"
@@ -31,6 +33,7 @@
     - include: tasks/node-setup.yml
     - include: tasks/npm-packages.yml
     - include: tasks/zsh-setup.yml
+    - include: tasks/alacritty-build.yml
     #   - include: tasks/slack-setup.yml
     - include: tasks/personal-projects.yml
     - include: tasks/fonts-setup.yml

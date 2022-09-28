@@ -36,11 +36,29 @@ docker run --rm --tty archtestenv
   - [ ] Fira Code
   - [ ] Hack
   - [ ] Fantasque
+  - [ ] Emoji font
+  - [ ] dmscripts fonts???
 - [ ] set up systemd timers
 - [ ] install lazygit
 - [ ] install notify-send
-- [ ] set up mpd and mpc
+- [ ] set up mpd
+- [ ] set up mpc
+- [ ] set up system sounds folder
 - [ ] install hueadm tool
 - [ ] create {{home}}/dev folder
 - [ ] add more personal github repos to personal project setup
+    - [ ] brag repo
+    - [ ] system sounds
 - [ ] install dmscript dependencies
+- [ ] install slack
+- [ ] install brave
+- [ ] install discord
+- [ ] install zoom
+- [X] install alacritty 
+	- [ ] set up zsh autocompletions for alacritty
+- [ ] install thunderbird
+- [ ] install audacity
+- [ ] setup debuggers 
+    - [ ] go
+    - [ ] js
+- [ ] setup ansible lsp
