@@ -41,7 +41,7 @@ docker run --rm --tty archtestenv
   - [x] update dmscripts fonts
   - [x] update qtile fonts
   - [x] update alacritty fonts
-  - [ ] [Terminess](<https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Regular/complete/Terminess%20(TTF)%20Nerd%20Font%20Complete.ttf>)
+  - [ ] [Terminess](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Regular/complete/Terminess%20(TTF)%20Nerd%20Font%20Complete.ttf)
   - [ ] [Space Mono](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf)
   - [ ] [Sauce Code Pro Nerd](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf)
   - [ ] [InconsolataGo](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf)
@@ -63,7 +63,8 @@ docker run --rm --tty archtestenv
   - [ ] xclip
 - [ ] install apps
   - [ ] slack
-  - [ ] greenshot
+  - [ ] flameshot
+  - [ ] beekeeper
   - [ ] brave
   - [ ] discord
   - [ ] zoom
