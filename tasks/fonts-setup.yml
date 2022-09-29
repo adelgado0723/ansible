@@ -39,6 +39,14 @@
     - install
     - fonts
 
+- name: install noto color emoji font
+  ansible.builtin.shell:
+    cmd: curl -fLo "NotoColorEmoji.ttf" https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf 
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
 - name: update font cache
   ansible.builtin.shell:
     cmd: fc-cache -fv
