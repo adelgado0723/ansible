@@ -8,7 +8,7 @@
 
 - name: install big blue terminal font
   ansible.builtin.shell:
-    cmd: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
+    cmd: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
@@ -16,17 +16,15 @@
 
 - name: install fantasque sans mono font
   ansible.builtin.shell:
-    cmd: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
+    cmd: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-
 - name: update font cache
   ansible.builtin.shell:
-    cmd: fc-cache -fv
-    # chdir: '{{ home }}/.local/share/fonts'
+    cmd: fc-cache
   tags:
     - install
     - fonts
