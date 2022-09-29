@@ -1,0 +1,27 @@
+- name: download golang tar file
+  shell:
+    cmd: 'wget https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz'
+    chdir: '/tmp/'
+  tags:
+    - install
+    - core
+    - go
+
+- name: extract tar file
+  become: true
+  shell:
+    cmd: 'tar -C /usr/local -xzf go{{ go_version }}.linux-amd64.tar.gz'
+    chdir: '/tmp/'
+  tags:
+    - install
+    - core
+    - go
+
+- name: remove tar file
+  ansible.builtin.file:
+    path: '/tmp/go{{ go_version }}.linux-amd64.tar.gz'
+    state: absent
+  tags:
+    - install
+    - core
+    - go

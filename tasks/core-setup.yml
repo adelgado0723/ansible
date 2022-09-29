@@ -28,8 +28,8 @@
       [
         'picom',
         'curl',
+        'wget',
         'htop',
-        'go',
         'lsof',
         'qtile',
         'ccache',
@@ -95,6 +95,7 @@
       [
         'compton',
         'curl',
+        'wget',
         'htop',
         'lsof',
         'ccache',
@@ -130,29 +131,6 @@
     - install
     - core
   when: ansible_os_family == "Debian"
-
-
-- name: Install golang - add repo - Debian
-  become: true
-  shell: add-apt-repository ppa:longsleep/golang-backports
-  tags:
-    - install
-    - neovim
-    - alacritty
-    - core
-  when: ansible_os_family == "Debian"
-- name: Install golang - Debian
-  become: true
-  apt:
-    name: "golang-go"
-  tags:
-    - install
-    - neovim
-    - alacritty
-    - core
-  when: ansible_os_family == "Debian"
-
-
 
 # xcffib
 - name: install xcffiv

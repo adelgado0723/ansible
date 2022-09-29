@@ -45,14 +45,14 @@
 
 # "gopls"
 - name: install gopls
-  shell: go install golang.org/x/tools/gopls@latest
+  shell: /usr/local/go/bin/go install golang.org/x/tools/gopls@latest
   tags:
     - install
     - lsp
 
 # "golangci_lint_ls"
 - name: install golangci_lint_ls
-  shell: go installgithub.com/nametake/golangci-lint-langserver@latest
+  shell: /usr/local/go/bin/go installgithub.com/nametake/golangci-lint-langserver@latest
   tags:
     - install
     - lsp
@@ -102,7 +102,7 @@
 
 # "sqls"
 - name: install sqls
-  shell: go install github.com/lighttiger2505/sqls@latest
+  shell: /usr/local/go/bin/go install github.com/lighttiger2505/sqls@latest
   tags:
     - install
     - lsp
