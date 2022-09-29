@@ -40,7 +40,7 @@ docker run --rm --tty archtestenv
   - [ ] dmscripts fonts???
 - [ ] set up systemd timers
 - [ ] install lazygit
-- [ ] install notify-send
+- [X] install notify-send
 - [ ] set up mpd
 - [ ] set up mpc
 - [ ] set up system sounds folder

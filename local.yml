@@ -1,7 +1,5 @@
 - hosts: localhost
   gather_facts: true
-  roles:
-    - fubarhouse.golang
 
   vars:
     home: "{{ lookup('env', 'HOME') }}"
