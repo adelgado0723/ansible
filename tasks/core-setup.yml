@@ -54,6 +54,9 @@
         'fontconfig',
         'mpd',
         'brave-bin',
+        'networkmanager',
+        'networkmanager-openvpn',
+        'network-manager-applet',
       ]
     state: present
   tags:
@@ -93,7 +96,6 @@
         'compton',
         'curl',
         'htop',
-        'golang',
         'lsof',
         'ccache',
         'ninja-build',
@@ -120,12 +122,37 @@
         'libfontconfig1-dev',
         'libxcb-xfixes0-dev',
         'libxkbcommon-dev ',
+        'network-manager',
+        'network-manager-openvpn',
         'ubuntu-mate-desktop',
       ]
   tags:
     - install
     - core
   when: ansible_os_family == "Debian"
+
+
+- name: Install golang - add repo - Debian
+  become: true
+  shell: add-apt-repository ppa:longsleep/golang-backports
+  tags:
+    - install
+    - neovim
+    - alacritty
+    - core
+  when: ansible_os_family == "Debian"
+- name: Install golang - Debian
+  become: true
+  apt:
+    name: "golang-go"
+  tags:
+    - install
+    - neovim
+    - alacritty
+    - core
+  when: ansible_os_family == "Debian"
+
+
 
 # xcffib
 - name: install xcffiv
@@ -178,3 +205,19 @@
     - install
     - core
   when: ansible_os_family == "Debian"
+# enable mpd
+#
+# enable networkmanager
+#
+- name: Enable service httpd and ensure it is not masked
+  ansible.builtin.systemd:
+    name: NetworkManager
+    enabled: yes
+    masked: no
+
+# start networkmanager
+- name: Make sure a networkmanager is running
+  ansible.builtin.systemd:
+    state: started
+    name: NetworkManager
+

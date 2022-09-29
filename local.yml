@@ -1,5 +1,7 @@
 - hosts: localhost
   gather_facts: true
+  roles:
+    - fubarhouse.golang
 
   vars:
     home: "{{ lookup('env', 'HOME') }}"
@@ -30,6 +32,8 @@
     # - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
     - include: tasks/core-setup.yml
+    # - include: tasks/golang-install.yml
+    - include: tasks/go-apps.yml
     - include: tasks/node-setup.yml
     - include: tasks/npm-packages.yml
     - include: tasks/zsh-setup.yml

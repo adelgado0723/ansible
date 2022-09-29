@@ -1,0 +1,77 @@
+- debug: msg="home={{ home }}"
+
+- name: check current golang version
+  command: bash -c "/usr/local/go/bin/go version|sed -e 's/go version go//g'|cut -d' ' -f1"
+  ignore_errors: yes
+  register: go_version
+  changed_when: false
+  tags:
+    - install
+    - neovim
+    - core
+    - go
+
+- debug: msg="go_version={{go_version.stdout}}"
+# - debug: msg="new_go_version={{new_go_version}}"
+
+# Failing
+# - name: continue only when version is older
+#   fail: msg="Version already exists"
+#   when: go_version.stdout != "" and "go_version.stdout | version_compare('{{new_go_version}}', operator='ge', strict=True)"
+#   tags:
+#     - install
+#     - neovim
+#     - core
+#     - go
+#
+- debug: msg="continuing with installation"
+
+- name: download golang tar
+  get_url:
+    url: 'https://storage.googleapis.com/golang/go{{new_go_version}}.linux-amd64.tar.gz'
+    dest: '{{home}}'
+    mode: 0440
+  tags:
+    - install
+    - neovim
+    - core
+    - go
+
+- name: Remove old installation of Go
+  file:
+    path: /usr/local/go
+    state: absent
+  become: yes
+  tags:
+    - install
+    - neovim
+    - core
+    - go
+
+- name: Extract the Go tarball
+  unarchive:
+    src: '{{home}}/go{{new_go_version}}.linux-amd64.tar.gz'
+    dest: /usr/local
+    copy: no
+  become: yes
+  tags:
+    - install
+    - neovim
+    - core
+    - go
+
+- name: create go directories in home
+  file:
+    path: '{{item}}'
+    state: directory
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0775
+  with_items:
+    - '{{home}}/go'
+    - '{{home}}/go/bin'
+  tags:
+    - install
+    - neovim
+    - core
+    - go

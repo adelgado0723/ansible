@@ -33,10 +33,20 @@
     - install
     - alacritty
 
+- name: make env update file executable
+  when: cargo_exists is failed
+  ansible.builtin.file: 
+    path: '{{ home }}/.cargo/env'
+    owner: '{{ user }}'
+    mode: '0775'
+  tags:
+    - install
+    - alacritty
+
 - name: install rust compiler with rustup
   when: cargo_exists is failed
   shell:
-    cmd: rustup override set stable && rustup update stable
+    cmd: '{{ home }}/.cargo/env && rustup override set stable && rustup update stable'
     chdir: '{{ home }}/alacritty/'
   tags:
     - install
@@ -106,7 +116,6 @@
   tags:
     - install
     - alacritty
-
 # Man Page
 #
 # sudo mkdir -p /usr/local/share/man/man1

@@ -1,0 +1,7 @@
+- name: install lazygit - Debian
+  shell: 'go install github.com/jesseduffield/lazygit@latest'
+  tags:
+    - install
+    - core
+
+
