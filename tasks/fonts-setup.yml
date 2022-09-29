@@ -1,3 +1,13 @@
+- name: fonts - create folder if it doesn't exist
+  file:
+    path: '{{ home }}/.local/share/fonts'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - install
+    - fonts
+ 
 - name: install agave nerd font
   ansible.builtin.shell:
     cmd: curl -fLo "agave regular Nerd Font Complete.ttf"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Agave/complete/agave%20regular%20Nerd%20Font%20Complete.ttf
@@ -8,7 +18,7 @@
 
 - name: install big blue terminal font
   ansible.builtin.shell:
-    cmd: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
+    cmd: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete%20Mono.TTF
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
@@ -16,7 +26,7 @@
 
 - name: install fantasque sans mono font
   ansible.builtin.shell:
-    cmd: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
+    cmd: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
