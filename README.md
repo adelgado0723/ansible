@@ -33,9 +33,9 @@ docker run --rm --tty archtestenv
 ## TO Do
 
 - [ ] install fonts
-  - [ ] Fira Code
-  - [ ] Hack
-  - [ ] Fantasque
+  - [X] Fira Code
+  - [X] Hack
+  - [X ] Fantasque
   - [ ] Emoji font
   - [ ] dmscripts fonts???
 - [ ] set up systemd timers
