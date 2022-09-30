@@ -4,7 +4,7 @@
   vars:
     home: "{{ lookup('env', 'HOME') }}"
     user: "{{ lookup('env', 'USER') }}"
-    go_version: "1.19.1"
+    go_version: '1.19.1'
   pre_tasks:
     - name: Update Package Manager - Arch - Pacman -Syu
       become: yes
@@ -39,7 +39,9 @@
     - include: tasks/zsh-setup.yml
     - include: tasks/alacritty-build.yml
     #   - include: tasks/slack-setup.yml
-    - include: tasks/personal-projects.yml
+    - include: tasks/scripts-and-utils-setup.yml
+    - include: tasks/dev-setup.yml
+    - include: tasks/notes-setup.yml
     - include: tasks/timers-setup.yml
     - include: tasks/nvim-setup.yml
     #   - include: tasks/brave.yml

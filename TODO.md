@@ -3,7 +3,8 @@
 ## Needed for OS migration
 
 - [ ] set up system sounds folder
-- [ ] create {{home}}/dev folder
+- [X] create {{home}}/dev folder if it doesn't exist
+- [X] create {{home}}/notes folder if it doesn't exist
 - [ ] setup qtile widget dependencies
   - [ ] Net widget
   - [ ] Thermal Sensor widget
@@ -13,17 +14,18 @@
   - [ ] system tray widget
   - [ ] battery widget
 - [ ] install apps
-
 - [ ] set up mpd
 - [ ] set up mpc
 
 ## Nice to have
 
+- [ ] install shell scripts
+  - [ ] docker kill
+  - [ ] tmux-sessionizer
+  - [ ] tmux-cht.sh
 - [ ] [set up printer](https://unix.stackexchange.com/questions/359531/installing-hp-printer-driver-for-arch-linux)
-
   - [ ] [sane](https://wiki.archlinux.org/title/SANE) for scanning
   - [ ] hp-plugin
-
 - [ ] install apps
   - [ ] slack
   - [ ] flameshot
@@ -45,17 +47,18 @@
 - [ ] setup LSPs
   - [ ] ansible
   - [ ] MongoDB 
- - [ ] install notify-send 
+- [ ] install notify-send 
 - [ ] install ranger
 - [ ] setup notification daemon
 - [ ] install hueadm tool
 - [ ] add more personal github repos to personal project setup 
   - [ ] brag repo
   - [ ] system sounds
+  - [ ] BUMCNotes
 - [ ] install dmscript dependencies
   - [ ] maim - screenshots
   - [ ] xclip - clipboard
-  - [ ] udisks2  - usbmounting/unmounting
+  - [ ] udisks2 - usbmounting/unmounting
 
 ## Completed
 

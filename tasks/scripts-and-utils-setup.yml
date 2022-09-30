@@ -1,11 +1,3 @@
-# - name: dmenu - exists
-#   stat:
-#     path: '{{ home }}/.config/dmenu/'
-#   register: dmenu
-#   tags:
-#     - install
-#     - personal-project
-#
 - name: dmenu - create folder if it doesn't exist
   file:
     path: '{{ home }}/.config/dmenu/'
@@ -14,8 +6,7 @@
     owner: '{{ user }}'
   tags:
     - install
-    - personal-project
-  # when: dmenu.stat.exists == False
+    - scripts-setup
 
 - name: dmenu - clone from github
   ansible.builtin.git:
@@ -23,7 +14,7 @@
     dest: '{{ home }}/.config/dmenu/dmenu'
   tags:
     - install
-    - personal-project
+    - scripts-setup
 
 - name: dmenu - build and install
   become: true
@@ -32,7 +23,7 @@
     chdir: '{{ home }}/.config/dmenu/dmenu'
   tags:
     - install
-    - personal-project
+    - scripts-setup
 
 - name: dmscripts - exists
   stat:
@@ -40,7 +31,7 @@
   register: dmscripts
   tags:
     - install
-    - personal-project
+    - scripts-setup
 
 - name: dmscripts - clone from github
   ansible.builtin.git:
@@ -48,7 +39,7 @@
     dest: '{{ home }}/.config/dmenu/dmscripts'
   tags:
     - install
-    - personal-project
+    - scripts-setup
   when: dmscripts.stat.exists == False
 
 - name: dmscripts - build and install
@@ -58,7 +49,7 @@
     chdir: '{{ home }}/.config/dmenu/dmscripts'
   tags:
     - install
-    - personal-project
+    - scripts-setup
 
 - name: slock - exists
   stat:
@@ -66,7 +57,7 @@
   register: slock
   tags:
     - install
-    - personal-project
+    - scripts-setup
 
 - name: slock - clone from github
   ansible.builtin.git:
@@ -74,7 +65,7 @@
     dest: '{{ home }}/.config/slock'
   tags:
     - install
-    - personal-project
+    - scripts-setup
   when: slock.stat.exists == False
 
 - name: slock - build and install
@@ -84,7 +75,7 @@
     chdir: '{{ home }}/.config/slock'
   tags:
     - install
-    - personal-project
+    - scripts-setup
 
 - name: personal scripts - create folder if it doesn't exist
   file:
@@ -94,7 +85,7 @@
     owner: '{{ user }}'
   tags:
     - install
-    - personal-project
+    - scripts-setup
 
 - name: personal scripts - clone from github
   ansible.builtin.git:
@@ -102,16 +93,8 @@
     dest: '{{ home }}/scripts/'
   tags:
     - install
-    - personal-project
+    - scripts-setup
 
-# - name: wallpapers - exists
-#   stat:
-#     path: '{{ home }}/wallpapers'
-#   register: wallpapers
-#   tags:
-#     - install
-#     - personal-project
-#
 - name: wallpapers - create folder if it doesn't exist
   file:
     path: '{{ home }}/wallpapers'
@@ -120,8 +103,7 @@
     owner: '{{ user }}'
   tags:
     - install
-    - personal-project
-  # when: wallpapers.stat.exists == False
+    - scripts-setup
 
 - name: wallpapers - clone from github
   ansible.builtin.git:
@@ -129,5 +111,5 @@
     dest: '{{ home }}/wallpapers_public/'
   tags:
     - install
-    - personal-project
-# Extend to fetch scripts and other repos
+    - scripts-setup
+

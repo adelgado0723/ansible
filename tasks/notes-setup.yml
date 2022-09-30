@@ -1,0 +1,12 @@
+- name: ~/notes - create folder if it doesn't exist
+  file:
+    path: '{{ home }}/notes/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - notes
+
+
+
+
