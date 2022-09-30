@@ -1,3 +1,13 @@
+- name: fonts - create folder if it doesn't exist
+  file:
+    path: '{{ home }}/.local/share/fonts'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - install
+    - fonts
+
 - name: install agave nerd font
   ansible.builtin.shell:
     cmd: curl -fLo "agave regular Nerd Font Complete.ttf"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Agave/complete/agave%20regular%20Nerd%20Font%20Complete.ttf
