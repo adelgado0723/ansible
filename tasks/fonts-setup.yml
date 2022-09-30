@@ -18,7 +18,7 @@
 
 - name: install big blue terminal font
   ansible.builtin.shell:
-    cmd: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete%20Mono.TTF
+    cmd: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
@@ -26,17 +26,40 @@
 
 - name: install fantasque sans mono font
   ansible.builtin.shell:
-    cmd: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+    cmd: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
 
+- name: install hack nerd font
+  ansible.builtin.shell:
+    cmd: curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf 
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: install fira code nerd font
+  ansible.builtin.shell:
+    cmd: curl -fLo "Fura Mono Regular Nerd Font Complete Mono.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/Regular/complete/Fura%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.otf 
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: install noto color emoji font
+  ansible.builtin.shell:
+    cmd: curl -fLo "NotoColorEmoji.ttf" https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf 
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
 - name: update font cache
   ansible.builtin.shell:
     cmd: fc-cache -fv
-    # chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
