@@ -22,10 +22,9 @@
     - install
     - fonts
 
-
 - name: install hack nerd font
   ansible.builtin.shell:
-    cmd: curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf 
+    cmd: curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
@@ -33,7 +32,7 @@
 
 - name: install fira code nerd font
   ansible.builtin.shell:
-    cmd: curl -fLo "Fura Mono Regular Nerd Font Complete Mono.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/Regular/complete/Fura%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.otf 
+    cmd: curl -fLo "Fura Mono Regular Nerd Font Complete Mono.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/Regular/complete/Fura%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.otf
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
@@ -41,7 +40,40 @@
 
 - name: install noto color emoji font
   ansible.builtin.shell:
-    cmd: curl -fLo "NotoColorEmoji.ttf" https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf 
+    cmd: curl -fLo "NotoColorEmoji.ttf" https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: install inconsolatago nerd font
+  ansible.builtin.shell:
+    cmd: curl -fLo "InconsolataGo Nerd Font Complete.ttf"  https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+# had to wrap url in ""  for the curl command to work
+- name: install terminess nerd font
+  ansible.builtin.shell:
+    cmd: curl -fLo "Terminess (TTF) Nerd Font Complete.ttf" "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Regular/complete/Terminess%20(TTF)%20Nerd%20Font%20Complete.ttf"
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: install sauce code pro nerd font
+  ansible.builtin.shell:
+    cmd: curl -fLo "Sauce Code Pro Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: install space mono nerd font
+  ansible.builtin.shell:
+    cmd: curl -fLo "Space Mono Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install

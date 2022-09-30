@@ -57,6 +57,7 @@
         'networkmanager',
         'networkmanager-openvpn',
         'network-manager-applet',
+        'cups',
       ]
     state: present
   tags:
@@ -124,6 +125,7 @@
         'libxcb-xfixes0-dev',
         'libxkbcommon-dev ',
         'network-manager',
+        'cups',
         'network-manager-openvpn',
         'ubuntu-mate-desktop',
       ]
@@ -187,15 +189,45 @@
 #
 # enable networkmanager
 #
-- name: Enable service httpd and ensure it is not masked
+- name: Enable service networkmanager and ensure it is not masked
+  become: true
   ansible.builtin.systemd:
     name: NetworkManager
     enabled: yes
     masked: no
+  tags:
+    - install
+    - core
 
 # start networkmanager
 - name: Make sure a networkmanager is running
+  become: true
   ansible.builtin.systemd:
     state: started
     name: NetworkManager
+  tags:
+    - install
+    - core
 
+#
+# enable cups
+#
+- name: Enable service cups and ensure it is not masked
+  become: true
+  ansible.builtin.systemd:
+    name: cups.socket
+    enabled: yes
+    masked: no
+  tags:
+    - install
+    - core
+
+# start cups
+- name: Make sure a cups is running
+  become: true
+  ansible.builtin.systemd:
+    state: started
+    name: cups.socket
+  tags:
+    - install
+    - core

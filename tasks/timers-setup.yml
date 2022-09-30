@@ -1,0 +1,79 @@
+# timer for checking battery life
+
+- name: install battery checking timer
+  become: true
+  copy:
+    src: '{{ home }}/scripts/timers/batterychecker.timer'
+    dest: '/etc/systemd/system/batterychecker.timer'
+    mode: 0775
+    owner: '{{ user }}'
+  tags:
+    - timers
+
+- name: install battery checking timer
+  become: true
+  copy:
+    src: '{{ home }}/scripts/timers/batterychecker.service'
+    dest: '/etc/systemd/system/batterychecker.service'
+    mode: 0775
+    owner: '{{ user }}'
+  tags:
+    - timers
+
+# enable batterychecker
+- name: Enable service batterychecker and ensure it is not masked
+  become: true
+  ansible.builtin.systemd:
+    name: batterychecker
+    enabled: yes
+    masked: no
+  tags:
+    - timers
+
+# start batterychecker
+- name: Make sure a batterychecker is running
+  become: true
+  ansible.builtin.systemd:
+    state: started
+    name: batterychecker
+  tags:
+    - timers
+# timer for changing wallpaper every 30 minutes
+- name: install wallpaper changing timer
+  become: true
+  copy:
+    src: '{{ home }}/scripts/timers/thirty-minute.timer'
+    dest: '/etc/systemd/system/thirty-minute.timer'
+    mode: 0775
+    owner: '{{ user }}'
+  tags:
+    - timers
+
+- name: install wallpaper changing timer
+  become: true
+  copy:
+    src: '{{ home }}/scripts/timers/wallpaperchanger.service'
+    dest: '/etc/systemd/system/wallpaperchanger.service'
+    mode: 0775
+    owner: '{{ user }}'
+  tags:
+    - timers
+
+# enable wallpaperchanger
+- name: Enable service wallpaperchanger and ensure it is not masked
+  become: true
+  ansible.builtin.systemd:
+    name: wallpaperchanger
+    enabled: yes
+    masked: no
+  tags:
+    - timers
+
+# start wallpaperchanger
+- name: Make sure a wallpaperchanger is running
+  become: true
+  ansible.builtin.systemd:
+    state: started
+    name: wallpaperchanger
+  tags:
+    - timers

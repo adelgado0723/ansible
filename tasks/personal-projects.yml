@@ -86,14 +86,6 @@
     - install
     - personal-project
 
-# - name: personal scripts - exists
-#   stat:
-#     path: '{{ home }}/scripts'
-#   register: scripts
-#   tags:
-#     - install
-#     - personal-project
-#
 - name: personal scripts - create folder if it doesn't exist
   file:
     path: '{{ home }}/scripts/'
@@ -103,7 +95,6 @@
   tags:
     - install
     - personal-project
-  # when: scripts.stat.exists == False
 
 - name: personal scripts - clone from github
   ansible.builtin.git:

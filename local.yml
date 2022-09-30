@@ -30,6 +30,7 @@
   tasks:
     # - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
+    - include: tasks/fonts-setup.yml
     - include: tasks/core-setup.yml
     - include: tasks/go-setup.yml
     - include: tasks/go-packages.yml
@@ -39,7 +40,7 @@
     - include: tasks/alacritty-build.yml
     #   - include: tasks/slack-setup.yml
     - include: tasks/personal-projects.yml
-    - include: tasks/fonts-setup.yml
+    - include: tasks/timers-setup.yml
     - include: tasks/nvim-setup.yml
     #   - include: tasks/brave.yml
     #   - include: tasks/debugger.yml
