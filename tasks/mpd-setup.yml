@@ -1,0 +1,44 @@
+- name: Install mpd and mpc
+  become: true
+  ansible.builtin.package:
+    name:
+      - mpd
+      - mpc
+    state: present
+  tags:
+    - mpd
+
+- name: Stop and disable system-wide mpd
+  become: true
+  ansible.builtin.systemd:
+    name: mpd
+    state: stopped
+    enabled: false
+  tags:
+    - mpd
+
+- name: Get stats of mpd config
+  ansible.builtin.stat:
+    path: '{{ home }}/.config/systemd/user/mpd.service'
+  register: mpd_config
+  tags:
+    - mpd
+
+- name: Skip if no config found
+  ansible.builtin.debug:
+    msg: 'mpd config not found... Skipping Setup.'
+  when: not mpd_config
+  tags:
+    - mpd
+
+# start and enable mpd user service
+- name: Start and enable mpd user service
+  ansible.builtin.systemd:
+    state: started
+    name: mpd
+    enabled: true
+    masked: false
+    scope: user
+  when: mpd_config
+  tags:
+    - mpd

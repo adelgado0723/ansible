@@ -1,5 +1,7 @@
 - name: remove neovim
-  shell: rm -rf {{ home }}/neovim
+  ansible.builtin.file:
+    path: '{{ home }}/neovim'
+    state: absent
   tags:
     - install
     - neovim

@@ -1,6 +1,6 @@
 - name: Install System Packages 1 - Arch (base-devel, cmake, pkgconf)
   become: true
-  pacman:
+  ansible.builtin.pacman:
     name: ['base-devel', 'cmake', 'pkgconf']
     state: present
   tags:
@@ -11,7 +11,7 @@
   when: ansible_os_family == "Archlinux"
 - name: Install System Packages 2 - Arch (lua, unzip, libtool, gettext)
   become: true
-  pacman:
+  ansible.builtin.pacman:
     name: ['lua', 'unzip', 'libtool', 'gettext']
     state: present
   tags:
@@ -23,7 +23,7 @@
 
 - name: Install System Packages 3 - Arch
   become: true
-  pacman:
+  ansible.builtin.pacman:
     name:
       [
         'picom',
@@ -31,7 +31,6 @@
         'wget',
         'htop',
         'lsof',
-        'qtile',
         'ccache',
         'ninja',
         'python-pip',
@@ -52,7 +51,6 @@
         'libxkbcommon',
         'pkg-config',
         'fontconfig',
-        'mpd',
         'brave-bin',
         'networkmanager',
         'networkmanager-openvpn',
@@ -69,7 +67,7 @@
 
 - name: Install System Packages 1 - Debian (build-essential, cmake, pkg-config, pthread)
   become: true
-  apt:
+  ansible.builtin.apt:
     name: ['build-essential', 'cmake', 'pkg-config', 'libpthread-stubs0-dev']
   tags:
     - install
@@ -80,7 +78,7 @@
 
 - name: Install System Packages 2 - Debian (lua, unzip, libtool, libtool-bin, gettext)
   become: true
-  apt:
+  ansible.builtin.apt:
     name: ['lua5.1', 'unzip', 'libtool', 'libtool-bin', 'gettext']
   tags:
     - install
@@ -91,7 +89,7 @@
 
 - name: Install System Packages 3 - Debian (the rest)
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       [
         'compton',
@@ -118,7 +116,6 @@
         'figlet',
         'cowsay',
         'nitrogen',
-        'mpd',
         'fortune',
         'libfreetype6-dev',
         'libfontconfig1-dev',
@@ -127,26 +124,7 @@
         'network-manager',
         'cups',
         'network-manager-openvpn',
-        'ubuntu-mate-desktop',
       ]
-  tags:
-    - install
-    - core
-  when: ansible_os_family == "Debian"
-
-# xcffib
-- name: install xcffiv
-  ansible.builtin.pip:
-    name: xcffib
-  tags:
-    - install
-    - core
-  when: ansible_os_family == "Debian"
-
-# qtile
-- name: install qtile
-  ansible.builtin.pip:
-    name: qtile
   tags:
     - install
     - core
@@ -154,17 +132,8 @@
 
 - name: Install Clang - Debian
   become: true
-  apt:
-    name:
-      [
-        'clang',
-        'clang-11',
-        'clang-12',
-        'clangd',
-        'clangd-10',
-        'clangd-11',
-        'clangd-12',
-      ]
+  ansible.builtin.apt:
+    name: ['clang', 'clang-11', 'clang-12', 'clangd', 'clangd-11', 'clangd-12']
   tags:
     - install
     - neovim
@@ -172,62 +141,35 @@
     - core
   when: ansible_os_family == "Debian"
 
-- name: dconf qtile
-  shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'qtile'"
-  tags:
-    - install
-    - core
-  when: ansible_os_family == "Debian"
-
-- name: dconf qtile
-  shell: dconf write /org/mate/desktop/background/show-desktop-icons "false"
-  tags:
-    - install
-    - core
-  when: ansible_os_family == "Debian"
-# enable mpd
-#
-# enable networkmanager
-#
-- name: Enable service networkmanager and ensure it is not masked
+- name: Install acpi
   become: true
-  ansible.builtin.systemd:
-    name: NetworkManager
-    enabled: yes
-    masked: no
+  ansble.builtin.package:
+    name: acpi
   tags:
     - install
+    - neovim
+    - alacritty
     - core
 
-# start networkmanager
-- name: Make sure a networkmanager is running
+# start and enable networkmanager
+- name: Start and ennable networkmanager. Ensure it is not masked.
   become: true
   ansible.builtin.systemd:
     state: started
     name: NetworkManager
+    enabled: true
+    masked: false
   tags:
     - install
     - core
 
-#
-# enable cups
-#
-- name: Enable service cups and ensure it is not masked
+# start and enable cups
+- name: Start and enable cups. Ensure it is not masked.
   become: true
   ansible.builtin.systemd:
     name: cups.socket
-    enabled: yes
-    masked: no
-  tags:
-    - install
-    - core
-
-# start cups
-- name: Make sure a cups is running
-  become: true
-  ansible.builtin.systemd:
-    state: started
-    name: cups.socket
+    enabled: true
+    masked: false
   tags:
     - install
     - core

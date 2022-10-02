@@ -1,3 +1,11 @@
+- name: fontcofig
+  become: true
+  ansible.builtin.package:
+    name: fontconfig
+    state: present
+  tags:
+    - fonts
+
 - name: fonts - create folder if it doesn't exist
   file:
     path: '{{ home }}/.local/share/fonts'

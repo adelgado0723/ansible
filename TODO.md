@@ -2,20 +2,15 @@
 
 ## Needed for OS migration
 
-- [ ] set up system sounds folder
-- [X] create {{home}}/dev folder if it doesn't exist
-- [X] create {{home}}/notes folder if it doesn't exist
-- [ ] setup qtile widget dependencies
-  - [ ] Net widget
-  - [ ] Thermal Sensor widget
-  - [ ] Update widget
-  - [ ] Memory widget
-  - [ ] Sound widget
-  - [ ] system tray widget
-  - [ ] battery widget
-- [ ] install apps
-- [ ] set up mpd
-- [ ] set up mpc
+- [ ] add more personal github repos to personal project setup 
+  - [ ] brag repo
+  - [x] system sounds
+  - [ ] BUMCNotes
+- [ ] install dmscript dependencies
+  - [ ] maim - screenshots
+  - [ ] xclip - clipboard
+  - [ ] udisks2 - usbmounting/unmounting
+- [ ] setup notification daemon
 
 ## Nice to have
 
@@ -41,24 +36,15 @@
   - [ ] obs
   - [ ] blueman app for systray 
   - [ ] radio app for systray 鷺
+  - [ ] notify-send 
+  - [ ] ranger
+  - [ ] hueadm tool
 - [ ] setup debuggers
   - [ ] go 
   - [ ] js 
 - [ ] setup LSPs
-  - [ ] ansible
-  - [ ] MongoDB 
-- [ ] install notify-send 
-- [ ] install ranger
-- [ ] setup notification daemon
-- [ ] install hueadm tool
-- [ ] add more personal github repos to personal project setup 
-  - [ ] brag repo
-  - [ ] system sounds
-  - [ ] BUMCNotes
-- [ ] install dmscript dependencies
-  - [ ] maim - screenshots
-  - [ ] xclip - clipboard
-  - [ ] udisks2 - usbmounting/unmounting
+  - [x] ansible
+  - [ ] MongoDB  -- none exists!
 
 ## Completed
 
@@ -76,10 +62,24 @@
   - [x] [Sauce Code Pro Nerd](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf)
   - [x] [InconsolataGo](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf)
 - [x] set up systemd timers 祥
-- [x] install lazygit 
 - [x] install apps
   - [x] alacritty
   - [x] Network Manager ﯱ
   - [x] nm-applet 
+  - [x] lazygit 
   - [x] openvpn support 
   - [x] start and enable service 
+- [x] set up system sounds folder
+- [x] create {{home}}/dev folder if it doesn't exist
+- [x] create {{home}}/notes folder if it doesn't exist
+- [x] setup qtile widget dependencies
+  - [x] Net widget
+  - [x] Thermal Sensor widget
+  - [x] Update widget
+  - [x] Memory widget
+  - [x] Sound widget
+  - [x] system tray widget
+  - [x] battery widget
+  - [x] acpi
+- [x] set up mpd
+- [x] set up mpc

@@ -1,5 +1,5 @@
-- name: dmenu - create folder if it doesn't exist
-  file:
+- name: Dmenu - create folder if it doesn't exist
+  ansible.builtin.file:
     path: '{{ home }}/.config/dmenu/'
     state: directory
     mode: 0755
@@ -8,7 +8,7 @@
     - install
     - scripts-setup
 
-- name: dmenu - clone from github
+- name: Dmenu - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dmenu.git'
     dest: '{{ home }}/.config/dmenu/dmenu'
@@ -16,69 +16,69 @@
     - install
     - scripts-setup
 
-- name: dmenu - build and install
+- name: Dmenu - build and install
   become: true
-  shell:
-    cmd: make clean install
+  ansible.builtin.command: make clean install
+  args:
     chdir: '{{ home }}/.config/dmenu/dmenu'
   tags:
     - install
     - scripts-setup
 
-- name: dmscripts - exists
-  stat:
+- name: Dmscripts - exists
+  ansible.builtin.stat:
     path: '{{ home }}/.config/dmenu/dmscripts'
   register: dmscripts
   tags:
     - install
     - scripts-setup
 
-- name: dmscripts - clone from github
+- name: Dmscripts - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dmscripts.git'
     dest: '{{ home }}/.config/dmenu/dmscripts'
   tags:
     - install
     - scripts-setup
-  when: dmscripts.stat.exists == False
+  when: not dmscripts.stat.exists
 
-- name: dmscripts - build and install
+- name: Dmscripts - build and install
   become: true
-  shell:
-    cmd: make clean build install
+  ansible.builtin.command: make clean build install
+  args:
     chdir: '{{ home }}/.config/dmenu/dmscripts'
   tags:
     - install
     - scripts-setup
 
-- name: slock - exists
-  stat:
+- name: Slock - exists
+  ansible.builtin.stat:
     path: '{{ home }}/.config/slock'
   register: slock
   tags:
     - install
     - scripts-setup
 
-- name: slock - clone from github
+- name: Slock - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/slock.git'
     dest: '{{ home }}/.config/slock'
   tags:
     - install
     - scripts-setup
-  when: slock.stat.exists == False
+  when: not slock.stat.exists
 
-- name: slock - build and install
+- name: Slock - build and install
   become: true
-  shell:
-    cmd: make clean install
+  ansible.builtin.command: make clean install
+  args:
     chdir: '{{ home }}/.config/slock'
   tags:
     - install
     - scripts-setup
 
-- name: personal scripts - create folder if it doesn't exist
-  file:
+- name: Scripts - create folder if it doesn't exist
+  ansible.builtin.file:
     path: '{{ home }}/scripts/'
     state: directory
     mode: 0755
@@ -87,7 +87,7 @@
     - install
     - scripts-setup
 
-- name: personal scripts - clone from github
+- name: Scripts - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/scripts.git'
     dest: '{{ home }}/scripts/'
@@ -95,8 +95,8 @@
     - install
     - scripts-setup
 
-- name: wallpapers - create folder if it doesn't exist
-  file:
+- name: Wallpapers - create folder if it doesn't exist
+  ansible.builtin.file:
     path: '{{ home }}/wallpapers'
     state: directory
     mode: 0755
@@ -105,7 +105,7 @@
     - install
     - scripts-setup
 
-- name: wallpapers - clone from github
+- name: Wallpapers - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/wallpapers.git'
     dest: '{{ home }}/wallpapers_public/'
@@ -113,3 +113,20 @@
     - install
     - scripts-setup
 
+- name: Sound effects - create music folder if it doesn't exist
+  ansible.builtin.file:
+    path: '{{ home }}/music/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - install
+    - scripts-setup
+
+- name: Sound effects - clone from github
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/sounds.git'
+    dest: '{{ home }}/music/sound_effects'
+  tags:
+    - install
+    - scripts-setup

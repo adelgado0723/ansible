@@ -63,13 +63,6 @@
     - install
     - node
 
-# - name: own the new folder
-#   become: true
-#   shell: chown -R {{ user }} /usr/local/
-#   tags:
-#     - install
-#     - node
-
 - name: Install node 16
   shell: PATH={{ home }}/.local/.npm-global/bin:$PATH n 16
   tags:

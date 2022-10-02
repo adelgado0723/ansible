@@ -1,4 +1,12 @@
-#
+- name: remove alacritty
+  ansible.builtin.file:
+    path: '{{ home }}/alacritty/'
+    state: absent
+  tags:
+    - install
+    - neovim
+
+
 - name: clone alacritty from github
   ansible.builtin.git:
     repo: 'git@github.com:alacritty/alacritty.git'

@@ -1,24 +1,24 @@
 # LSP Setup - https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 #
 # "sumneko_lua"
-- name: clone sumneko lua lsp
+- name: Clone sumneko lua lsp
   ansible.builtin.git:
     repo: 'git@github.com:sumneko/lua-language-server.git'
-    recursive: yes
+    recursive: true
     dest: '{{ home }}/sumneko'
   tags:
     - install
     - lsp
 
-- name: build sumenko lua lsp
-  ansible.builtin.shell:
-    cmd: ./compile/install.sh
+- name: Build sumenko lua lsp
+  ansible.builtin.command: ./compile/install.sh
+  args:
     chdir: '{{ home }}/sumneko/3rd/luamake'
   tags:
     - install
     - lsp
 
-- name: rebuild using luamake
+- name: Rebuild using luamake
   ansible.builtin.shell:
     cmd: ./3rd/luamake/luamake rebuild
     chdir: '{{ home }}/sumneko/'
@@ -27,16 +27,16 @@
     - lsp
 
 # https://github.com/hrsh7th/vscode-langservers-extracted
-- name: install vscode langservers (jsonls, html,  eslint  server)
+- name: Install vscode langservers (jsonls, html,  eslint  server)
   npm:
     name: vscode-langservers-extracted
-    global: yes
+    global: true
   tags:
     - install
     - lsp
 
 # "pyright"
-- name: install pyright server
+- name: Install pyright server
   ansible.builtin.pip:
     name: pyright
   tags:
@@ -44,91 +44,107 @@
     - lsp
 
 # "gopls"
-- name: install gopls
-  shell: /usr/local/go/bin/go install golang.org/x/tools/gopls@latest
+- name: Install gopls
+  ansible.builtin.command: /usr/local/go/bin/go install golang.org/x/tools/gopls@latest
   tags:
     - install
     - lsp
 
 # "golangci_lint_ls"
-- name: install golangci_lint_ls
-  shell: /usr/local/go/bin/go installgithub.com/nametake/golangci-lint-langserver@latest
+- name: Install golangci_lint_ls
+  ansible.builtin.command: /usr/local/go/bin/go install github.com/nametake/golangci-lint-langserver@latest
   tags:
     - install
     - lsp
 
-- name: install golangci_lint
-  shell: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.49.0
+- name: Install golangci_lint
+  ansible.builtin.command: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.49.0
   tags:
     - install
     - lsp
 
 # "clangd" # installed in core setup
 # "dockerls"
-- name: install dockerls
+- name: Install dockerls
   npm:
     name: dockerfile-language-server-nodejs
-    global: yes
+    global: true
   tags:
     - install
     - lsp
 
 # "svelte"
-- name: install svelte server
+- name: Install svelte server
   npm:
     name: svelte-language-server
-    global: yes
+    global: true
   tags:
     - install
     - lsp
 
 # "tsserver"
-- name: install Typescript server
+- name: Install Typescript server
   npm:
     name: typescript-language-server
-    global: yes
+    global: true
   tags:
     - install
     - lsp
 
 # "bashls"
-- name: install bashls
+- name: Install bashls
   npm:
     name: bash-language-server
-    global: yes
+    global: true
   tags:
     - install
     - lsp
 
 # "sqls"
-- name: install sqls
-  shell: /usr/local/go/bin/go install github.com/lighttiger2505/sqls@latest
+- name: Install sqls
+  ansible.builtin.command: /usr/local/go/bin/go install github.com/lighttiger2505/sqls@latest
   tags:
     - install
     - lsp
 
 # "yamlls"
-- name: install yamlls
-  shell: yarn global add yaml-language-server
+- name: Install yamlls
+  ansible.builtin.command: yarn global add yaml-language-server
   tags:
     - install
     - lsp
 
 # null_ls #
 # prettier - formatting
-- name: install prettier formatter
+- name: Install prettier formatter
   npm:
     name: prettier
-    global: yes
+    global: true
   tags:
     - install
     - lsp
 
 # black - formatting
-- name: install black python formatter
+- name: Install black python formatter
   ansible.builtin.pip:
     name: black
   tags:
     - install
     - lsp
-# flake8 diagnostics
+
+# ansiblels
+- name: Install ansiblels
+  npm:
+    name: ansible-language-server
+    global: true
+  tags:
+    - install
+    - lsp
+
+# ansible-lint
+- name: Install ansible-lint
+  ansible.builtin.pip:
+    name: ansible-lint
+  tags:
+    - install
+    - lsp

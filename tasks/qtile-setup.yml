@@ -1,0 +1,45 @@
+# xcffib - prerequisite
+- name: install xcffiv
+  ansible.builtin.pip:
+    name: xcffib
+  tags:
+    - install
+    - core
+  when: ansible_os_family == "Debian"
+
+# qtile
+- name: install qtile
+  ansible.builtin.pip:
+    name: qtile
+  tags:
+    - qtile
+
+# psutil - for net widget
+- name: Install psutil for net, thermal sensor, and memory widgets
+  ansible.builtin.pip:
+    name: psutil
+  tags:
+    - qtile
+
+# amixer for volume widget - should come standard on Arch
+- name: Install amixer for volume widget
+  become: true
+  pacman:
+    name: alsa-tools
+    state: present
+  tags:
+    - qtile
+  when: ansible_os_family == "Debian"
+
+
+
+# set qtile as window manage
+# - name: dconf qtile
+#   shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'qtile'"
+#   tags:
+#     - qtile
+#
+# - name: dconf qtile
+#   shell: dconf write /org/mate/desktop/background/show-desktop-icons "false"
+#   tags:
+#     - qtile
