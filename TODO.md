@@ -10,7 +10,15 @@
   - [ ] maim - screenshots
   - [ ] xclip - clipboard
   - [ ] udisks2 - usbmounting/unmounting
-- [ ] setup notification daemon
+- [ ] setup systray items
+  - [ ] notify-send 
+  - [ ] notification daemon 
+  - [ ] blueman 
+  - [ ] radio app 鷺
+- [ ] install apps
+  - [ ] ranger
+    - [ ] image previews
+
 
 ## Nice to have
 
@@ -34,10 +42,9 @@
   - [ ] thunderbird
   - [ ] audacity
   - [ ] obs
-  - [ ] blueman app for systray 
-  - [ ] radio app for systray 鷺
-  - [ ] notify-send 
-  - [ ] ranger
+  - [ ] etcher
+    - [ ] [ubuntu](https://www.linuxfordevices.com/tutorials/ubuntu/install-etcher-on-ubuntu)
+    - [ ] arch - `paru -S etcher-bin`
   - [ ] hueadm tool
 - [ ] setup debuggers
   - [ ] go 
@@ -45,6 +52,8 @@
 - [ ] setup LSPs
   - [x] ansible
   - [ ] MongoDB  -- none exists!
+- [ ] install bold and italics of all fonts in ./tasks/fonts-setup.yml
+- [ ] set upstreem for github projects
 
 ## Completed
 
