@@ -9,6 +9,7 @@
     - alacritty
     - core
   when: ansible_os_family == "Archlinux"
+
 - name: Install System Packages 2 - Arch (lua, unzip, libtool, gettext)
   become: true
   ansible.builtin.pacman:
@@ -27,6 +28,7 @@
     name:
       [
         'picom',
+        'paru',
         'curl',
         'wget',
         'htop',
@@ -141,10 +143,12 @@
     - core
   when: ansible_os_family == "Debian"
 
-- name: Install acpi
+- name: Install commonly named packages (acpi, radiotray)
   become: true
-  ansble.builtin.package:
-    name: acpi
+  ansible.builtin.package:
+    name:
+      - acpi
+      - radiotray
   tags:
     - install
     - neovim

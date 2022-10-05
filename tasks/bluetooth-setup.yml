@@ -1,0 +1,10 @@
+# Assumes daemon is up and running by default
+- name: Install bluetooth tools
+  become: true
+  ansible.builtin.package:
+    name:
+      - bluez
+      - blueman
+      - bluez-tools
+  tags:
+    - bluetooth

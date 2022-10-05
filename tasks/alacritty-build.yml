@@ -4,7 +4,7 @@
     state: absent
   tags:
     - install
-    - neovim
+    - alacritty
 
 
 - name: clone alacritty from github

@@ -10,7 +10,7 @@
   tags:
     - timers
 
-- name: install battery checking timer
+- name: install battery checking service
   become: true
   copy:
     src: '{{ home }}/scripts/timers/batterychecker.service'
@@ -49,7 +49,7 @@
   tags:
     - timers
 
-- name: install wallpaper changing timer
+- name: install wallpaper changing service
   become: true
   copy:
     src: '{{ home }}/scripts/timers/wallpaperchanger.service'

@@ -1,6 +1,6 @@
-# TO Do
+# The Plan
 
-## Needed for OS migration
+## To Do
 
 - [ ] add more personal github repos to personal project setup 
   - [ ] brag repo
@@ -10,18 +10,9 @@
   - [ ] maim - screenshots
   - [ ] xclip - clipboard
   - [ ] udisks2 - usbmounting/unmounting
-- [ ] setup systray items
-  - [ ] notify-send 
-  - [ ] notification daemon 
-  - [ ] blueman 
-  - [ ] radio app 鷺
 - [ ] install apps
   - [ ] ranger
     - [ ] image previews
-
-
-## Nice to have
-
 - [ ] install shell scripts
   - [ ] docker kill
   - [ ] tmux-sessionizer
@@ -30,10 +21,10 @@
   - [ ] [sane](https://wiki.archlinux.org/title/SANE) for scanning
   - [ ] hp-plugin
 - [ ] install apps
-  - [ ] slack
+  - [X] slack
   - [ ] flameshot
   - [ ] beekeeper
-  - [ ] brave
+  - [X] brave
   - [ ] discord
   - [ ] zoom
   - [ ] zathura or another pdf viewer
@@ -52,8 +43,9 @@
 - [ ] setup LSPs
   - [x] ansible
   - [ ] MongoDB  -- none exists!
-- [ ] install bold and italics of all fonts in ./tasks/fonts-setup.yml
 - [ ] set upstreem for github projects
+- [ ] improve tagging scheme
+- [ ] fix linter warnings
 
 ## Completed
 
@@ -92,3 +84,9 @@
   - [x] acpi
 - [x] set up mpd
 - [x] set up mpc
+- [X] setup systray items
+  - [X] notify-send 
+  - [X] notification daemon 
+  - [X] blueman 
+  - [X] radio app 鷺
+- [X] install bold and italics of all fonts in ./tasks/fonts-setup.yml

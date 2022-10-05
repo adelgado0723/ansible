@@ -1,0 +1,42 @@
+- name: Install notification daemon
+  become: true
+  ansible.builtin.package:
+    name: notification-daemon
+  tags:
+    - notifications
+
+- name: Get stats of dbus config
+  ansible.builtin.stat:
+    path: '{{ home }}/.config/dbus/org.freedesktop.Notifications.service'
+  register: dbus_config
+  tags:
+    - notifications
+
+- name: Skip if no config found
+  ansible.builtin.debug:
+    msg: 'dbus config not found... Skipping Setup.'
+  when: not dbus_config
+  tags:
+    - notifications
+
+- name: Install dbus config file
+  become: true
+  copy:
+    src: '{{ home }}/.config/dbus/org.freedesktop.Notifications.service'
+    dest: '/etc/systemd/system/batterychecker.service'
+    mode: 0775
+    owner: '{{ user }}'
+  when: dbus_config
+  tags:
+    - notifications
+
+# start and enable notifications  service
+# - name: Start and enable notifications service
+#   ansible.builtin.systemd:
+#     state: started
+#     name: org.freedesktop.Notifications.service
+#     enabled: true
+#     masked: false
+#   when: dbus_config
+#   tags:
+#     - notifications

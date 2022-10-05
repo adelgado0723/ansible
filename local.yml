@@ -32,6 +32,7 @@
     - include: tasks/git-setup.yml
     - include: tasks/fonts-setup.yml
     - include: tasks/core-setup.yml
+    - include: tasks/bluetooth-setup.yml
     - include: tasks/qtile-setup.yml
     - include: tasks/go-setup.yml
     - include: tasks/go-packages.yml
@@ -39,13 +40,14 @@
     - include: tasks/npm-packages.yml
     - include: tasks/zsh-setup.yml
     - include: tasks/alacritty-build.yml
-    #   - include: tasks/slack-setup.yml
+    - include: tasks/slack-setup.yml
     - include: tasks/scripts-and-utils-setup.yml
     - include: tasks/dev-setup.yml
     - include: tasks/notes-setup.yml
     - include: tasks/timers-setup.yml
+    - include: tasks/notifications-setup.yml
     - include: tasks/nvim-setup.yml
-    #   - include: tasks/brave.yml
+    - include: tasks/brave.yml
     #   - include: tasks/debugger.yml
     - include: tasks/dotfiles.yml
     - include: tasks/tmux-setup.yml

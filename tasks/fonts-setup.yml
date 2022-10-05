@@ -1,4 +1,4 @@
-- name: fontcofig
+- name: Install fontcofig
   become: true
   ansible.builtin.package:
     name: fontconfig
@@ -6,8 +6,8 @@
   tags:
     - fonts
 
-- name: fonts - create folder if it doesn't exist
-  file:
+- name: Fonts - create folder if it doesn't exist
+  ansible.builtin.file:
     path: '{{ home }}/.local/share/fonts'
     state: directory
     mode: 0755
@@ -16,90 +16,233 @@
     - install
     - fonts
 
-- name: install agave nerd font
-  ansible.builtin.shell:
-    cmd: curl -fLo "agave regular Nerd Font Complete.ttf"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Agave/complete/agave%20regular%20Nerd%20Font%20Complete.ttf
+- name: Install agave nerd font
+  ansible.builtin.command: curl -fLo "agave regular Nerd Font Complete.ttf"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Agave/complete/agave%20regular%20Nerd%20Font%20Complete.ttf
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-- name: install big blue terminal font
-  ansible.builtin.shell:
-    cmd: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
+- name: Install big blue terminal font
+  ansible.builtin.command: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-- name: install fantasque sans mono font
-  ansible.builtin.shell:
-    cmd: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
+- name: Install fantasque sans mono font
+  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-- name: install hack nerd font
-  ansible.builtin.shell:
-    cmd: curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+- name: Install fantasque sans mono font - italic
+  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Italic/complete/Fantasque%20Sans%20Mono%20Italic%20Nerd%20Font%20Complete.ttf
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-- name: install fira code nerd font
-  ansible.builtin.shell:
-    cmd: curl -fLo "Fura Mono Regular Nerd Font Complete Mono.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/Regular/complete/Fura%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.otf
+- name: Install fantasque sans mono font - bold
+  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Bold/complete/Fantasque%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete.ttf
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-- name: install noto color emoji font
-  ansible.builtin.shell:
-    cmd: curl -fLo "NotoColorEmoji.ttf" https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf
+- name: Install fantasque sans mono font - bold-italic
+  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Bold Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Bold-Italic/complete/Fantasque%20Sans%20Mono%20Bold%20Italic%20Nerd%20Font%20Complete.ttf
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-- name: install inconsolatago nerd font
-  ansible.builtin.shell:
-    cmd: curl -fLo "InconsolataGo Nerd Font Complete.ttf"  https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf
+- name: Install hack nerd font
+  ansible.builtin.command: curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install hack nerd font - bold
+  ansible.builtin.command: curl -fLo "Hack Bold Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install hack nerd font - italic
+  ansible.builtin.command: curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install hack nerd font - bold italic
+  ansible.builtin.command: curl -fLo "Hack Bold Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install fira mono nerd font
+  ansible.builtin.command: curl -fLo "Fura Mono Regular Nerd Font Complete Mono.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/Regular/complete/Fura%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.otf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install fira mono nerd font - bold
+  ansible.builtin.command: curl -fLo "Fura Mono Bold Nerd Font Complete Mono.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/Bold/complete/Fura%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.otf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install fira mono nerd font - medium
+  ansible.builtin.command: curl -fLo "Fura Mono Medium Nerd Font Complete Mono.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/Medium/complete/Fura%20Mono%20Medium%20Nerd%20Font%20Complete%20Mono.otf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install noto color emoji font
+  ansible.builtin.command: curl -fLo "NotoColorEmoji.ttf" https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install inconsolatago nerd font
+  ansible.builtin.command: curl -fLo "InconsolataGo Nerd Font Complete.ttf"  https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install inconsolatago nerd font - bold
+  ansible.builtin.command: curl -fLo "InconsolataGo Bold Nerd Font Complete.ttf"  https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Bold/complete/InconsolataGo%20Bold%20Nerd%20Font%20Complete.ttf
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
 # had to wrap url in ""  for the curl command to work
-- name: install terminess nerd font
-  ansible.builtin.shell:
-    cmd: curl -fLo "Terminess (TTF) Nerd Font Complete.ttf" "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Regular/complete/Terminess%20(TTF)%20Nerd%20Font%20Complete.ttf"
+- name: Install terminess nerd font
+  ansible.builtin.command: curl -fLo "Terminess (TTF) Nerd Font Complete.ttf" "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Regular/complete/Terminess%20(TTF)%20Nerd%20Font%20Complete.ttf"
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-- name: install sauce code pro nerd font
-  ansible.builtin.shell:
-    cmd: curl -fLo "Sauce Code Pro Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
+- name: Install terminess nerd font - bold
+  ansible.builtin.command: curl -fLo "Terminess (TTF) Bold Nerd Font Complete.ttf" "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Bold/complete/Terminess%20(TTF)%20Bold%20Nerd%20Font%20Complete.ttf"
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-- name: install space mono nerd font
-  ansible.builtin.shell:
-    cmd: curl -fLo "Space Mono Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf
+- name: Install terminess nerd font - italic
+  ansible.builtin.command: curl -fLo "Terminess (TTF) Italic Nerd Font Complete.ttf" "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Italic/complete/Terminess%20(TTF)%20Italic%20Nerd%20Font%20Complete.ttf"
+  args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
     - install
     - fonts
 
-- name: update font cache
-  ansible.builtin.shell:
-    cmd: fc-cache -fv
+- name: Install terminess nerd font - bold italic
+  ansible.builtin.command: curl -fLo "Terminess (TTF) Bold Italic Nerd Font Complete.ttf" "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/BoldItalic/complete/Terminess%20(TTF)%20Bold%20Italic%20Nerd%20Font%20Complete.ttf"
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install sauce code pro nerd font
+  ansible.builtin.command: curl -fLo "Sauce Code Pro Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install sauce code pro nerd font - bold
+  ansible.builtin.command: curl -fLo "Sauce Code Pro Bold Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install sauce code pro nerd font - italic
+  ansible.builtin.command: curl -fLo "Sauce Code Pro Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Italic/complete/Sauce%20Code%20Pro%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install sauce code pro nerd font - bold italic
+  ansible.builtin.command: curl -fLo "Sauce Code Pro Bold Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Bold-Italic/complete/Sauce%20Code%20Pro%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install space mono nerd font
+  ansible.builtin.command: curl -fLo "Space Mono Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install space mono nerd font - bold
+  ansible.builtin.command: curl -fLo "Space Mono Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Bold/complete/Space%20Mono%20Bold%20Nerd%20Font%20Complete.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install space mono nerd font - italic
+  ansible.builtin.command: curl -fLo "Space Mono Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Italic/complete/Space%20Mono%20Italic%20Nerd%20Font%20Complete.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Install space mono nerd font - bold italic
+  ansible.builtin.command: curl -fLo "Space Mono Bold Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Bold-Italic/complete/Space%20Mono%20Bold%20Italic%20Nerd%20Font%20Complete.ttf
+  args:
+    chdir: '{{ home }}/.local/share/fonts'
+  tags:
+    - install
+    - fonts
+
+- name: Update font cache
+  ansible.builtin.command: fc-cache -fv
   tags:
     - install
     - fonts

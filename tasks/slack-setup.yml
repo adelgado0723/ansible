@@ -1,0 +1,34 @@
+- name: Download Slack
+  get_url:
+    url: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.19.2-amd64.deb
+    dest: /tmp/slack.deb
+  tags:
+    - slack
+  when: ansible_os_family == "Debian"
+
+- name: Remove Any previous slacks
+  become: true
+  apt:
+    name: slack-desktop
+    state: absent
+  tags:
+    - slack
+  when: ansible_os_family == "Debian"
+
+- name: Install Slack .deb package
+  become: true
+  apt:
+    deb: /tmp/slack.deb
+  tags:
+    - slack
+  when: ansible_os_family == "Debian"
+
+
+- name: Install Slack from the AUR
+  become: true
+  ansible.builtin.command: paru --noconfirm -S slack-desktop
+  tags:
+    - slack
+  when: ansible_os_family == "Archlinux"
+
+
