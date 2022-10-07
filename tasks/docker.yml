@@ -23,78 +23,56 @@
     - docker
   when: ansible_os_family == "Debian"
 
-- name: Install dependencies - Debian
+- name: Install apt-transport-https
   become: true
   ansible.builtin.apt:
     name:
+      - apt-transport-https
       - ca-certificates
-      - curl
-      - gnupg
       - lsb-release
-    state: present
+      - gnupg
+    state: latest
+    update_cache: true
+  when: ansible_os_family == "Debian"
   tags:
     - docker
-  when: ansible_os_family == "Debian"
 
-
-- name: Add Docker GPG apt Key
+- name: Add signing key
   become: true
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
+  ansible.builtin.apt_key:
+    url: 'https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg'
     state: present
+  when: ansible_os_family == "Debian"
   tags:
     - docker
-  when: ansible_os_family == "Debian"
 
-- name: Add Docker Repository
+- name: Add repository into sources list
   become: true
-  apt_repository:
-    repo: deb https://download.docker.com/linux/ubuntu focal stable
+  ansible.builtin.apt_repository:
+    repo: 'deb [arch={{ ansible_architecture }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
     state: present
+    filename: docker
+  when: ansible_os_family == "Debian"
   tags:
     - docker
-  when: ansible_os_family == "Debian"
 
-#
-# - name: Keyrings - create folder if it doesn't exist
-#   become: true
-#   ansible.builtin.file:
-#     path: '/etc/apt/keyrings'
-#     state: directory
-#     mode: 0755
-#     owner: '{{ user }}'
-#   tags:
-#     - docker
-#   when: ansible_os_family == "Debian"
-#
-# - name: Docker gpg key download
-#   ansible.builtin.get_url:
-#     url: https://download.docker.com/linux/ubuntu/gpg
-#     dest: /usr/share/keyrings/docker.gpg
-#   tags:
-#     - docker
-#   when: ansible_os_family == "Debian"
-#
-# - name: Docker PPA setting
-#   become: true
-#   ansible.builtin.command: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-#   tags:
-#     - docker
-#   when: ansible_os_family == "Debian"
-#
-# From Docker documentation:
-# Receiving a GPG error when running apt-get update?
-# Your default umask may not be set correctly, causing the public key file for the repo to not be detected. Run the following command and then try to update your repo again: `sudo chmod a+r /etc/apt/keyrings/docker.gpg`.
-#
-- name: Docker apt installation
+- name: Install Docker
   become: true
   ansible.builtin.apt:
-    update_cache: true
     name:
-      - docker-ce
-      - docker-ce-cli
-      - containerd.io
-      - docker-compose-plugin
+      - docker
+      - docker.io
+      - docker-compose
+      - docker-registry
+    state: latest
+    update_cache: true
+  when: ansible_os_family == "Debian"
   tags:
     - docker
-  when: ansible_os_family == "Debian"
+
+- name: adding user to docker group
+  become: true
+  ansible.builtin.user:
+    name: '{{ user }}'
+    append: yes
+    groups: docker
