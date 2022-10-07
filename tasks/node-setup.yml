@@ -1,70 +1,63 @@
-- name: install node and npm - Arch
+- name: Install node and npm - Arch
   become: true
-  pacman:
+  ansible.builtin.pacman:
     name: ['nodejs', 'npm']
     state: present
   tags:
-    - install
     - node
   when: ansible_os_family == "Archlinux"
 
-- name: install nodejs and npm - Debian
+- name: Install nodejs and npm - Debian
   become: true
-  apt:
+  ansible.builtin.apt:
     name: ['nodejs', 'npm']
   tags:
-    - install
     - node
   when: ansible_os_family == "Debian"
 
-- name: install nodejs and npm - macOS
-  homebrew:
+- name: Install nodejs and npm - macOS
+  ansible.builtin.homebrew:
     name: 'node'
     state: present
   tags:
-    - install
     - node
   when: ansible_distribution == "MacOSX"
 
-- name: create npmjs prefix folder if it doesn't exist
-  file:
+- name: Create npmjs prefix folder if it doesn't exist
+  ansible.builtin.file:
     path: '{{ home }}/.local/.npm-global'
     state: directory
     mode: 0755
     owner: '{{ user }}'
   tags:
-    - install
     - node
 
-- name: npmjs global settings
-  shell: npm config set prefix '{{ home }}/.local/.npm-global'
+- name: Npmjs global settings
+  ansible.builtin.command: npm config set prefix '{{ home }}/.local/.npm-global'
   tags:
     - install
     - node
 
-- name: install N interactive node manager
+- name: Install N interactive node manager
   npm:
     name: n
-    global: yes
+    global: true
   tags:
-    - install
     - node
 
-  # N needs to write to /usr/local
-  # to avoid sudo, we can own the folder
-- name: create folder for n if it doesn't exist
+# N needs to write to /usr/local
+# to avoid sudo, we can own the folder
+- name: Create folder for n if it doesn't exist
   become: true
-  file:
+  ansible.builtin.file:
     path: '/usr/local/n/'
     state: directory
     mode: 0755
     owner: '{{ user }}'
   tags:
-    - install
     - node
 
-- name: Install node 16
-  shell: PATH={{ home }}/.local/.npm-global/bin:$PATH n 16
+- name: Install node version specified in ../local.yml
+  ansible.builtin.shell: 'PATH={{ home }}/.local/.npm-global/bin:$PATH n {{ node_version }}'
   tags:
-    - install
     - node

@@ -2,17 +2,44 @@
 
 ## To Do
 
-- [ ] add more personal github repos to personal project setup 
-  - [ ] brag repo
-  - [x] system sounds
-  - [ ] BUMCNotes
+- [ ] add more personal github repos to dev setup 
 - [ ] install dmscript dependencies
-  - [ ] maim - screenshots
-  - [ ] xclip - clipboard
-  - [ ] udisks2 - usbmounting/unmounting
+  - [x] a nerd font
+  - [ ] alsa
+  - [ ] arch-wiki-docs
+  - [x] awk
+  - [x] brave
+  - [x] curl
+  - [ ] dig
+  - [ ] docker
+  - [ ] ffmpeg
+  - [ ] imv
+  - [ ] ip
+  - [ ] jq
+  - [x] maim
+  - [x] mpc
+  - [x] mpd
+  - [ ] mpv
+  - [ ] nmcli
+  - [x] notify-send
+  - [ ] pulseaudio
+  - [x] python3
+  - [ ] qutebrowser
+  - [ ] reddio
+  - [x] slock
+  - [ ] slop (for recording a specific area)
+  - [C] systemd
+  - [ ] tee
+  - [x] tmux
+  - [ ] udisks2
+  - [ ] xargs
+  - [x] xclip
+  - [ ] xdotool
+  - [ ] xrandr
+  - [ ] xwallpaper or swaybg
+  - [ ] yad
+  - [ ] youtube-dl
 - [ ] install apps
-  - [ ] ranger
-    - [ ] image previews
 - [ ] install shell scripts
   - [ ] docker kill
   - [ ] tmux-sessionizer
@@ -21,10 +48,7 @@
   - [ ] [sane](https://wiki.archlinux.org/title/SANE) for scanning
   - [ ] hp-plugin
 - [ ] install apps
-  - [X] slack
-  - [ ] flameshot
   - [ ] beekeeper
-  - [X] brave
   - [ ] discord
   - [ ] zoom
   - [ ] zathura or another pdf viewer
@@ -69,6 +93,11 @@
   - [x] nm-applet 
   - [x] lazygit 
   - [x] openvpn support 
+  - [x] ranger
+    - [x] image previews
+  - [x] slack
+  - [x] flameshot
+  - [x] brave
   - [x] start and enable service 
 - [x] set up system sounds folder
 - [x] create {{home}}/dev folder if it doesn't exist
@@ -84,9 +113,13 @@
   - [x] acpi
 - [x] set up mpd
 - [x] set up mpc
-- [X] setup systray items
-  - [X] notify-send 
-  - [X] notification daemon 
-  - [X] blueman 
-  - [X] radio app 鷺
-- [X] install bold and italics of all fonts in ./tasks/fonts-setup.yml
+- [x] setup systray items
+  - [x] notify-send 
+  - [x] notification daemon 
+  - [x] blueman 
+  - [x] radio app 鷺
+- [x] install bold and italics of all fonts in ./tasks/fonts-setup.yml
+- [x] add note repos to notes folder
+  - [x] brag repo
+  - [x] BUMCNotes
+  - [x] system sounds

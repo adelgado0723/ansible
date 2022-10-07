@@ -11,7 +11,7 @@
 - name: Dmenu - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dmenu.git'
-    dest: '{{ home }}/.config/dmenu/dmenu'
+    dest: '{{ home }}/.config/dmenu/dmenu/'
   tags:
     - install
     - scripts-setup
@@ -108,7 +108,7 @@
 - name: Wallpapers - clone from github
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/wallpapers.git'
-    dest: '{{ home }}/wallpapers_public/'
+    dest: '{{ home }}/wallpapers/wallpapers_public'
   tags:
     - install
     - scripts-setup

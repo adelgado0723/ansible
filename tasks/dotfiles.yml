@@ -1,32 +1,23 @@
-- name: install stow - Arch
+- name: Install stow
   become: true
-  pacman:
-    name: 'stow'
+  ansible.builtin.package:
+    name: stow
     state: present
   tags:
     - install
     - dotfiles
     - stow
-  when: ansible_os_family == "Archlinux"
 
-- name: install stow - Debian
-  become: true
-  apt: name=stow
-  tags:
-    - install
-    - dotfiles
-    - stow
-  when: ansible_os_family == "Debian"
-
-- name: dotfiles exists
-  stat:
+- name: Dotfiles exists
+  ansible.builtin.stat:
     path: '{{ home }}/.dotfiles'
   register: dotfiles
   tags:
     - install
     - dotfiles
     - stow
-- name: cloning dotfiles
+
+- name: Cloning dotfiles
   ansible.builtin.git:
     repo: 'git@github.com:adelgado0723/dotfiles.git'
     bare: false
@@ -35,10 +26,10 @@
     - install
     - dotfiles
     - stow
-  when: dotfiles.stat.exists == False
+  when: not dotfiles.stat.exists
 
 - name: Stow dotfiles
-  shell: cd $HOME/.dotfiles && stow -R .
+  ansible.builtin.command: cd $HOME/.dotfiles && stow -R .
   tags:
     - install
     - dotfiles

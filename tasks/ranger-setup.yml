@@ -1,0 +1,36 @@
+- name: Install ranger and dependencies - common
+  become: true
+  ansible.builtin.package:
+    name:
+      - ranger
+      - highlight
+      - atool
+      - mediainfo
+  tags:
+    - ranger
+
+- name: Install ueberzug for image previews
+  ansible.builtin.pip:
+    name: ueberzug
+  tags:
+    - ranger
+
+- name: Install dependencies - debian
+  become: true
+  ansible.builtin.apt:
+    name:
+      - caca-utils
+      - poppler-utils
+  tags:
+    - ranger
+  when: ansible_os_family == "Debian"
+
+- name: Install dependencies - arch
+  become: true
+  ansible.builtin.pacman:
+    name:
+      - libcaca
+      - poppler
+  tags:
+   - ranger
+  when: ansible_os_family == "Archlinux"

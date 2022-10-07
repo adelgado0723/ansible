@@ -1,8 +1,6 @@
-- name: install lazygit - Debian
-  shell: '/usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest'
+- name: Install lazygit - Debian
+  ansible.builtin.command: '/usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest'
   tags:
     - install
     - core
     - go
-
-

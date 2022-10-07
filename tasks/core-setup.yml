@@ -28,7 +28,7 @@
     name:
       [
         'picom',
-        'paru',
+        'paru-bin',
         'curl',
         'wget',
         'htop',

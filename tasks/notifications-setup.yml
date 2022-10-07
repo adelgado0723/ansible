@@ -21,7 +21,7 @@
 
 - name: Install dbus config file
   become: true
-  copy:
+  ansible.builtin.copy:
     src: '{{ home }}/.config/dbus/org.freedesktop.Notifications.service'
     dest: '/etc/systemd/system/batterychecker.service'
     mode: 0775
@@ -30,6 +30,12 @@
   tags:
     - notifications
 
+- name: Install notify-send
+  become: true
+  ansible.builtin.package:
+    name: notify-send
+  tags:
+    - notifications
 # start and enable notifications  service
 # - name: Start and enable notifications service
 #   ansible.builtin.systemd:

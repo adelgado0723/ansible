@@ -1,128 +1,111 @@
-- name: remove alacritty
+- name: Remove alacritty
   ansible.builtin.file:
     path: '{{ home }}/alacritty/'
     state: absent
   tags:
-    - install
     - alacritty
 
-
-- name: clone alacritty from github
+- name: Clone alacritty from github
   ansible.builtin.git:
     repo: 'git@github.com:alacritty/alacritty.git'
     dest: '{{ home }}/alacritty/'
   tags:
-    - install
     - alacritty
 
-- name: check if cargo is installed
-  shell: command -v cargo
+- name: Check if cargo is installed
+  ansible.builtin.command: command -v cargo
   register: cargo_exists
   ignore_errors: true
   tags:
-    - install
     - alacritty
 
-- name: download installer
+- name: Download installer
   when: cargo_exists is failed
-  get_url:
+  ansible.builtin.get_url:
     url: https://sh.rustup.rs
     dest: /tmp/sh.rustup.rs
     mode: '0755'
     force: 'yes'
   tags:
-    - install
     - alacritty
 
-- name: install rust/cargo
+- name: Install rust/cargo
   when: cargo_exists is failed
-  shell: /tmp/sh.rustup.rs -y
+  ansible.builtin.command: /tmp/sh.rustup.rs -y
   tags:
-    - install
     - alacritty
 
-- name: make env update file executable
+- name: Make env update file executable
   when: cargo_exists is failed
-  ansible.builtin.file: 
+  ansible.builtin.file:
     path: '{{ home }}/.cargo/env'
     owner: '{{ user }}'
     mode: '0775'
   tags:
-    - install
     - alacritty
 
-- name: install rust compiler with rustup
+- name: Install rust compiler with rustup
   when: cargo_exists is failed
-  shell:
-    cmd: '{{ home }}/.cargo/env && rustup override set stable && rustup update stable'
+  ansible.builtin.command: '{{ home }}/.cargo/env && rustup override set stable && rustup update stable'
+  args:
     chdir: '{{ home }}/alacritty/'
   tags:
-    - install
     - alacritty
 
-- name: build the super duper fast terminal
-  shell:
-    cmd: cargo build --release --no-default-features --features=x11
+- name: Build the super duper fast terminal
+  ansible.builtin.command: cargo build --release --no-default-features --features=x11
+  args:
     chdir: '{{ home }}/alacritty/'
   tags:
-    - install
     - alacritty
 
-#If all goes well, this should place a binary at target/release/alacritty.
+# If all goes well, this should place a binary at target/release/alacritty.
 
 # Post installation
 #
 # if `infocmp alacritty` returns without errors,
 # terminfo is installed. Otherwise install it with
 # sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
-- name: install terminfo
+- name: Install terminfo
   become: true
-  shell:
-    cmd: tic -xe alacritty,alacritty-direct '{{ home }}/alacritty/extra/alacritty.info'
+  ansible.builtin.command: tic -xe alacritty,alacritty-direct '{{ home }}/alacritty/extra/alacritty.info'
   tags:
-    - install
     - alacritty
 
 # Desktop Entry
 # sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
 #
-- name: copy bin to path
+- name: Copy bin to path
   become: true
-  copy:
+  ansible.builtin.copy:
     src: '{{ home }}/alacritty/target/release/alacritty'
     dest: '/usr/local/bin'
     mode: 0775
   tags:
-    - install
     - alacritty
 
 # sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
-- name: desktop file install
+- name: Desktop file install
   become: true
-  copy:
+  ansible.builtin.copy:
     src: '{{ home }}/alacritty/extra/logo/alacritty-term.svg'
     dest: '/usr/share/pixmaps/Alacritty.svg'
     mode: 0775
   tags:
-    - install
     - alacritty
       #
 # sudo desktop-file-install extra/linux/Alacritty.desktop
-- name: run desktop-file-install
+- name: Run desktop-file-install
   become: true
-  shell:
-    cmd: desktop-file-install {{ home }}/alacritty/extra/linux/Alacritty.desktop
+  ansible.builtin.command: desktop-file-install {{ home }}/alacritty/extra/linux/Alacritty.desktop
   tags:
-    - install
     - alacritty
 
 # sudo update-desktop-database
-- name: update desktop database
+- name: Update desktop database
   become: true
-  shell:
-    cmd: update-desktop-database
+  ansible.builtin.command: update-desktop-database
   tags:
-    - install
     - alacritty
 # Man Page
 #

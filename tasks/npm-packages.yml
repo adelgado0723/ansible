@@ -1,42 +1,43 @@
-- name: install Yarn
+# Depends on node being installed already
+
+- name: Install Yarn
   npm:
     name: yarn
-    global: yes
+    global: true
   tags:
-    - install
-    - node
-- name: install eslint
+    - npm-packages
+
+- name: Install eslint
   npm:
     name: eslint
-    global: yes
+    global: true
   tags:
-    - install
-    - node
-- name: install Typescript server
+    - npm-packages
+
+- name: Install Typescript server
   npm:
     name: typescript-language-server
-    global: yes
+    global: true
   tags:
-    - install
-    - node
-- name: install Typescript
+    - npm-packages
+
+- name: Install Typescript
   npm:
     name: typescript
-    global: yes
+    global: true
   tags:
-    - install
-    - node
-- name: install TS-Node
+    - npm-packages
+
+- name: Install TS-Node
   npm:
     name: ts-node
-    global: yes
+    global: true
   tags:
-    - install
-    - node
-- name: install live-server
+    - npm-packages
+
+- name: Install live-server
   npm:
     name: live-server
-    global: yes
+    global: true
   tags:
-    - install
-    - node
+    - npm-packages

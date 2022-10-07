@@ -1,16 +1,19 @@
 - hosts: localhost
+  name: New System Setup
   gather_facts: true
 
   vars:
     home: "{{ lookup('env', 'HOME') }}"
     user: "{{ lookup('env', 'USER') }}"
     go_version: '1.19.1'
+    node_version: '16'
+
   pre_tasks:
     - name: Update Package Manager - Arch - Pacman -Syu
-      become: yes
-      pacman:
-        update_cache: yes
-        upgrade: yes
+      become: true
+      ansible.builtin.pacman:
+        update_cache: true
+        upgrade: true
       tags:
         - install
         - core
@@ -18,7 +21,7 @@
 
     - name: Update Package Manager - Debian - Apt
       become: true
-      apt:
+      ansible.builtin.apt:
         force_apt_get: true
         update_cache: true
         state: present
@@ -32,6 +35,7 @@
     - include: tasks/git-setup.yml
     - include: tasks/fonts-setup.yml
     - include: tasks/core-setup.yml
+    - include: tasks/ranger-setup.yml
     - include: tasks/bluetooth-setup.yml
     - include: tasks/qtile-setup.yml
     - include: tasks/go-setup.yml

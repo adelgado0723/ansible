@@ -1,5 +1,5 @@
-- name: ~/notes - create folder if it doesn't exist
-  file:
+- name: Create folder if it doesn't exist - ~/notes
+  ansible.builtin.file:
     path: '{{ home }}/notes/'
     state: directory
     mode: 0755
@@ -7,6 +7,16 @@
   tags:
     - notes
 
+- name: BUMCTrustees - clone from github
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/BUMCTrustees.git'
+    dest: '{{ home }}/notes/BUMCTrustees'
+  tags:
+    - notes
 
-
-
+- name: Brag repo - clone from github
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/brag.git'
+    dest: '{{ home }}/notes/brag'
+  tags:
+    - notes

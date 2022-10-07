@@ -1,12 +1,8 @@
-- name: ~/dev - create folder if it doesn't exist
-  file:
+- name: Create folder if it doesn't exist - ~/dev
+  ansible.builtin.file:
     path: '{{ home }}/dev/'
     state: directory
     mode: 0755
     owner: '{{ user }}'
   tags:
     - dev
-
-
-
-
