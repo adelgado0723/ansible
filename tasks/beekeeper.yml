@@ -12,6 +12,7 @@
 - name: Beekeeper - Add key
   ansible.builtin.apt_key:
     url: https://deb.beekeeperstudio.io/beekeeper.key
+    id: beekeeper.key
     state: present
 
 - name: Beekeeper - PPA setting

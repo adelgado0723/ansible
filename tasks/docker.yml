@@ -50,6 +50,7 @@
 - name: Docker gpg key download
   ansible.builtin.get_url:
     url: https://download.docker.com/linux/ubuntu/gpg
+    dest: /usr/share/keyrings/docker.gpg
   tags:
     - docker
   when: ansible_os_family == "Debian"
