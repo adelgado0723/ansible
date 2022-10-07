@@ -1,0 +1,39 @@
+- name: Keyrings - create folder if it doesn't exist
+  ansible.builtin.file:
+    become: true
+    path: '/etc/apt/keyrings'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - beekeeper
+  when: ansible_os_family == "Debian"
+
+- name: Beekeeper - Add key
+  ansible.builtin.apt_key:
+    url: https://deb.beekeeperstudio.io/beekeeper.key
+    state: present
+
+- name: Beekeeper - PPA setting
+  become: true
+  ansible.builtin.command: echo "deb https://deb.beekeeperstudio.io stable main" | tee /etc/apt/sources.list.d/beekeeper-studio-app.list
+  tags:
+    - beekeeper
+  when: ansible_os_family == "Debian"
+
+- name: Beekeeper apt installation
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    name:
+      - beekeeper-studio
+  tags:
+    - beekeeper
+  when: ansible_os_family == "Debian"
+
+- name: Install Beekeeper from the AUR
+  become: true
+  ansible.builtin.command: paru --noconfirm -S beekeeper-studio-appimage
+  tags:
+    - slack
+  when: ansible_os_family == "Archlinux"

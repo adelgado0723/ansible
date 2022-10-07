@@ -46,12 +46,15 @@
     - include: tasks/alacritty-build.yml
     - include: tasks/slack-setup.yml
     - include: tasks/scripts-and-utils-setup.yml
+    - include: tasks/dmscripts-setup.yml
     - include: tasks/dev-setup.yml
     - include: tasks/notes-setup.yml
     - include: tasks/timers-setup.yml
     - include: tasks/notifications-setup.yml
     - include: tasks/nvim-setup.yml
     - include: tasks/brave.yml
+    - include: tasks/docker.yml
+    - include: tasks/beekeeper.yml
     #   - include: tasks/debugger.yml
     - include: tasks/dotfiles.yml
     - include: tasks/tmux-setup.yml

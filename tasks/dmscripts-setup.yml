@@ -1,0 +1,98 @@
+# Install dependencies
+- name: Install dependencies - Arch
+  become: true
+  ansible.builtin.pacman:
+    name:
+      - arch-wiki-docs
+      - bind
+      - pulseaudio
+      - xorg-xrandr
+    state: present
+  tags:
+    - dmscripts
+  when: ansible_os_family == "Archlinux"
+
+- name: Install dependencies  - Debian
+  become: true
+  ansible.builtin.apt:
+    name:
+      - dnsutils
+      - x11-xserver-utils
+  tags:
+    - dmscripts
+  when: ansible_os_family == "Debian"
+
+- name: Install dependencies - Common
+  become: true
+  ansible.builtin.package:
+    name:
+      - curl
+      - ffmpeg
+      - imv
+      - jq
+      - mpv
+      - slop
+      - udisks2
+      - xdotool
+      - xwallpaper
+      - yad
+    state: present
+  tags:
+    - dmscripts
+
+# youtube-dl
+- name: Install youtube-dl
+  ansible.builtin.pip:
+    name: youtube_dl
+    state: present
+  tags:
+    - dmscripts
+
+# Install dmenu
+- name: Dmenu - create folder if it doesn't exist
+  ansible.builtin.file:
+    path: '{{ home }}/.config/dmenu/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - dmscripts
+
+- name: Dmenu - clone from github
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/dmenu.git'
+    dest: '{{ home }}/.config/dmenu/dmenu/'
+  tags:
+    - dmscripts
+
+- name: Dmenu - build and install
+  become: true
+  ansible.builtin.command: make clean install
+  args:
+    chdir: '{{ home }}/.config/dmenu/dmenu'
+  tags:
+    - dmscripts
+
+# Install dmscripts
+- name: Dmscripts - exists
+  ansible.builtin.stat:
+    path: '{{ home }}/.config/dmenu/dmscripts'
+  register: dmscripts
+  tags:
+    - dmscripts
+
+- name: Dmscripts - clone from github
+  ansible.builtin.git:
+    repo: 'git@github.com:adelgado0723/dmscripts.git'
+    dest: '{{ home }}/.config/dmenu/dmscripts'
+  tags:
+    - dmscripts
+  when: not dmscripts.stat.exists
+
+- name: Dmscripts - build and install
+  become: true
+  ansible.builtin.command: make clean build install
+  args:
+    chdir: '{{ home }}/.config/dmenu/dmscripts'
+  tags:
+    - dmscripts

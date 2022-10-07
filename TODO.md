@@ -5,41 +5,40 @@
 - [ ] add more personal github repos to dev setup 
 - [ ] install dmscript dependencies
   - [x] a nerd font
-  - [ ] alsa
-  - [ ] arch-wiki-docs
+  - [x] alsa
+  - [x] arch-wiki-docs - arch specific package
   - [x] awk
   - [x] brave
   - [x] curl
-  - [ ] dig
-  - [ ] docker
-  - [ ] ffmpeg
-  - [ ] imv
-  - [ ] ip
-  - [ ] jq
+  - [x] dig - `bind` on arch and `dnsutils` on debian
+  - [X] docker
+  - [x] ffmpeg
+  - [x] imv
+  - [x] ip
+  - [x] jq
   - [x] maim
   - [x] mpc
   - [x] mpd
-  - [ ] mpv
-  - [ ] nmcli
+  - [x] mpv
+  - [x] nmcli - installed in network manager setup
   - [x] notify-send
-  - [ ] pulseaudio
+  - [x] pulseaudio - comes standard on Ubuntu
   - [x] python3
   - [ ] qutebrowser
-  - [ ] reddio
-  - [x] slock
-  - [ ] slop (for recording a specific area)
-  - [C] systemd
-  - [ ] tee
-  - [x] tmux
-  - [ ] udisks2
-  - [ ] xargs
-  - [x] xclip
-  - [ ] xdotool
-  - [ ] xrandr
-  - [ ] xwallpaper or swaybg
-  - [ ] yad
-  - [ ] youtube-dl
-- [ ] install apps
+  - [ ] [reddio](https://gitlab.com/aaronNG/reddio/) - compile and install from source for ubuntu
+  - [X] slock
+  - [X] slop (for recording a specific area)
+  - [X] systemd
+  - [X] tee
+  - [X] tmux
+  - [X] udisks2
+  - [X] xargs - installed by default
+  - [X] xclip
+  - [X] xdotool
+  - [X] xrandr - x11-xserver-utils - arch -- xorg-xrandr
+  - [X] xwallpaper or swaybg
+  - [X] yad
+  - [X] youtube-dl
 - [ ] install shell scripts
   - [ ] docker kill
   - [ ] tmux-sessionizer
@@ -52,7 +51,7 @@
   - [ ] discord
   - [ ] zoom
   - [ ] zathura or another pdf viewer
-  - [ ] docker
+  - [X] docker
   - [ ] set up zsh autocompletions for alacritty
   - [ ] thunderbird
   - [ ] audacity
@@ -65,8 +64,8 @@
   - [ ] go 
   - [ ] js 
 - [ ] setup LSPs
-  - [x] ansible
-  - [ ] MongoDB  -- none exists!
+  - [X] ansible
+  - [X] MongoDB  -- none exists!
 - [ ] set upstreem for github projects
 - [ ] improve tagging scheme
 - [ ] fix linter warnings
