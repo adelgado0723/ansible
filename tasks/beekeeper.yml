@@ -1,6 +1,6 @@
 - name: Keyrings - create folder if it doesn't exist
+  become: true
   ansible.builtin.file:
-    become: true
     path: '/etc/apt/keyrings'
     state: directory
     mode: 0755

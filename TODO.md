@@ -47,12 +47,12 @@
   - [ ] [sane](https://wiki.archlinux.org/title/SANE) for scanning
   - [ ] hp-plugin
 - [ ] install apps
-  - [ ] beekeeper
+  - [X] beekeeper
   - [ ] discord
   - [ ] zoom
   - [ ] zathura or another pdf viewer
   - [X] docker
-  - [ ] set up zsh autocompletions for alacritty
+  - [ ] set up zsh autocompletions for alacritty commands
   - [ ] thunderbird
   - [ ] audacity
   - [ ] obs
