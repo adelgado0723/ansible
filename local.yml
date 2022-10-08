@@ -6,6 +6,7 @@
     home: "{{ lookup('env', 'HOME') }}"
     user: "{{ lookup('env', 'USER') }}"
     go_version: '1.19.1'
+    golangci_lint_version: '1.49.0'
     node_version: '16'
 
   pre_tasks:

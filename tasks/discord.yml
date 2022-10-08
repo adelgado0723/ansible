@@ -1,32 +1,15 @@
-# - name: Keyrings - create folder if it doesn't exist
-#   become: true
-#   ansible.builtin.file:
-#     path: '/etc/apt/keyrings'
-#     state: directory
-#     mode: 0755
-#     owner: '{{ user }}'
-#   tags:
-#     - discord
-#   when: ansible_os_family == "Debian"
-#
-# - name: Discord - Add key
-#   ansible.builtin.apt_key:
-#     url: https://discordapp.com/api/download?platform=linux&format=deb
-#     state: present
-#
-# - name: Discord - PPA setting
-#   become: true
-#   ansible.builtin.command: echo "deb https://deb.beekeeperstudio.io stable main" | tee /etc/apt/sources.list.d/beekeeper-studio-app.list
-#   tags:
-#     - discord
-#   when: ansible_os_family == "Debian"
-#
+- name: Discord - Download deb
+  ansible.builtin.get_url:
+    url: https://discordapp.com/api/download?platform=linux&format=deb
+    dest: /tmp/discord.deb
+  tags:
+    - discord
+  when: ansible_os_family == "Debian"
 
-- name: Discord install deb from the internet
+- name: Discord - Install deb
   become: true
   ansible.builtin.apt:
-    deb: https://discordapp.com/api/download?platform=linux&format=deb
-    update_cache: true
+    deb: /tmp/discord.deb
   tags:
     - discord
   when: ansible_os_family == "Debian"
