@@ -30,12 +30,21 @@
   tags:
     - notifications
 
-- name: Install notify-send
+- name: Install notify-send - Debian
   become: true
-  ansible.builtin.package:
-    name: notify-send
+  ansible.builtin.apt:
+    name: libnotify-bin
   tags:
     - notifications
+  when: ansible_os_family == "Debian"
+
+- name: Install notify-send - Arch
+  become: true
+  ansible.builtin.pacman:
+    name: libnotify
+  tags:
+    - notifications
+  when: ansible_os_family == "Archlinux"
 # start and enable notifications  service
 # - name: Start and enable notifications service
 #   ansible.builtin.systemd:
