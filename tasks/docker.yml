@@ -37,7 +37,7 @@
   tags:
     - docker
 
-- name: Add signing key
+- name: Docker - Add signing key
   become: true
   ansible.builtin.apt_key:
     url: 'https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg'
@@ -46,7 +46,7 @@
   tags:
     - docker
 
-- name: Add repository into sources list
+- name: Docker - Add repository into sources list
   become: true
   ansible.builtin.apt_repository:
     repo: 'deb [arch={{ ansible_architecture }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
@@ -76,3 +76,5 @@
     name: '{{ user }}'
     append: yes
     groups: docker
+  tags:
+    - docker
