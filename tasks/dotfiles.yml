@@ -29,7 +29,9 @@
   when: not dotfiles.stat.exists
 
 - name: Stow dotfiles
-  ansible.builtin.command: cd $HOME/.dotfiles && stow -R .
+  ansible.builtin.command: stow -R .
+  args:
+    chdir: '{{ home }}/.dotfiles/'
   tags:
     - install
     - dotfiles
