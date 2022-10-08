@@ -49,13 +49,13 @@
 - [ ] install apps
   - [X] beekeeper
   - [X] discord
-  - [ ] zoom
+  - [X] zoom
   - [ ] zathura or another pdf viewer
   - [X] docker
   - [ ] set up zsh autocompletions for alacritty commands
   - [ ] thunderbird
   - [ ] audacity
-  - [ ] obs
+  - [X] obs
   - [ ] etcher
     - [ ] [ubuntu](https://www.linuxfordevices.com/tutorials/ubuntu/install-etcher-on-ubuntu)
     - [ ] arch - `paru -S etcher-bin`

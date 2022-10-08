@@ -1,0 +1,29 @@
+- name: OBS - Install dependencies
+  become: true
+  ansible.builtin.package:
+    name: v4l2loopback-dkms
+  tags:
+    - obs
+
+- name: OBS ppa
+  become: true
+  ansible.builtin.apt_repository:
+    repo: ppa:obsproject/obs-studio
+    state: present
+    update_cache: True
+  tags:
+    - obs
+  when: ansible_os_family == "Debian"
+
+- name: OBS - Install
+  become: true
+  ansible.builtin.package:
+    name: obs-studio
+    update_cache: True
+  tags:
+    - obs
+# - name: Install OBS from the AUR
+#   ansible.builtin.command: paru --noconfirm -S zoom
+#   tags:
+#     - obs
+#   when: ansible_os_family == "Archlinux"
