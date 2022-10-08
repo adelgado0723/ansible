@@ -48,7 +48,7 @@
   - [ ] hp-plugin
 - [ ] install apps
   - [X] beekeeper
-  - [ ] discord
+  - [X] discord
   - [ ] zoom
   - [ ] zathura or another pdf viewer
   - [X] docker

@@ -1,0 +1,38 @@
+- name: Zoom - Install dependencies - Debian
+  become: true
+  ansible.builtin.apt:
+    name: libxcb-xtest0
+  tags:
+    - zoom
+  when: ansible_os_family == "Debian"
+
+- name: Zoom - Install dependencies - Arch
+  become: true
+  ansible.builtin.pacman:
+    name: libxcb
+  tags:
+    - zoom
+  when: ansible_os_family == "Archlinux"
+
+- name: Zoom - Download deb
+  ansible.builtin.get_url:
+    url: https://zoom.us/client/latest/zoom_amd64.deb
+    dest: /tmp/zoom.deb
+  tags:
+    - zoom
+  when: ansible_os_family == "Debian"
+
+- name: Zoom - Install deb
+  become: true
+  ansible.builtin.apt:
+    deb: /tmp/zoom.deb
+  tags:
+    - zoom
+  when: ansible_os_family == "Debian"
+
+- name: Install Zoom from the AUR
+  become: true
+  ansible.builtin.command: paru --noconfirm -S zoom
+  tags:
+    - zoom
+  when: ansible_os_family == "Archlinux"
