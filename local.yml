@@ -55,6 +55,7 @@
     - include: tasks/brave.yml
     - include: tasks/docker.yml
     - include: tasks/beekeeper.yml
+    - include: tasks/discord.yml
     #   - include: tasks/debugger.yml
     - include: tasks/dotfiles.yml
     - include: tasks/tmux-setup.yml

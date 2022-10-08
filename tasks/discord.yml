@@ -6,35 +6,35 @@
     mode: 0755
     owner: '{{ user }}'
   tags:
-    - beekeeper
+    - discord
   when: ansible_os_family == "Debian"
 
-- name: Beekeeper - Add key
+- name: Discord - Add key
   ansible.builtin.apt_key:
     url: https://deb.beekeeperstudio.io/beekeeper.key
     id: beekeeper.key
     state: present
 
-- name: Beekeeper - PPA setting
+- name: Discord - PPA setting
   become: true
   ansible.builtin.command: echo "deb https://deb.beekeeperstudio.io stable main" | tee /etc/apt/sources.list.d/beekeeper-studio-app.list
   tags:
-    - beekeeper
+    - discord
   when: ansible_os_family == "Debian"
 
-- name: Beekeeper apt installation
+- name: Discord apt installation
   become: true
   ansible.builtin.apt:
     update_cache: true
     name:
       - beekeeper-studio
   tags:
-    - beekeeper
+    - discord
   when: ansible_os_family == "Debian"
 
-- name: Install Beekeeper from the AUR
+- name: Install Discord from the AUR
   become: true
-  ansible.builtin.command: paru --noconfirm -S beekeeper-studio-bin
+  ansible.builtin.command: paru --noconfirm -S discord
   tags:
-    - beekeeper
+    - discord
   when: ansible_os_family == "Archlinux"

@@ -55,37 +55,7 @@
     - docker
   when: ansible_os_family == "Debian"
 
-#
-# - name: Keyrings - create folder if it doesn't exist
-#   become: true
-#   ansible.builtin.file:
-#     path: '/etc/apt/keyrings'
-#     state: directory
-#     mode: 0755
-#     owner: '{{ user }}'
-#   tags:
-#     - docker
-#   when: ansible_os_family == "Debian"
-#
-# - name: Docker gpg key download
-#   ansible.builtin.get_url:
-#     url: https://download.docker.com/linux/ubuntu/gpg
-#     dest: /usr/share/keyrings/docker.gpg
-#   tags:
-#     - docker
-#   when: ansible_os_family == "Debian"
-#
-# - name: Docker PPA setting
-#   become: true
-#   ansible.builtin.command: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-#   tags:
-#     - docker
-#   when: ansible_os_family == "Debian"
-#
-# From Docker documentation:
-# Receiving a GPG error when running apt-get update?
-# Your default umask may not be set correctly, causing the public key file for the repo to not be detected. Run the following command and then try to update your repo again: `sudo chmod a+r /etc/apt/keyrings/docker.gpg`.
-#
+
 - name: Docker apt installation
   become: true
   ansible.builtin.apt:
