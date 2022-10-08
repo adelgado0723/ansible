@@ -25,7 +25,6 @@
 
 
 - name: Install Slack from the AUR
-  become: true
   ansible.builtin.command: paru --noconfirm -S slack-desktop
   tags:
     - slack

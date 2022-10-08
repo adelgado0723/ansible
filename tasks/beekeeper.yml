@@ -39,7 +39,6 @@
   when: ansible_os_family == "Debian"
 
 - name: Install Beekeeper from the AUR
-  become: true
   ansible.builtin.command: paru --noconfirm -S beekeeper-studio-bin
   tags:
     - beekeeper

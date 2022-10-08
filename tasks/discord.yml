@@ -15,7 +15,6 @@
   when: ansible_os_family == "Debian"
 
 - name: Install Discord from the AUR
-  become: true
   ansible.builtin.command: paru --noconfirm -S discord
   tags:
     - discord

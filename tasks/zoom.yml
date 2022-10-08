@@ -31,7 +31,6 @@
   when: ansible_os_family == "Debian"
 
 - name: Install Zoom from the AUR
-  become: true
   ansible.builtin.command: paru --noconfirm -S zoom
   tags:
     - zoom
