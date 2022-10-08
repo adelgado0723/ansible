@@ -10,17 +10,23 @@
   when: ansible_os_family == "Debian"
 
 - name: Beekeeper - Add key
+  become: true
   ansible.builtin.apt_key:
     url: https://deb.beekeeperstudio.io/beekeeper.key
-    id: beekeeper.key
     state: present
-
-- name: Beekeeper - PPA setting
-  become: true
-  ansible.builtin.command: echo "deb https://deb.beekeeperstudio.io stable main" | tee /etc/apt/sources.list.d/beekeeper-studio-app.list
   tags:
     - beekeeper
   when: ansible_os_family == "Debian"
+
+- name: Beekeeper - Add repository into sources list
+  become: true
+  ansible.builtin.apt_repository:
+    repo: 'deb https://deb.beekeeperstudio.io stable main'
+    state: present
+    filename: docker
+  when: ansible_os_family == "Debian"
+  tags:
+    - beekeeper
 
 - name: Beekeeper apt installation
   become: true
