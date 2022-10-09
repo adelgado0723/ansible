@@ -1,0 +1,17 @@
+- name: Thunderbird ppa
+  become: true
+  ansible.builtin.apt_repository:
+    repo: ppa:Ubuntu-mozilla-daily/ppa
+    state: present
+    update_cache: True
+  tags:
+    - thunderbird
+  when: ansible_os_family == "Debian"
+
+- name: Thunderbird - Install
+  become: true
+  ansible.builtin.package:
+    name: thunderbird
+    update_cache: True
+  tags:
+    - thunderbird

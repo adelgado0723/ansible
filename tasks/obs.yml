@@ -22,8 +22,3 @@
     update_cache: True
   tags:
     - obs
-# - name: Install OBS from the AUR
-#   ansible.builtin.command: paru --noconfirm -S zoom
-#   tags:
-#     - obs
-#   when: ansible_os_family == "Archlinux"

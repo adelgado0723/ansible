@@ -53,13 +53,14 @@
   - [ ] zathura or another pdf viewer
   - [X] docker
   - [ ] set up zsh autocompletions for alacritty commands
-  - [ ] thunderbird
+  - [X] thunderbird
   - [ ] audacity
   - [X] obs
   - [ ] etcher
     - [ ] [ubuntu](https://www.linuxfordevices.com/tutorials/ubuntu/install-etcher-on-ubuntu)
     - [ ] arch - `paru -S etcher-bin`
   - [ ] hueadm tool
+  - [ ] kadenlive
 - [ ] setup debuggers
   - [ ] go 
   - [ ] js 
@@ -72,53 +73,53 @@
 
 ## Completed
 
-- [x] install fonts
-  - [x] Fira Code
-  - [x] Hack
-  - [x] Fantasque
-  - [x] Emoji font
-  - [x] update dmenu fonts
-  - [x] update dmscripts fonts
-  - [x] update qtile fonts
-  - [x] update alacritty fonts
-  - [x] [Terminess](<https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Regular/complete/Terminess%20(TTF)%20Nerd%20Font%20Complete.ttf>)
-  - [x] [Space Mono](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf)
-  - [x] [Sauce Code Pro Nerd](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf)
-  - [x] [InconsolataGo](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf)
-- [x] set up systemd timers 祥
-- [x] install apps
-  - [x] alacritty
-  - [x] Network Manager ﯱ
-  - [x] nm-applet 
-  - [x] lazygit 
-  - [x] openvpn support 
-  - [x] ranger
-    - [x] image previews
-  - [x] slack
-  - [x] flameshot
-  - [x] brave
-  - [x] start and enable service 
-- [x] set up system sounds folder
-- [x] create {{home}}/dev folder if it doesn't exist
-- [x] create {{home}}/notes folder if it doesn't exist
-- [x] setup qtile widget dependencies
-  - [x] Net widget
-  - [x] Thermal Sensor widget
-  - [x] Update widget
-  - [x] Memory widget
-  - [x] Sound widget
-  - [x] system tray widget
-  - [x] battery widget
-  - [x] acpi
-- [x] set up mpd
-- [x] set up mpc
-- [x] setup systray items
-  - [x] notify-send 
-  - [x] notification daemon 
-  - [x] blueman 
-  - [x] radio app 鷺
-- [x] install bold and italics of all fonts in ./tasks/fonts-setup.yml
-- [x] add note repos to notes folder
-  - [x] brag repo
-  - [x] BUMCNotes
-  - [x] system sounds
+- [X] install fonts
+  - [X] Fira Code
+  - [X] Hack
+  - [X] Fantasque
+  - [X] Emoji font
+  - [X] update dmenu fonts
+  - [X] update dmscripts fonts
+  - [X] update qtile fonts
+  - [X] update alacritty fonts
+  - [X] [Terminess](<https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Regular/complete/Terminess%20(TTF)%20Nerd%20Font%20Complete.ttf>)
+  - [X] [Space Mono](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf)
+  - [X] [Sauce Code Pro Nerd](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf)
+  - [X] [InconsolataGo](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf)
+- [X] set up systemd timers 祥
+- [X] install apps
+  - [X] alacritty
+  - [X] Network Manager ﯱ
+  - [X] nm-applet 
+  - [X] lazygit 
+  - [X] openvpn support 
+  - [X] ranger
+    - [X] image previews
+  - [X] slack
+  - [X] flameshot
+  - [X] brave
+  - [X] start and enable service 
+- [X] set up system sounds folder
+- [X] create {{home}}/dev folder if it doesn't exist
+- [X] create {{home}}/notes folder if it doesn't exist
+- [X] setup qtile widget dependencies
+  - [X] Net widget
+  - [X] Thermal Sensor widget
+  - [X] Update widget
+  - [X] Memory widget
+  - [X] Sound widget
+  - [X] system tray widget
+  - [X] battery widget
+  - [X] acpi
+- [X] set up mpd
+- [X] set up mpc
+- [X] setup systray items
+  - [X] notify-send 
+  - [X] notification daemon 
+  - [X] blueman 
+  - [X] radio app 鷺
+- [X] install bold and italics of all fonts in ./tasks/fonts-setup.yml
+- [X] add note repos to notes folder
+  - [X] brag repo
+  - [X] BUMCNotes
+  - [X] system sounds
