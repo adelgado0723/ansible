@@ -95,6 +95,15 @@
     - install
     - scripts-setup
 
+- name: Scripts - install
+  become: true
+  ansible.builtin.command: make install
+  args:
+    chdir: '{{ home }}/scripts/'
+  tags:
+    - install
+    - scripts-setup
+
 - name: Wallpapers - create folder if it doesn't exist
   ansible.builtin.file:
     path: '{{ home }}/wallpapers'

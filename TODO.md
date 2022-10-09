@@ -11,7 +11,7 @@
   - [x] brave
   - [x] curl
   - [x] dig - `bind` on arch and `dnsutils` on debian
-  - [X] docker
+  - [x] docker
   - [x] ffmpeg
   - [x] imv
   - [x] ip
@@ -24,102 +24,100 @@
   - [x] notify-send
   - [x] pulseaudio - comes standard on Ubuntu
   - [x] python3
-  - [ ] qutebrowser
+  - [x] qutebrowser
   - [ ] [reddio](https://gitlab.com/aaronNG/reddio/) - compile and install from source for ubuntu
-  - [X] slock
-  - [X] slop (for recording a specific area)
-  - [X] systemd
-  - [X] tee
-  - [X] tmux
-  - [X] udisks2
-  - [X] xargs - installed by default
-  - [X] xclip
-  - [X] xdotool
-  - [X] xrandr - x11-xserver-utils - arch -- xorg-xrandr
-  - [X] xwallpaper or swaybg
-  - [X] yad
-  - [X] youtube-dl
+  - [x] slock
+  - [x] slop (for recording a specific area)
+  - [x] systemd
+  - [x] tee
+  - [x] tmux
+  - [x] udisks2
+  - [x] xargs - installed by default
+  - [x] xclip
+  - [x] xdotool
+  - [x] xrandr - x11-xserver-utils - arch -- xorg-xrandr
+  - [x] xwallpaper or swaybg
+  - [x] yad
+  - [x] youtube-dl
 - [ ] install shell scripts
   - [ ] docker kill
-  - [ ] tmux-sessionizer
-  - [ ] tmux-cht.sh
+  - [x] tmux-sessionizer
+  - [x] tmux-cht.sh
 - [ ] [set up printer](https://unix.stackexchange.com/questions/359531/installing-hp-printer-driver-for-arch-linux)
   - [ ] [sane](https://wiki.archlinux.org/title/SANE) for scanning
   - [ ] hp-plugin
 - [ ] install apps
-  - [X] beekeeper
-  - [X] discord
-  - [X] zoom
-  - [ ] zathura or another pdf viewer
-  - [X] docker
-  - [ ] set up zsh autocompletions for alacritty commands
-  - [X] thunderbird
-  - [X] audacity
-  - [X] obs
-  - [ ] etcher
+  - [x] beekeeper
+  - [x] discord
+  - [x] zoom
+  - [x] docker
+  - [x] thunderbird
+  - [x] audacity
+  - [x] obs
+  - [ ] etcher - not working on debian
     - [ ] [ubuntu](https://www.linuxfordevices.com/tutorials/ubuntu/install-etcher-on-ubuntu)
-    - [ ] arch - `paru -S etcher-bin`
-  - [ ] hueadm tool
-  - [ ] kadenlive
+    - [x] arch - `paru -S etcher-bin`
+  - [x] hueadm tool
+  - [x] kdenlive
 - [ ] setup debuggers
   - [ ] go 
   - [ ] js 
 - [ ] setup LSPs
-  - [X] ansible
-  - [X] MongoDB  -- none exists!
+  - [x] ansible
+  - [x] MongoDB  -- none exists!
 - [ ] set upstreem for github projects
 - [ ] improve tagging scheme
 - [ ] fix linter warnings
 
 ## Completed
 
-- [X] install fonts
-  - [X] Fira Code
-  - [X] Hack
-  - [X] Fantasque
-  - [X] Emoji font
-  - [X] update dmenu fonts
-  - [X] update dmscripts fonts
-  - [X] update qtile fonts
-  - [X] update alacritty fonts
-  - [X] [Terminess](<https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Regular/complete/Terminess%20(TTF)%20Nerd%20Font%20Complete.ttf>)
-  - [X] [Space Mono](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf)
-  - [X] [Sauce Code Pro Nerd](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf)
-  - [X] [InconsolataGo](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf)
-- [X] set up systemd timers 祥
-- [X] install apps
-  - [X] alacritty
-  - [X] Network Manager ﯱ
-  - [X] nm-applet 
-  - [X] lazygit 
-  - [X] openvpn support 
-  - [X] ranger
-    - [X] image previews
-  - [X] slack
-  - [X] flameshot
-  - [X] brave
-  - [X] start and enable service 
-- [X] set up system sounds folder
-- [X] create {{home}}/dev folder if it doesn't exist
-- [X] create {{home}}/notes folder if it doesn't exist
-- [X] setup qtile widget dependencies
-  - [X] Net widget
-  - [X] Thermal Sensor widget
-  - [X] Update widget
-  - [X] Memory widget
-  - [X] Sound widget
-  - [X] system tray widget
-  - [X] battery widget
-  - [X] acpi
-- [X] set up mpd
-- [X] set up mpc
-- [X] setup systray items
-  - [X] notify-send 
-  - [X] notification daemon 
-  - [X] blueman 
-  - [X] radio app 鷺
-- [X] install bold and italics of all fonts in ./tasks/fonts-setup.yml
-- [X] add note repos to notes folder
-  - [X] brag repo
-  - [X] BUMCNotes
-  - [X] system sounds
+- [x] install fonts
+  - [x] Fira Code
+  - [x] Hack
+  - [x] Fantasque
+  - [x] Emoji font
+  - [x] update dmenu fonts
+  - [x] update dmscripts fonts
+  - [x] update qtile fonts
+  - [x] update alacritty fonts
+  - [x] [Terminess](<https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Terminus/terminus-ttf-4.40.1/Regular/complete/Terminess%20(TTF)%20Nerd%20Font%20Complete.ttf>)
+  - [x] [Space Mono](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf)
+  - [x] [Sauce Code Pro Nerd](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf)
+  - [x] [InconsolataGo](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf)
+- [x] set up systemd timers 祥
+- [x] install apps
+  - [x] alacritty
+  - [x] Network Manager ﯱ
+  - [x] nm-applet 
+  - [x] lazygit 
+  - [x] openvpn support 
+  - [x] ranger
+    - [x] image previews
+  - [x] slack
+  - [x] flameshot
+  - [x] brave
+  - [x] start and enable service 
+- [x] set up system sounds folder
+- [x] create {{home}}/dev folder if it doesn't exist
+- [x] create {{home}}/notes folder if it doesn't exist
+- [x] setup qtile widget dependencies
+  - [x] Net widget
+  - [x] Thermal Sensor widget
+  - [x] Update widget
+  - [x] Memory widget
+  - [x] Sound widget
+  - [x] system tray widget
+  - [x] battery widget
+  - [x] acpi
+- [x] set up mpd
+- [x] set up mpc
+- [x] setup systray items
+  - [x] notify-send 
+  - [x] notification daemon 
+  - [x] blueman 
+  - [x] radio app 鷺
+- [x] install bold and italics of all fonts in ./tasks/fonts-setup.yml
+- [x] add note repos to notes folder
+  - [x] brag repo
+  - [x] BUMCNotes
+  - [x] system sounds

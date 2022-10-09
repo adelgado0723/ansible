@@ -38,6 +38,7 @@
       - maim
       - kdenlive
       - flameshot
+      - qutebrowser
     state: present
   tags:
     - productivity
