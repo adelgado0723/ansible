@@ -54,7 +54,7 @@
   - [X] docker
   - [ ] set up zsh autocompletions for alacritty commands
   - [X] thunderbird
-  - [ ] audacity
+  - [X] audacity
   - [X] obs
   - [ ] etcher
     - [ ] [ubuntu](https://www.linuxfordevices.com/tutorials/ubuntu/install-etcher-on-ubuntu)

@@ -60,6 +60,8 @@
     - include: tasks/zoom.yml
     - include: tasks/obs.yml
     - include: tasks/thunderbird.yml
+    - include: tasks/audacity.yml
+    - include: tasks/etcher.yml
     #   - include: tasks/debugger.yml
     - include: tasks/dotfiles.yml
     - include: tasks/tmux-setup.yml

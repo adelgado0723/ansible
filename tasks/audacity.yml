@@ -1,0 +1,17 @@
+- name: Audacity ppa
+  become: true
+  ansible.builtin.apt_repository:
+    repo: ppa:ubuntuhandbook1/audacity
+    state: present
+    update_cache: True
+  tags:
+    - audacity
+  when: ansible_os_family == "Debian"
+
+- name: Audacity - Install
+  become: true
+  ansible.builtin.package:
+    name: audacity
+    update_cache: True
+  tags:
+    - audacity
