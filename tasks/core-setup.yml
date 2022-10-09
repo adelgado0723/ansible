@@ -126,6 +126,7 @@
         'network-manager',
         'cups',
         'network-manager-openvpn',
+        'snapd',
       ]
   tags:
     - install

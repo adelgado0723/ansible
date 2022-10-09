@@ -1,44 +1,40 @@
-- name: Keyrings - create folder if it doesn't exist
-  become: true
-  ansible.builtin.file:
-    path: '/etc/apt/keyrings'
-    state: directory
-    mode: 0755
-    owner: '{{ user }}'
-  tags:
-    - etcher
-  when: ansible_os_family == "Debian"
-
-- name: Etcher - Add key
-  become: true
-  ansible.builtin.apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 379CE192D401AB61
-    state: present
-  tags:
-    - etcher
-  when: ansible_os_family == "Debian"
-
-- name: Etcher - Add repository into sources list
-  become: true
-  ansible.builtin.apt_repository:
-    repo: 'deb https://deb.etcher.io stable etcher'
-    state: present
-    filename: docker
-  when: ansible_os_family == "Debian"
-  tags:
-    - etcher
-
-- name: Etcher apt installation
-  become: true
-  ansible.builtin.apt:
-    update_cache: true
-    name:
-      - balena-etcher-electron
-  tags:
-    - etcher
-  when: ansible_os_family == "Debian"
-
+# Debian install doesn't work
+#
+# - name: Keyrings - create folder if it doesn't exist
+#   become: true
+#   ansible.builtin.file:
+#     path: '/etc/apt/keyrings'
+#     state: directory
+#     mode: 0755
+#     owner: '{{ user }}'
+#   tags:
+#     - etcher
+#   when: ansible_os_family == "Debian"
+#
+# - name: Etcher - Add key
+#   become: true
+#   ansible.builtin.command: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
+#   tags:
+#     - etcher
+#   when: ansible_os_family == "Debian"
+#
+# - name: Etcher - Add repository into sources list
+#   become: true
+#   ansible.builtin.shell: 'echo "deb https://deb.etcher.io stable etcher" | tee /etc/apt/sources.list.d/balena-etcher.list'
+#   when: ansible_os_family == "Debian"
+#   tags:
+#     - etcher
+#
+# - name: Etcher apt installation
+#   become: true
+#   ansible.builtin.apt:
+#     update_cache: true
+#     name:
+#       - balena-etcher-electron
+#   tags:
+#     - etcher
+#   when: ansible_os_family == "Debian"
+#
 - name: Install Etcher from the AUR
   ansible.builtin.command: paru --noconfirm -S etcher-bin
   tags:
