@@ -1,6 +1,4 @@
-# The Plan
-
-## To Do
+# To Do
 
 - [ ] add more personal github repos to dev setup 
 - [ ] install dmscript dependencies
@@ -59,17 +57,15 @@
     - [x] arch - `paru -S etcher-bin`
   - [x] hueadm tool
   - [x] kdenlive
-- [ ] setup debuggers
-  - [ ] go 
-  - [ ] js 
-- [ ] setup LSPs
+- [x] setup debuggers
+  - [x] go 
+  - [x] js 
+- [x] setup LSPs
   - [x] ansible
   - [x] MongoDB  -- none exists!
 - [ ] set upstreem for github projects
 - [ ] improve tagging scheme
 - [ ] fix linter warnings
-
-## Completed
 
 - [x] install fonts
   - [x] Fira Code

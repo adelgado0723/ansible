@@ -62,7 +62,7 @@
     - include: tasks/thunderbird.yml
     - include: tasks/audacity.yml
     - include: tasks/etcher.yml
-    #   - include: tasks/debugger.yml
+    - include: tasks/debuggers.yml
     - include: tasks/dotfiles.yml
     - include: tasks/tmux-setup.yml
     - include: tasks/mpd-setup.yml
