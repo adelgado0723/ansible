@@ -1,23 +1,12 @@
-- name: Install tmux - Arch
+- name: Install tmux
   become: true
-  pacman:
-    name: 'tmux'
+  ansible.builtin.package:
+    name: tmux
     state: present
   tags:
     - install
     - dotfiles
     - tmux
-  when: ansible_os_family == "Archlinux"
-
-- name: Install tmux - Debian
-  become: true
-  apt:
-    name: 'tmux'
-  tags:
-    - install
-    - dotfiles
-    - tmux
-  when: ansible_os_family == "Debian"
 
 - name: create tpm plugins folder if it doesn't exist
   file:

@@ -52,6 +52,7 @@
   - [x] thunderbird
   - [x] audacity
   - [x] obs
+  - [x] libreoffice
   - [ ] etcher - not working on debian
     - [ ] [ubuntu](https://www.linuxfordevices.com/tutorials/ubuntu/install-etcher-on-ubuntu)
     - [x] arch - `paru -S etcher-bin`

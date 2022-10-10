@@ -1,0 +1,7 @@
+- name: Install steam
+  become: true
+  ansible.builtin.package:
+    name: steam
+    state: present
+  tags:
+    - games

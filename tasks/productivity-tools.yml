@@ -1,7 +1,9 @@
 - name: Install productivity tools - Arch
   become: true
   pacman:
-    name: wireshark-qt
+    name:
+      - wireshark-qt
+      - libreoffice-still
     state: present
   tags:
     - productivity
@@ -20,7 +22,9 @@
 - name: Install productivity tools - Debian
   become: true
   apt:
-    name: wireshark
+    name:
+      - wireshark
+      - libreoffice
   tags:
     - productivity
   when: ansible_os_family == "Debian"

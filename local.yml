@@ -68,3 +68,4 @@
     - include: tasks/mpd-setup.yml
     - include: tasks/productivity-tools.yml
     - include: tasks/lsp-setup.yml
+    - include: tasks/games.yml
