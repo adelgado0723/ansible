@@ -37,8 +37,5 @@
     name: brave-bin
     state: present
   tags:
-    - install
-    - neovim
-    - alacritty
-    - core
+    - brave
   when: ansible_os_family == "Archlinux"
