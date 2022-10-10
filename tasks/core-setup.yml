@@ -150,6 +150,8 @@
     name:
       - acpi
       - radiotray
+      - vlc
+      - rhythmbox
       - xdg-utils
   tags:
     - install
