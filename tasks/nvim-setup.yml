@@ -1,4 +1,4 @@
-- name: remove neovim
+- name: Remove neovim
   ansible.builtin.file:
     path: '{{ home }}/neovim'
     state: absent
@@ -23,21 +23,25 @@
     - neovim
 
 - name: Build neovim
-  shell: 'cd {{ home }}/neovim && make -j 20'
+  ansible.builtin.command: 'make -j 20'
+  args:
+    chdir: '{{ home }}/neovim'
   tags:
     - install
     - neovim
 
 - name: Install neovim
   become: true
-  shell: 'cd {{ home }}/neovim && make install'
+  ansible.builtin.command: 'make install'
+  args:
+    chdir: '{{ home }}/neovim'
   tags:
     - install
     - neovim
 
 - name: Neovim Plugin Development 1 - Arch
   become: true
-  pacman:
+  ansible.builtin.pacman:
     name: 'luarocks'
     state: present
   tags:
@@ -47,7 +51,7 @@
 
 - name: Neovim Plugin Development 1 - Debian
   become: true
-  apt: name=luarocks
+  ansible.builtin.apt: name=luarocks
   tags:
     - install
     - neovim
@@ -55,7 +59,7 @@
 
 - name: Neovim Plugin Development 2 luacheck
   become: true
-  shell: luarocks install luacheck
+  ansible.builtin.command: luarocks install luacheck
   tags:
     - install
     - neovim
