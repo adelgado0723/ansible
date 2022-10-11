@@ -32,7 +32,7 @@
       when: ansible_os_family == "Debian"
 
   tasks:
-#    - include: tasks/ssh.yml
+    - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
     - include: tasks/fonts-setup.yml
     - include: tasks/core-setup.yml
@@ -49,7 +49,7 @@
     - include: tasks/dmscripts-setup.yml
     - include: tasks/dev-setup.yml
     - include: tasks/notes-setup.yml
-      #    - include: tasks/timers-setup.yml
+    - include: tasks/timers-setup.yml
     - include: tasks/notifications-setup.yml
     - include: tasks/nvim-setup.yml
     - include: tasks/brave.yml
@@ -60,7 +60,7 @@
     - include: tasks/obs.yml
     - include: tasks/thunderbird.yml
     - include: tasks/audacity.yml
-    - include: tasks/etcher.yml
+    # - include: tasks/etcher.yml
     - include: tasks/debuggers.yml
     - include: tasks/dotfiles.yml
     - include: tasks/qtile-setup.yml

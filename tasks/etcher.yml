@@ -10,10 +10,9 @@
     - etcher
   when: ansible_os_family == "Debian"
 
-
 - name: Etcher - Add key
   become: true
-  ansible.builtin.shell: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
+  ansible.builtin.shell: 'apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61'
   tags:
     - etcher
   when: ansible_os_family == "Debian"
