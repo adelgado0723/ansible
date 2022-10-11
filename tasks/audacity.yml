@@ -1,17 +1,22 @@
-- name: Audacity ppa
+- name: Audacity - Install - Debian
   become: true
-  ansible.builtin.apt_repository:
-    repo: ppa:ubuntuhandbook1/audacity
-    state: present
-    update_cache: True
+  ansible.builtin.command: snap install audacity
   tags:
     - audacity
   when: ansible_os_family == "Debian"
 
-- name: Audacity - Install
+- name: Audacity - grant permission to use ALSA
   become: true
-  ansible.builtin.package:
+  ansible.builtin.command: snap connect audacity:alsa
+  tags:
+    - audacity
+  when: ansible_os_family == "Debian"
+
+- name: Audacity - Install - Arch
+  become: true
+  ansible.builtin.pacman:
     name: audacity
     update_cache: True
   tags:
     - audacity
+  when: ansible_os_family == "Archlinux"
