@@ -1,18 +1,61 @@
-# xcffib - prerequisite
-- name: install xcffiv
-  ansible.builtin.pip:
-    name: xcffib
-  tags:
-    - install
-    - core
-  when: ansible_os_family == "Debian"
-
-# qtile
-- name: install qtile
-  ansible.builtin.pip:
-    name: qtile
+- name: Install some dependencies - Debian
+  become: true
+  ansible.builtin.apt:
+    name: 
+      - alsa-tools
+      - python3
+      - python3-pip
+      - python3-venv
+      - python3-dev
+      - libffi-dev
+      - libpangocairo-1.0-0
+      - software-properties-common
+      - libxcb-render0-dev
+      - libxinerama-dev
+    state: present
   tags:
     - qtile
+  when: ansible_os_family == "Debian"
+
+- name: Install some dependencies -Arch
+  become: true
+  ansible.builtin.apt:
+    name: 
+      - python
+      - pango
+      - python-cairocffi
+      - python-xcffib
+    state: present
+  tags:
+    - qtile
+  when: ansible_os_family == "Archlinux"
+
+- name: Install qtile from the AUR
+  ansible.builtin.command: paru --noconfirm -S qtile
+  tags:
+    - qtile
+  when: ansible_os_family == "Archlinux"
+
+- name: Install xinerama - Arch
+  ansible.builtin.pacman:
+    name: libxinerama
+  when: ansible_os_family == "Archlinux"
+
+# prerequisite
+- name: Install python packages
+  ansible.builtin.pip:
+    name: 
+      - wheel
+      - pip
+      - xcffib
+      - cairocffi
+      - qtile
+      - python-xlib
+      - dbus-next
+    state: present
+  tags:
+    - qtile
+  when: ansible_os_family == "Debian"
 
 # psutil - for net widget
 - name: Install psutil for net, thermal sensor, and memory widgets
@@ -21,25 +64,45 @@
   tags:
     - qtile
 
-# amixer for volume widget - should come standard on Arch
-- name: Install amixer for volume widget
-  become: true
-  pacman:
-    name: alsa-tools
-    state: present
+
+- name: Get stats of qtile desktop entry config
+  ansible.builtin.stat:
+    path: '{{ home }}/.config/qtile/qtile.desktop'
+  register: desktop_config
   tags:
     - qtile
-  when: ansible_os_family == "Debian"
 
+- name: Skip if no config found
+  ansible.builtin.debug:
+    msg: 'desktop config not found... Skipping Setup.'
+  when: not desktop_config
+  tags:
+    - qtile
 
+- name: Create folder if it doesn't exist - /usr/share/xsessions/
+  become: true
+  ansible.builtin.file:
+    path: '/usr/share/xsessions/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  when: desktop_config
+  tags:
+    - qtile
 
-# set qtile as window manage
-# - name: dconf qtile
-#   shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'qtile'"
-#   tags:
-#     - qtile
-#
-# - name: dconf qtile
-#   shell: dconf write /org/mate/desktop/background/show-desktop-icons "false"
-#   tags:
-#     - qtile
+- name: Install desktop entry
+  become: true
+  ansible.builtin.copy:
+    src: '{{ home }}/.config/qtile/qtile.desktop'
+    dest: '/usr/share/xsessions/qtile.desktop'
+    mode: 0644
+    owner: '{{ user }}'
+  tags:
+    - qtile
+
+- name: make link to qtile
+  become: true
+  ansible.builtin.file:
+    path: /usr/local/bin/qtile
+    state: link
+    src: '{{ home }}/.local/bin/qtile'

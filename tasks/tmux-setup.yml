@@ -28,12 +28,12 @@
     - dotfiles
     - tmux
 
-- name: source tmux config
-  shell: 'tmux source {{ home }}/.tmux.conf'
-  tags:
-    - install
-    - dotfiles
-    - tmux
+      #- name: source tmux config
+      #  shell: 'tmux source {{ home }}/.tmux.conf'
+      #  tags:
+      #    - install
+      #    - dotfiles
+      #    - tmux
 
 - name: install tpm plugins
   shell: '{{ home }}/.tmux/plugins/tpm/bin/install_plugins'
@@ -42,9 +42,3 @@
     - dotfiles
     - tmux
 
-- name: source tmux config again
-  shell: 'tmux source {{ home }}/.tmux.conf'
-  tags:
-    - install
-    - dotfiles
-    - tmux

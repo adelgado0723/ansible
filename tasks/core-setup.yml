@@ -149,10 +149,12 @@
   ansible.builtin.package:
     name:
       - acpi
-      - radiotray
+    #  - radiotray
+      - fzf
       - vlc
       - rhythmbox
       - xdg-utils
+      - ripgrep
   tags:
     - install
     - neovim

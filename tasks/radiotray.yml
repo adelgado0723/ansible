@@ -1,0 +1,8 @@
+# git clone https://github.com/ebruck/radiotray-ng.git
+# cd radiotray-ng
+# mkdir build
+# cd build
+# cmake .. -DCMAKE_BUILD_TYPE=Release
+# make package
+# sudo dpkg -i ./radiotray-ng_x.y.z_<distro>_<i386|amd64>.deb
+# sudo apt-get install -f

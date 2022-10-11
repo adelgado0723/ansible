@@ -60,6 +60,7 @@
 
 - name: Dmenu - clone from github
   ansible.builtin.git:
+    accept_hostkey: true
     repo: 'git@github.com:adelgado0723/dmenu.git'
     dest: '{{ home }}/.config/dmenu/dmenu/'
   tags:
@@ -83,6 +84,7 @@
 
 - name: Dmscripts - clone from github
   ansible.builtin.git:
+    accept_hostkey: true
     repo: 'git@github.com:adelgado0723/dmscripts.git'
     dest: '{{ home }}/.config/dmenu/dmscripts'
   tags:

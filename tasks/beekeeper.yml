@@ -23,7 +23,7 @@
   ansible.builtin.apt_repository:
     repo: 'deb https://deb.beekeeperstudio.io stable main'
     state: present
-    filename: docker
+    filename: beekeeper
   when: ansible_os_family == "Debian"
   tags:
     - beekeeper

@@ -10,6 +10,7 @@
 
 - name: Dmenu - clone from github
   ansible.builtin.git:
+    accept_hostkey: true
     repo: 'git@github.com:adelgado0723/dmenu.git'
     dest: '{{ home }}/.config/dmenu/dmenu/'
   tags:
@@ -35,6 +36,7 @@
 
 - name: Dmscripts - clone from github
   ansible.builtin.git:
+    accept_hostkey: true
     repo: 'git@github.com:adelgado0723/dmscripts.git'
     dest: '{{ home }}/.config/dmenu/dmscripts'
   tags:
@@ -61,6 +63,7 @@
 
 - name: Slock - clone from github
   ansible.builtin.git:
+    accept_hostkey: true
     repo: 'git@github.com:adelgado0723/slock.git'
     dest: '{{ home }}/.config/slock'
   tags:
@@ -89,6 +92,7 @@
 
 - name: Scripts - clone from github
   ansible.builtin.git:
+    accept_hostkey: true
     repo: 'git@github.com:adelgado0723/scripts.git'
     dest: '{{ home }}/scripts/'
   tags:
@@ -116,6 +120,7 @@
 
 - name: Wallpapers - clone from github
   ansible.builtin.git:
+    accept_hostkey: true
     repo: 'git@github.com:adelgado0723/wallpapers.git'
     dest: '{{ home }}/wallpapers/wallpapers_public'
   tags:
@@ -134,6 +139,7 @@
 
 - name: Sound effects - clone from github
   ansible.builtin.git:
+    accept_hostkey: true
     repo: 'git@github.com:adelgado0723/sounds.git'
     dest: '{{ home }}/music/sound_effects'
   tags:

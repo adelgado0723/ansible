@@ -16,8 +16,7 @@
 - name: change shell to zsh
   become: true
   #  shell: chsh -s $(chsh -l | grep zsh | sort -r | awk '(NR == 1){print $1}')
-  shell: chsh -s $(which zsh)
-  tags: *tags_for_zsh_tasks
+  shell: chsh -s $(which zsh) adelg
 
 - name: check if ~/.oh-my-zsh/ exists
   stat:
@@ -36,7 +35,7 @@
 
 - name: install zsh-autosuggestions
   ansible.builtin.git:
-    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git' 
     dest: '{{ home }}/.oh-my-zsh/plugins/zsh-autosuggestions'
   tags: *tags_for_zsh_tasks
 

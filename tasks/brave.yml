@@ -7,6 +7,7 @@
   when: ansible_os_family == "Debian"
 
 - name: Brave Browser archive-keyring.gpg download
+  become: true
   ansible.builtin.get_url:
     url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
     dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
@@ -17,7 +18,7 @@
 
 - name: Brave Browser PPA setting
   become: true
-  ansible.builtin.command: echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list
+  ansible.builtin.shell: echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list
   tags:
     - brave
   when: ansible_os_family == "Debian"

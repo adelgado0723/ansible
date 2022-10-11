@@ -58,6 +58,7 @@
     - node
 
 - name: Install node version specified in ../local.yml
-  ansible.builtin.shell: 'PATH={{ home }}/.local/.npm-global/bin:$PATH n {{ node_version }}'
+  become: true
+  ansible.builtin.shell: '{{ home }}/.local/.npm-global/bin/n {{ node_version }}'
   tags:
     - node

@@ -8,6 +8,7 @@
 - name: Clone alacritty from github
   ansible.builtin.git:
     repo: 'git@github.com:alacritty/alacritty.git'
+    accept_hostkey: true
     dest: '{{ home }}/alacritty/'
   tags:
     - alacritty
