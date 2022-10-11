@@ -2,17 +2,18 @@
 - name: Keyrings - create folder if it doesn't exist
   become: true
   ansible.builtin.file:
-     path: '/etc/apt/keyrings'
-     state: directory
-     mode: 0755
-     owner: '{{ user }}'
+    path: '/etc/apt/keyrings'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
   tags:
     - etcher
   when: ansible_os_family == "Debian"
 
+
 - name: Etcher - Add key
   become: true
-  ansible.builtin.command: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
+  ansible.builtin.shell: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
   tags:
     - etcher
   when: ansible_os_family == "Debian"

@@ -60,7 +60,7 @@
     - include: tasks/obs.yml
     - include: tasks/thunderbird.yml
     - include: tasks/audacity.yml
-      #    - include: tasks/etcher.yml
+    - include: tasks/etcher.yml
     - include: tasks/debuggers.yml
     - include: tasks/dotfiles.yml
     - include: tasks/qtile-setup.yml
