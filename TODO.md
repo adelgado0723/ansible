@@ -3,7 +3,7 @@
 - [ ] fix slock
 - [x] notifications
 - [ ] blueman-applet
-- [ ] multiple monitors
+- [x] multiple monitors
 - [ ] radiotray-ng
 - [ ] install gtk theme
 - [ ] add more personal github repos to dev setup 
