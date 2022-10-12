@@ -150,6 +150,7 @@
     name:
       - acpi
     #  - radiotray
+      - arandr
       - fzf
       - vlc
       - rhythmbox
