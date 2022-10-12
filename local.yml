@@ -34,6 +34,7 @@
   tasks:
     - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
+    - include: tasks/dotfiles.yml
     - include: tasks/fonts-setup.yml
     - include: tasks/core-setup.yml
     - include: tasks/ranger-setup.yml
@@ -62,7 +63,6 @@
     - include: tasks/audacity.yml
     # - include: tasks/etcher.yml
     - include: tasks/debuggers.yml
-    - include: tasks/dotfiles.yml
     - include: tasks/qtile-setup.yml
     - include: tasks/tmux-setup.yml
     - include: tasks/mpd-setup.yml

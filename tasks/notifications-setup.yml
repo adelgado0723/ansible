@@ -23,7 +23,7 @@
   become: true
   ansible.builtin.copy:
     src: '{{ home }}/.config/dbus/org.freedesktop.Notifications.service'
-    dest: '/etc/systemd/system/batterychecker.service'
+    dest: '/usr/share/dbus-1/services/org.freedesktop.Notifications.service'
     mode: 0775
     owner: '{{ user }}'
   when: dbus_config
@@ -45,6 +45,7 @@
   tags:
     - notifications
   when: ansible_os_family == "Archlinux"
+
 # start and enable notifications  service
 # - name: Start and enable notifications service
 #   ansible.builtin.systemd:
