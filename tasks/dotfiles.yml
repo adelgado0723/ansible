@@ -36,3 +36,35 @@
     - install
     - dotfiles
     - stow
+
+- name: Xresources - exists
+  ansible.builtin.stat:
+    path: '{{ home }}/.Xresources'
+  register: xresources
+  tags:
+    - install
+    - dotfiles
+    - stow
+
+- name: Dracula Themed Xresources - clone from github
+  ansible.builtin.git:
+    accept_hostkey: true
+    repo: 'git@github.com:dracula/xresources.git'
+    dest: '{{ home }}/xresources/'
+  tags:
+    - install
+    - dotfiles
+    - stow
+  when: not xresources.stat.exists
+
+- name: Copy bin to path
+  become: true
+  ansible.builtin.copy:
+    src: '{{ home }}/xresources/Xresources'
+    dest: '{{ home }}/.Xresources'
+    mode: 0775
+  tags:
+    - install
+    - dotfiles
+    - stow
+  when: not xresources.stat.exists

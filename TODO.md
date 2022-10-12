@@ -1,5 +1,6 @@
 # To Do
 
+- [ ] install gtk theme
 - [ ] add more personal github repos to dev setup 
 - [ ] install dmscript dependencies
   - [x] a nerd font

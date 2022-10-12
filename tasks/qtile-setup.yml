@@ -1,3 +1,13 @@
+# prerequisite
+- name: Install xcffib first
+  ansible.builtin.pip:
+    name:
+      - xcffib
+    state: present
+  tags:
+    - qtile
+  when: ansible_os_family == "Debian"
+
 - name: Install some dependencies - Debian
   become: true
   ansible.builtin.apt:
@@ -12,6 +22,7 @@
       - software-properties-common
       - libxcb-render0-dev
       - libxinerama-dev
+      - python3-cairocffi
     state: present
   tags:
     - qtile
@@ -19,7 +30,7 @@
 
 - name: Install some dependencies -Arch
   become: true
-  ansible.builtin.apt:
+  ansible.builtin.pacman:
     name: 
       - python
       - pango
@@ -41,17 +52,17 @@
     name: libxinerama
   when: ansible_os_family == "Archlinux"
 
-# prerequisite
+
 - name: Install python packages
   ansible.builtin.pip:
     name: 
       - wheel
       - pip
-      - xcffib
-      - cairocffi
       - qtile
       - python-xlib
       - dbus-next
+      - mypy
+      - pip-install-test
     state: present
   tags:
     - qtile
