@@ -1,0 +1,56 @@
+- name: Install GTK Theme Setting GUI - Debiian
+  become: true
+  ansible.builtin.apt:
+    name: lxappearance
+  tags:
+    - themes
+  when: ansible_os_family == "Debian"
+
+- name: Create folder for themes if it doesn't exist
+  ansible.builtin.file:
+    path: '{{ home }}/.themes'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - themes
+
+- name: GTK Theme - Download zip and unarchive
+  ansible.builtin.unarchive:
+    src: https://github.com/dracula/gtk/archive/master.zip
+    dest: '{{ home }}/.themes'
+    remote_src: yes
+  tags:
+    - themes
+
+- name: GTK Theme - Activate desktop interface
+  ansible.builtin.command: gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
+  tags:
+    - themes
+
+- name: GTK Theme - Activate wm preferences
+  ansible.builtin.command: gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
+  tags:
+    - themes
+
+- name: Create folder for icons if it doesn't exist
+  ansible.builtin.file:
+    path: '{{ home }}/.icons'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - themes
+
+- name: GTK Icon Theme - Download zip and unarchive
+  ansible.builtin.unarchive:
+    src: https://github.com/dracula/gtk/files/5214870/Dracula.zip
+    dest: '{{ home }}/.icons'
+    remote_src: yes
+  tags:
+    - themes
+
+- name: GTK Icon Theme - Activate
+  ansible.builtin.command: gsettings set org.gnome.desktop.interface icon-theme "Dracula"
+  tags:
+    - themes

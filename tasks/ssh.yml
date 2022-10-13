@@ -5,8 +5,6 @@
     owner: '{{ user }}'
     state: directory
   tags:
-    - dotfiles
-    - install
     - ssh
 
 - name: Install ssh key - id_rsa
@@ -16,8 +14,6 @@
     mode: 0600
     owner: '{{ user }}'
   tags:
-    - dotfiles
-    - install
     - ssh
 - name: Install ssh key public - id_rsa
   copy:
@@ -26,8 +22,6 @@
     mode: 0644
     owner: '{{ user }}'
   tags:
-    - dotfiles
-    - install
     - ssh
 
 - name: Install ssh key - adelg
@@ -37,8 +31,6 @@
     mode: 0600
     owner: '{{ user }}'
   tags:
-    - dotfiles
-    - install
     - ssh
 - name: Install ssh key public - adelg
   copy:
@@ -47,8 +39,6 @@
     mode: 0644
     owner: '{{ user }}'
   tags:
-    - dotfiles
-    - install
     - ssh
 
 - name: Install ssh key - id_rsa_vult1
@@ -58,9 +48,8 @@
     mode: 0600
     owner: '{{ user }}'
   tags:
-    - dotfiles
-    - install
     - ssh
+
 - name: Install ssh key public - id_rsa_vult1
   copy:
     src: '../.ssh/id_rsa_vult1.pub'
@@ -68,8 +57,6 @@
     mode: 0644
     owner: '{{ user }}'
   tags:
-    - dotfiles
-    - install
     - ssh
 
 - name: Install ssh key - id_rsa_vult2
@@ -79,9 +66,8 @@
     mode: 0600
     owner: '{{ user }}'
   tags:
-    - dotfiles
-    - install
     - ssh
+
 - name: Install ssh key public - id_rsa_vult2
   copy:
     src: '../.ssh/id_rsa_vult2.pub'
@@ -89,8 +75,6 @@
     mode: 0644
     owner: '{{ user }}'
   tags:
-    - dotfiles
-    - install
     - ssh
 
 - name: Set authorized key took from file
@@ -103,6 +87,8 @@
     - '{{ home }}/.ssh/id_rsa.pub'
     - '{{ home }}/.ssh/id_rsa_vult1.pub'
     - '{{ home }}/.ssh/id_rsa_vult2.pub'
+  tags:
+    - ssh
 
 - name: Install ssh config
   copy:
@@ -111,6 +97,4 @@
     mode: 0644
     owner: '{{ user }}'
   tags:
-    - dotfiles
-    - install
     - ssh

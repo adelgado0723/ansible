@@ -29,6 +29,13 @@
     - productivity
   when: ansible_os_family == "Debian"
 
+- name: VSCodium - Install Snap - Debian
+  become: true
+  ansible.builtin.command: snap install codium --classic
+  tags:
+    - productivity
+  when: ansible_os_family == "Debian"
+
 - name: Install productivity tools - Common
   become: true
   ansible.builtin.package:

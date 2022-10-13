@@ -1,0 +1,9 @@
+# This is a work around because of how these scripts install some keys
+- name: Copy legacy single keyring to folder for individual keys
+  become: true
+  ansible.builtin.copy:
+    src: '/etc/apt/trusted.gpg'
+    dest: '/etc/apt/trusted.gpg.d/'
+    mode: 0644
+  tags:
+    - alacritty

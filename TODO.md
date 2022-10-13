@@ -1,11 +1,11 @@
 # To Do
 
-- [ ] fix slock
 - [x] notifications
-- [ ] blueman-applet
+- [ ] fix qtile floating space - https://gitlab.com/dwt1/dotfiles/-/issues/26
+- [x] blueman-applet - https://www.how2shout.com/linux/how-to-install-blueman-on-linux-mint-or-ubuntu-20-04/
 - [x] multiple monitors
 - [ ] radiotray-ng
-- [ ] install gtk theme
+- [x] install gtk theme - https://draculatheme.com/gtk -- activation doesn't always work, so use the lxappearance gui
 - [ ] add more personal github repos to dev setup 
 - [ ] install dmscript dependencies
   - [x] a nerd font
