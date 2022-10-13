@@ -44,7 +44,7 @@
   - [x] yad
   - [x] youtube-dl
 - [ ] install shell scripts
-  - [ ] docker kill
+  - [x] docker kill
   - [x] tmux-sessionizer
   - [x] tmux-cht.sh
 - [ ] [set up printer](https://unix.stackexchange.com/questions/359531/installing-hp-printer-driver-for-arch-linux)
