@@ -36,6 +36,19 @@
     - productivity
   when: ansible_os_family == "Debian"
 
+- name: Postman - Install Snap - Debian
+  become: true
+  ansible.builtin.command: snap install postman
+  tags:
+    - productivity
+  when: ansible_os_family == "Debian"
+
+- name: Postman - Install from AUR - Arch
+  ansible.builtin.command: paru --noconfirm -S postman-bin
+  tags:
+    - productivity
+  when: ansible_os_family == "Archlinux"
+
 - name: Install productivity tools - Common
   become: true
   ansible.builtin.package:

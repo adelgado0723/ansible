@@ -203,6 +203,7 @@
       - ripgrep
       - xfce4-power-manager
       - font-manager
+      - tree
   tags:
     - install
     - neovim
