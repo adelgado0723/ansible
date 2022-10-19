@@ -1,6 +1,6 @@
 - name: Remove neovim
   ansible.builtin.file:
-    path: '{{ home }}/neovim'
+    path: '{{ home }}/neovim/'
     state: absent
   tags:
     - install

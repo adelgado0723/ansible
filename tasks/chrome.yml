@@ -1,0 +1,19 @@
+- name: Chrome - Download deb
+  ansible.builtin.get_url:
+    url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    dest: /tmp/chrome.deb
+  tags:
+    - chrome
+  when: ansible_os_family == "Debian"
+
+- name: Chrome - Install deb
+  become: true
+  ansible.builtin.command: dpkg -i /tmp/chrome.deb
+  tags:
+    - chrome
+  when: ansible_os_family == "Debian"
+# - name: Install Chrome from the AUR
+#   ansible.builtin.command: paru --noconfirm -S ??????
+#   tags:
+#     - chrome
+#   when: ansible_os_family == "Archlinux"

@@ -1,0 +1,5 @@
+
+- name: Install dust
+  ansible.builtin.command: 'cargo install du-dust'
+  tags:
+    - cargo-packages

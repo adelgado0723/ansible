@@ -55,3 +55,57 @@
     chdir: '{{ home }}/debuggers/vscode-go'
   tags:
     - debuggers
+
+- name: Remove javascript chrome debugger
+  ansible.builtin.file:
+    path: '{{ home }}/debuggers/vscode-chrome-debug/'
+    state: absent
+
+- name: Clone javascript chrome debugger
+  ansible.builtin.git:
+    repo: 'git@github.com:Microsoft/vscode-chrome-debug.git'
+    recursive: true
+    dest: '{{ home }}/debuggers/vscode-chrome-debug'
+  tags:
+    - debuggers
+
+- name: Install chrome javascript debugger node modules
+  ansible.builtin.command: npm i
+  args:
+    chdir: '{{ home }}/debuggers/vscode-chrome-debug/'
+  tags:
+    - debuggers
+
+- name: Build the chrome debugger
+  ansible.builtin.command: npm run build
+  args:
+    chdir: '{{ home }}/debuggers/vscode-chrome-debug'
+  tags:
+    - debuggers
+
+- name: Remove javascript chrome debugger
+  ansible.builtin.file:
+    path: '{{ home }}/debuggers/vscode-firefox-debug'
+    state: absent
+
+- name: Clone javascript firefox debugger
+  ansible.builtin.git:
+    repo: 'git@github.com:firefox-devtools/vscode-firefox-debug.git'
+    recursive: true
+    dest: '{{ home }}/debuggers/vscode-firefox-debug'
+  tags:
+    - debuggers
+
+- name: Install firefox javascript debugger node modules
+  ansible.builtin.command: npm i
+  args:
+    chdir: '{{ home }}/debuggers/vscode-firefox-debug'
+  tags:
+    - debuggers
+
+- name: Build the firefox debugger
+  ansible.builtin.command: npm run build
+  args:
+    chdir: '{{ home }}/debuggers/vscode-firefox-debug'
+  tags:
+    - debuggers

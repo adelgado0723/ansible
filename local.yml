@@ -45,6 +45,7 @@
     - include: tasks/npm-packages.yml
     - include: tasks/zsh-setup.yml
     - include: tasks/alacritty-build.yml
+    - include: tasks/cargo-packages.yml
     - include: tasks/slack-setup.yml
     - include: tasks/scripts-and-utils-setup.yml
     - include: tasks/dmscripts-setup.yml
@@ -54,6 +55,7 @@
     - include: tasks/notifications-setup.yml
     - include: tasks/nvim-setup.yml
     - include: tasks/brave.yml
+    - include: tasks/chrome.yml
     - include: tasks/docker.yml
     - include: tasks/beekeeper.yml
     - include: tasks/discord.yml
