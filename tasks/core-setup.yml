@@ -128,31 +128,32 @@
         'cups',
         'network-manager-openvpn',
         'snapd',
+        'aptitude',
       ]
   tags:
     - install
     - core
   when: ansible_os_family == "Debian"
 
-- name: Install Flatpack - Debian
-  become: true
-  ansible.builtin.apt:
-    name: flatpack
-  tags:
-    - install
-    - neovim
-    - alacritty
-    - core
-  when: ansible_os_family == "Debian"
-
-- name: Add Flathub repo to flatpack
-  ansible.builtin.command: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  tags:
-    - install
-    - neovim
-    - alacritty
-    - core
-  when: ansible_os_family == "Debian"
+# - name: Install Flatpack - Debian
+#   become: true
+#   ansible.builtin.apt:
+#     name: flatpack
+#   tags:
+#     - install
+#     - neovim
+#     - alacritty
+#     - core
+#   when: ansible_os_family == "Debian"
+#
+# - name: Add Flathub repo to flatpack
+#   ansible.builtin.command: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#   tags:
+#     - install
+#     - neovim
+#     - alacritty
+#     - core
+#   when: ansible_os_family == "Debian"
 
 - name: Install Clang - Debian
   become: true
@@ -203,7 +204,7 @@
       - ripgrep
       - xfce4-power-manager
       - font-manager
-      - tree
+      - font-manager
   tags:
     - install
     - neovim
