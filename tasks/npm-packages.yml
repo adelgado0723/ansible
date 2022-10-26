@@ -56,6 +56,13 @@
   tags:
     - npm-packages
 
+- name: Install jq
+  npm:
+    name: jq
+    global: true
+  tags:
+    - npm-packages
+
 - name: Install hueadm
   npm:
     name: hueadm
