@@ -35,6 +35,20 @@
   tags:
     - npm-packages
 
+- name: Install webpack
+  npm:
+    name: webpack
+    global: true
+  tags:
+    - npm-packages
+
+- name: Install husky
+  npm:
+    name: husky
+    global: true
+  tags:
+    - npm-packages
+
 - name: Install live-server
   npm:
     name: live-server

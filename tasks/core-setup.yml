@@ -129,6 +129,7 @@
         'network-manager-openvpn',
         'snapd',
         'aptitude',
+        'netrw',
       ]
   tags:
     - install
