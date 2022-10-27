@@ -62,6 +62,7 @@
       - maim
       - kdenlive
       - flameshot
+      - jq
       - qutebrowser
     state: present
   tags:

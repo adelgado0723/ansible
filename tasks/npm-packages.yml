@@ -56,12 +56,33 @@
   tags:
     - npm-packages
 
-- name: Install jq
-  npm:
-    name: jq
-    global: true
-  tags:
-    - npm-packages
+# - name: Install rimraf - used by jq
+#   npm:
+#     name: rimraf 
+#     global: true
+#   tags:
+#     - npm-packages
+#
+# - name: Install async - used by jq
+#   npm:
+#     name: async 
+#     global: true
+#   tags:
+#     - npm-packages
+#
+# - name: Install commander - used by jq
+#   npm:
+#     name: commander
+#     global: true
+#   tags:
+#     - npm-packages
+#
+# - name: Install jq
+#   npm:
+#     name: jq
+#     global: true
+#   tags:
+#     - npm-packages
 
 - name: Install hueadm
   npm:
