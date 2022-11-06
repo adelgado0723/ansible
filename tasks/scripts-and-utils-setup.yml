@@ -127,6 +127,15 @@
     - install
     - scripts-setup
 
+- name: Dracula Wallpapers - clone from github
+  ansible.builtin.git:
+    accept_hostkey: true
+    repo: 'git@github.com:aynp/dracula-wallpapers.git'
+    dest: '{{ home }}/wallpapers/dracula_themed'
+  tags:
+    - install
+    - scripts-setup
+
 - name: Sound effects - create music folder if it doesn't exist
   ansible.builtin.file:
     path: '{{ home }}/music/'
