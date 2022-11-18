@@ -127,11 +127,11 @@
     - install
     - scripts-setup
 
-- name: Dracula Wallpapers - clone from github
+- name: Distrotube Wallpapers - clone from github
   ansible.builtin.git:
     accept_hostkey: true
-    repo: 'git@github.com:aynp/dracula-wallpapers.git'
-    dest: '{{ home }}/wallpapers/dracula_themed'
+    repo: 'git@gitlab.com:dwt1/wallpapers.git'
+    dest: '{{ home }}/wallpapers/dt_wallpapers'
   tags:
     - install
     - scripts-setup

@@ -208,6 +208,7 @@
       - tree
       - unzip
       - unrar
+      - nmap
   tags:
     - install
     - neovim
