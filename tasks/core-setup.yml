@@ -209,6 +209,7 @@
       - unzip
       - unrar
       - nmap
+      - autorandr
   tags:
     - install
     - neovim

@@ -56,6 +56,31 @@
   tags:
     - npm-packages
 
+- name: Install pm2
+  npm:
+    name: pm2
+    global: true
+  tags:
+    - npm-packages
+
+- name: pm2 update
+  become: true
+  ansible.builtin.command: pm2 update
+  tags:
+    - npm-packages
+
+- name: pm2 completion install
+  become: true
+  ansible.builtin.command: pm2 completion instal
+  tags:
+    - npm-packages
+
+- name: Install bullmq
+  npm:
+    name: bullmq
+    global: true
+  tags:
+    - npm-packages
 # - name: Install rimraf - used by jq
 #   npm:
 #     name: rimraf 
