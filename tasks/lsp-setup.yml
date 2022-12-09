@@ -148,3 +148,11 @@
   tags:
     - install
     - lsp
+
+- name: Install markdownlint-cli
+  npm:
+    name: markdownlint-cli
+    global: true
+  tags:
+    - install
+    - lsp

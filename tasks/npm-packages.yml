@@ -109,7 +109,7 @@
 #   tags:
 #     - npm-packages
 
-- name: Install hueadm
+- name: install hueadm
   npm:
     name: hueadm
     global: true

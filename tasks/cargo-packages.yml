@@ -1,5 +1,9 @@
-
 - name: Install dust
   ansible.builtin.command: 'cargo install du-dust'
+  tags:
+    - cargo-packages
+
+- name: Install cbfmt
+  ansible.builtin.command: 'cargo install cbfmt'
   tags:
     - cargo-packages
