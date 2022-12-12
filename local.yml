@@ -48,6 +48,7 @@
     - include: tasks/cargo-packages.yml
     - include: tasks/slack-setup.yml
     - include: tasks/scripts-and-utils-setup.yml
+    - include: tasks/custom-services.yml
     - include: tasks/dmscripts-setup.yml
     - include: tasks/dev-setup.yml
     - include: tasks/notes-setup.yml

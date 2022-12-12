@@ -7,3 +7,8 @@
   ansible.builtin.command: 'cargo install cbfmt'
   tags:
     - cargo-packages
+
+- name: Install stylua
+  ansible.builtin.command: 'cargo install stylua'
+  tags:
+    - cargo-packages

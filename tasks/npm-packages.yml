@@ -1,5 +1,4 @@
 # Depends on node being installed already
-
 - name: Install Yarn
   npm:
     name: yarn
@@ -81,6 +80,7 @@
     global: true
   tags:
     - npm-packages
+
 # - name: Install rimraf - used by jq
 #   npm:
 #     name: rimraf 

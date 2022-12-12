@@ -1,0 +1,37 @@
+- name: Get stats of lock screen on suspend config
+  ansible.builtin.stat:
+    path: '{{ home }}/.config/systemd/lock.service'
+  register: lock_config
+  tags:
+    - install
+    - scripts-setup
+
+- name: Skip if no config found
+  ansible.builtin.debug:
+    msg: 'screen lock on suspend config not found... Skipping Setup.'
+  when: not lock_config
+  tags:
+    - install
+    - scripts-setup
+
+- name: Copy lock service config
+  become: true
+  ansible.builtin.copy:
+    src: '{{ home }}/.config/systemd/lock.service'
+    dest: '/etc/systemd/system/lock.service'
+    mode: 0775
+    owner: '{{ user }}'
+  tags:
+    - install
+    - scripts-setup
+
+- name: Enable lock on suspend service
+  ansible.builtin.systemd:
+    name: lock
+    enabled: true
+    masked: false
+    scope: user
+  when: mpd_config
+  tags:
+    - install
+    - scripts-setup

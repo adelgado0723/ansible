@@ -156,3 +156,26 @@
   tags:
     - install
     - lsp
+
+- name: Install prettierd
+  npm:
+    name: '@fsouza/prettierd'
+    global: true
+  tags:
+    - install
+    - lsp
+
+- name: Install eslint_d
+  npm:
+    name: eslint_d
+    global: true
+  tags:
+    - install
+    - lsp
+
+- name: Install flake8
+  ansible.builtin.pip:
+    name: flake8
+  tags:
+    - install
+    - lsp
