@@ -36,6 +36,20 @@
     - productivity
   when: ansible_os_family == "Debian"
 
+- name: altair graphql editor - Install Snap - Debian
+  become: true
+  ansible.builtin.command: snap install codium --classic
+  tags:
+    - productivity
+  when: ansible_os_family == "Debian"
+
+- name: altair graphql editor - Install from AUR - Arch
+  ansible.builtin.command: paru --noconfirm -S altair
+  tags:
+    - productivity
+  when: ansible_os_family == "Archlinux"
+
+
 - name: Postman - Install Snap - Debian
   become: true
   ansible.builtin.command: snap install postman
