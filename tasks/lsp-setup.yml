@@ -179,3 +179,11 @@
   tags:
     - install
     - lsp
+
+- name: Install eslint_d
+  npm:
+    name: eslint_d
+    global: true
+  tags:
+    - install
+    - lsp
