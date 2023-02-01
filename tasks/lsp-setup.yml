@@ -180,9 +180,9 @@
     - install
     - lsp
 
-- name: Install eslint_d
+- name: Install spectral (yaml and json)
   npm:
-    name: eslint_d
+    name: "@stoplight/spectral-cli"
     global: true
   tags:
     - install
