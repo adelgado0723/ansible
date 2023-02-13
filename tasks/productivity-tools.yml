@@ -29,16 +29,16 @@
     - productivity
   when: ansible_os_family == "Debian"
 
-- name: VSCodium - Install Snap - Debian
-  become: true
-  ansible.builtin.command: snap install codium --classic
-  tags:
-    - productivity
-  when: ansible_os_family == "Debian"
+# - name: VSCodium - Install Snap - Debian -- Not working with live share
+#   become: true
+#   ansible.builtin.command: snap install codium --classic
+#   tags:
+#     - productivity
+#   when: ansible_os_family == "Debian"
 
 - name: altair graphql editor - Install Snap - Debian
   become: true
-  ansible.builtin.command: snap install codium --classic
+  ansible.builtin.command: snap install altair
   tags:
     - productivity
   when: ansible_os_family == "Debian"
@@ -48,7 +48,6 @@
   tags:
     - productivity
   when: ansible_os_family == "Archlinux"
-
 
 - name: Postman - Install Snap - Debian
   become: true
@@ -81,3 +80,25 @@
     state: present
   tags:
     - productivity
+
+- name: Install Github CLI
+  become: true
+  ansible.builtin.shell:
+    'curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && apt update \
+    && apt install gh -y'
+  tags:
+    - productivity
+    - git
+  when: ansible_os_family == "Debian"
+
+- name: Install Github CLI
+  become: true
+  ansible.builtin.pacman:
+    name: github-cli
+  tags:
+    - productivity
+    - git
+  when: ansible_os_family == "Archlinux"
