@@ -187,3 +187,11 @@
   tags:
     - install
     - lsp
+
+- name: Install prismals
+  npm:
+    name: "@prisma/language-server"
+    global: true
+  tags:
+    - install
+    - lsp
