@@ -200,7 +200,7 @@
       - arandr
       - fzf
       - vlc
-      - rhythmbox
+      # - rhythmbox
       - xdg-utils
       - ripgrep
       - xfce4-power-manager
