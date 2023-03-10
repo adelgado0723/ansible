@@ -31,6 +31,9 @@
         - core
       when: ansible_os_family == "Debian"
 
+  roles:
+    - role: nix-install
+
   tasks:
     - include: tasks/ssh.yml
     - include: tasks/git-setup.yml

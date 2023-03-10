@@ -1,13 +1,3 @@
-- name: Install stow
-  become: true
-  ansible.builtin.package:
-    name: stow
-    state: present
-  tags:
-    - install
-    - dotfiles
-    - stow
-
 - name: Dotfiles exists
   ansible.builtin.stat:
     path: '{{ home }}/.dotfiles'

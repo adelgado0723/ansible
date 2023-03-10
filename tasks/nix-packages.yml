@@ -1,0 +1,14 @@
+- name: Install i3
+  ansible.builtin.command: 'nix-env -iA nixpkgs.i3'
+  tags:
+    - install
+    - nix
+  when: ansible_os_family == "Debian"
+
+# other versions of stow are broken
+- name: Install stow
+  ansible.builtin.command: 'nix-env -iA stow -f https://github.com/NixOS/nixpkgs/archive/4599f2bb9a5a6b1482e72521ead95cb24e0aa819.tar.gz'
+  tags:
+    - install
+    - nix
+  when: ansible_os_family == "Debian"
