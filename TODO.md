@@ -1,5 +1,7 @@
 # To Do
 
+- [ ] add volumeicon and i3 install for Arch
+- [ ] add trash-cli install for Arch
 - [x] notifications
 - [ ] fix qtile floating space - https://gitlab.com/dwt1/dotfiles/-/issues/26
 - [x] blueman-applet - https://www.how2shout.com/linux/how-to-install-blueman-on-linux-mint-or-ubuntu-20-04/

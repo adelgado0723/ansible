@@ -1,7 +1,7 @@
 - name: Install System Packages 1 - Arch (base-devel, cmake, pkgconf)
   become: true
   ansible.builtin.pacman:
-    name: ['base-devel', 'cmake', 'pkgconf']
+    name: ["base-devel", "cmake", "pkgconf"]
     state: present
   tags:
     - install
@@ -13,7 +13,7 @@
 - name: Install System Packages 2 - Arch (lua, libtool, gettext)
   become: true
   ansible.builtin.pacman:
-    name: ['lua', 'libtool', 'gettext']
+    name: ["lua", "libtool", "gettext"]
     state: present
   tags:
     - install
@@ -27,39 +27,39 @@
   ansible.builtin.pacman:
     name:
       [
-        'brave-bin',
-        'ccache',
-        'clang',
-        'cowsay',
-        'cups',
-        'curl',
-        'dconf-editor',
-        'figlet',
-        'fontconfig',
-        'fortune-mod',
-        'freetype2',
-        'htop',
-        'libxcb',
-        'libxkbcommon',
-        'lsof',
-        'make',
-        'moreutils',
-        'networkmanager',
-        'network-manager-applet',
-        'networkmanager-openvpn',
-        'ninja',
-        'nitrogen',
-        'nvidia-settings',
-        'pandoc',
-        'paru-bin',
-        'pavucontrol',
-        'picom',
-        'pkg-config',
-        'python',
-        'python-pip',
-        'radiotray',
-        'stow',
-        'wget',
+        "brave-bin",
+        "ccache",
+        "clang",
+        "cowsay",
+        "cups",
+        "curl",
+        "dconf-editor",
+        "figlet",
+        "fontconfig",
+        "fortune-mod",
+        "freetype2",
+        "htop",
+        "libxcb",
+        "libxkbcommon",
+        "lsof",
+        "make",
+        "moreutils",
+        "networkmanager",
+        "network-manager-applet",
+        "networkmanager-openvpn",
+        "ninja",
+        "nitrogen",
+        "nvidia-settings",
+        "pandoc",
+        "paru-bin",
+        "pavucontrol",
+        "picom",
+        "pkg-config",
+        "python",
+        "python-pip",
+        "radiotray",
+        "stow",
+        "wget",
       ]
     state: present
   tags:
@@ -72,7 +72,7 @@
 - name: Install System Packages 1 - Debian (build-essential, cmake, pkg-config, pthread)
   become: true
   ansible.builtin.apt:
-    name: ['build-essential', 'cmake', 'pkg-config', 'libpthread-stubs0-dev']
+    name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev"]
   tags:
     - install
     - neovim
@@ -83,7 +83,7 @@
 - name: Install System Packages 2 - Debian (lua, libtool, libtool-bin, gettext)
   become: true
   ansible.builtin.apt:
-    name: ['lua5.1', 'libtool', 'libtool-bin', 'gettext']
+    name: ["lua5.1", "libtool", "libtool-bin", "gettext"]
   tags:
     - install
     - neovim
@@ -96,41 +96,43 @@
   ansible.builtin.apt:
     name:
       [
-        'compton',
-        'curl',
-        'wget',
-        'htop',
-        'lsof',
-        'ccache',
-        'ninja-build',
-        'python3-pip',
-        'python3',
-        'dconf-editor',
-        'nvidia-settings',
-        'pavucontrol',
-        'moreutils',
-        'clangd',
-        'libx11-dev',
-        'libxinerama-dev',
-        'libxft-dev',
-        'apt-file',
-        'pandoc',
-        'libxrandr-dev',
-        'libxpm-dev',
-        'figlet',
-        'cowsay',
-        'nitrogen',
-        'fortune',
-        'libfreetype6-dev',
-        'libfontconfig1-dev',
-        'libxcb-xfixes0-dev',
-        'libxkbcommon-dev ',
-        'network-manager',
-        'cups',
-        'network-manager-openvpn',
-        'snapd',
-        'aptitude',
-        'netrw',
+        "compton",
+        "curl",
+        "wget",
+        "htop",
+        "lsof",
+        "ccache",
+        "ninja-build",
+        "python3-pip",
+        "python3",
+        "dconf-editor",
+        "nvidia-settings",
+        "pavucontrol",
+        "moreutils",
+        "clangd",
+        "libx11-dev",
+        "libxinerama-dev",
+        "libxft-dev",
+        "apt-file",
+        "pandoc",
+        "libxrandr-dev",
+        "libxpm-dev",
+        "figlet",
+        "cowsay",
+        "nitrogen",
+        "fortune",
+        "libfreetype6-dev",
+        "libfontconfig1-dev",
+        "libxcb-xfixes0-dev",
+        "libxkbcommon-dev ",
+        "network-manager",
+        "cups",
+        "network-manager-openvpn",
+        "snapd",
+        "aptitude",
+        "netrw",
+        "volumeicon-alsa",
+        "trash-cli",
       ]
   tags:
     - install
@@ -160,7 +162,7 @@
 - name: Install Clang - Debian
   become: true
   ansible.builtin.apt:
-    name: ['clang', 'clang-11', 'clang-12', 'clangd', 'clangd-11', 'clangd-12']
+    name: ["clang", "clang-11", "clang-12", "clangd", "clangd-11", "clangd-12"]
   tags:
     - install
     - neovim
