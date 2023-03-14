@@ -12,3 +12,10 @@
     - install
     - nix
   when: ansible_os_family == "Debian"
+
+- name: Install brave
+  ansible.builtin.command: 'nix-env -iA nixpkgs.brave'
+  tags:
+    - install
+    - nix
+  when: ansible_os_family == "Debian"

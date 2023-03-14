@@ -58,7 +58,6 @@
     - include: tasks/timers-setup.yml
     - include: tasks/notifications-setup.yml
     - include: tasks/nvim-setup.yml
-    - include: tasks/brave.yml
     - include: tasks/chrome.yml
     - include: tasks/docker.yml
     - include: tasks/beekeeper.yml
