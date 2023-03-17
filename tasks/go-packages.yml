@@ -11,3 +11,10 @@
     - install
     - core
     - go
+
+- name: Install go-global-update
+  ansible.builtin.command: '/usr/local/go/bin/go install github.com/Gelio/go-global-update@latest'
+  tags:
+    - install
+    - core
+    - go
