@@ -102,12 +102,19 @@
 #   tags:
 #     - npm-packages
 #
-# - name: Install jq
+# - name: Install jq # installing through distro package manager
 #   npm:
 #     name: jq
 #     global: true
 #   tags:
 #     - npm-packages
+
+- name: install jest
+  npm:
+    name: jest
+    global: true
+  tags:
+    - npm-packages
 
 - name: install hueadm
   npm:
