@@ -25,6 +25,7 @@
     name:
       - wireshark
       - libreoffice
+      - poppler-utils
   tags:
     - productivity
   when: ansible_os_family == "Debian"
@@ -58,6 +59,12 @@
 
 - name: Postman - Install from AUR - Arch
   ansible.builtin.command: paru --noconfirm -S postman-bin
+  tags:
+    - productivity
+  when: ansible_os_family == "Archlinux"
+
+- name: poppler (pdftoppm) - Install from AUR - Arch
+  ansible.builtin.command: paru --noconfirm -S poppler
   tags:
     - productivity
   when: ansible_os_family == "Archlinux"

@@ -3,7 +3,6 @@
   tags:
     - install
     - nix
-  when: ansible_os_family == "Debian"
 
 # other versions of stow are broken
 - name: Install stow
@@ -19,3 +18,15 @@
     - install
     - nix
   when: ansible_os_family == "Debian"
+
+- name: Install chafa
+  ansible.builtin.command: 'nix-env -iA nixpkgs.chafa'
+  tags:
+    - install
+    - nix
+
+- name: Install fontpreview
+  ansible.builtin.command: 'nix-env -iA nixpkgs.fontpreview'
+  tags:
+    - install
+    - nix
