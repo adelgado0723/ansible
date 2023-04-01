@@ -68,7 +68,7 @@
     - include: tasks/audacity.yml
     # - include: tasks/etcher.yml
     - include: tasks/debuggers.yml
-    - include: tasks/qtile-setup.yml
+    # - include: tasks/qtile-setup.yml
     - include: tasks/tmux-setup.yml
     - include: tasks/mpd-setup.yml
     - include: tasks/productivity-tools.yml
