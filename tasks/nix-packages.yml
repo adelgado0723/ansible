@@ -30,3 +30,9 @@
   tags:
     - install
     - nix
+
+- name: Install ascii-image-converter for image.nvim
+  ansible.builtin.command: 'nix-env -iA nixpkgs.ascii-image-converter '
+  tags:
+    - install
+    - nix
