@@ -100,9 +100,11 @@
     - install
     - lsp
 
-# "sqls"
-- name: Install sqls
-  ansible.builtin.command: /usr/local/go/bin/go install github.com/lighttiger2505/sqls@latest
+# "sqlls"
+- name: Install sqlls
+  ansible.builtin.npm:
+    name: sql-language-server
+    global: true
   tags:
     - install
     - lsp
@@ -114,7 +116,7 @@
     - install
     - lsp
 
-# null_ls #
+# null_ls
 # prettier - formatting
 - name: Install prettier formatter
   ansible.builtin.npm:
@@ -182,7 +184,7 @@
 
 - name: Install spectral (yaml and json)
   ansible.builtin.npm:
-    name: "@stoplight/spectral-cli"
+    name: '@stoplight/spectral-cli'
     global: true
   tags:
     - install
@@ -190,7 +192,7 @@
 
 - name: Install prismals
   ansible.builtin.npm:
-    name: "@prisma/language-server"
+    name: '@prisma/language-server'
     global: true
   tags:
     - install
@@ -198,7 +200,7 @@
 
 - name: Install emmet-ls
   ansible.builtin.npm:
-    name: "emmet-ls"
+    name: 'emmet-ls'
     global: true
   tags:
     - install
