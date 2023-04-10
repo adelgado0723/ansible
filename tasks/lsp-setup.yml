@@ -205,3 +205,11 @@
   tags:
     - install
     - lsp
+
+- name: Install astro
+  ansible.builtin.npm:
+    name: '@astrojs/language-server'
+    global: true
+  tags:
+    - install
+    - lsp
