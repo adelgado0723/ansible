@@ -30,3 +30,9 @@
   tags:
     - install
     - nix
+
+- name: Install minikube
+  ansible.builtin.command: 'nix-env -iA nixpkgs.minikube'
+  tags:
+    - install
+    - nix
