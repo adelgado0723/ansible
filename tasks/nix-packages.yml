@@ -9,30 +9,60 @@
   ansible.builtin.command: 'nix-env -iA stow -f https://github.com/NixOS/nixpkgs/archive/4599f2bb9a5a6b1482e72521ead95cb24e0aa819.tar.gz'
   tags:
     - install
-    - nix
+    - nix-packages
   when: ansible_os_family == "Debian"
 
 - name: Install brave
   ansible.builtin.command: 'nix-env -iA nixpkgs.brave'
   tags:
     - install
-    - nix
+    - nix-packages
   when: ansible_os_family == "Debian"
 
 - name: Install chafa
   ansible.builtin.command: 'nix-env -iA nixpkgs.chafa'
   tags:
     - install
-    - nix
+    - nix-packages
 
 - name: Install fontpreview
   ansible.builtin.command: 'nix-env -iA nixpkgs.fontpreview'
   tags:
     - install
-    - nix
+    - nix-packages
 
 - name: Install minikube
   ansible.builtin.command: 'nix-env -iA nixpkgs.minikube'
   tags:
     - install
-    - nix
+    - nix-packages
+
+- name: Install beekeeper
+  ansible.builtin.command: 'nix-env -iA nixpkgs.beekeeper-studio'
+  tags:
+    - install
+    - nix-packages
+
+- name: Install chrome
+  ansible.builtin.shell: 'export NIXPKGS_ALLOW_UNFREE=1 && nix-env -iA nixpkgs.google-chrome'
+  tags:
+    - install
+    - nix-packages
+
+- name: Install discord
+  ansible.builtin.shell: 'export NIXPKGS_ALLOW_UNFREE=1 && nix-env -iA nixpkgs.discord'
+  tags:
+    - install
+    - nix-packages
+
+- name: Install audacity
+  ansible.builtin.command: 'nix-env -iA nixpkgs.audacity'
+  tags:
+    - install
+    - nix-packages
+
+- name: Install slack
+  ansible.builtin.shell: 'export NIXPKGS_ALLOW_UNFREE=1 && nix-env -iA nixpkgs.slack'
+  tags:
+    - install
+    - nix-packages

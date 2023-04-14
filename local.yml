@@ -35,45 +35,41 @@
     - role: nix-install
 
   tasks:
-    - include: tasks/ssh.yml
-    - include: tasks/git-setup.yml
-    - include: tasks/dotfiles.yml
-    - include: tasks/fonts-setup.yml
-    - include: tasks/core-setup.yml
-    - include: tasks/ranger-setup.yml
-    - include: tasks/bluetooth-setup.yml
-    - include: tasks/go-setup.yml
-    - include: tasks/go-packages.yml
-    - include: tasks/node-setup.yml
-    - include: tasks/npm-packages.yml
-    - include: tasks/zsh-setup.yml
     - include: tasks/alacritty-build.yml
+    - include: tasks/bluetooth-setup.yml
     - include: tasks/cargo-packages.yml
-    - include: tasks/slack-setup.yml
-    - include: tasks/scripts-and-utils-setup.yml
-    - include: tasks/custom-services.yml
-    - include: tasks/dmscripts-setup.yml
-    - include: tasks/dev-setup.yml
-    - include: tasks/notes-setup.yml
-    - include: tasks/timers-setup.yml
-    - include: tasks/notifications-setup.yml
-    - include: tasks/nvim-setup.yml
-    - include: tasks/chrome.yml
-    - include: tasks/docker.yml
-    - include: tasks/beekeeper.yml
-    - include: tasks/discord.yml
-    - include: tasks/zoom.yml
-    - include: tasks/obs.yml
-    - include: tasks/thunderbird.yml
-    - include: tasks/audacity.yml
-    # - include: tasks/etcher.yml
-    - include: tasks/debuggers.yml
-    # - include: tasks/qtile-setup.yml
-    - include: tasks/tmux-setup.yml
-    - include: tasks/mpd-setup.yml
-    - include: tasks/productivity-tools.yml
-    - include: tasks/lsp-setup.yml
-    - include: tasks/nix-packages.yml
-      #   - include: tasks/games.yml
-    - include: tasks/themes.yml
     - include: tasks/cleanup.yml
+    - include: tasks/core-setup.yml
+    - include: tasks/custom-services.yml
+    - include: tasks/debuggers.yml
+    - include: tasks/dev-setup.yml
+    - include: tasks/dmscripts-setup.yml
+    - include: tasks/docker.yml
+    - include: tasks/dotfiles.yml
+    # - include: tasks/etcher.yml
+    - include: tasks/fonts-setup.yml
+      #   - include: tasks/games.yml
+    - include: tasks/git-setup.yml
+    - include: tasks/go-packages.yml
+    - include: tasks/go-setup.yml
+    - include: tasks/lsp-setup.yml
+    - include: tasks/mpd-setup.yml
+    - include: tasks/nix-packages.yml
+    - include: tasks/node-setup.yml
+    - include: tasks/notes-setup.yml
+    - include: tasks/notifications-setup.yml
+    - include: tasks/npm-packages.yml
+    - include: tasks/nvim-setup.yml
+    - include: tasks/obs.yml
+    - include: tasks/productivity-tools.yml
+    # - include: tasks/qtile-setup.yml
+    - include: tasks/ranger-setup.yml
+    - include: tasks/scripts-and-utils-setup.yml
+    - include: tasks/slack-setup.yml
+    - include: tasks/ssh.yml
+    - include: tasks/themes.yml
+    - include: tasks/thunderbird.yml
+    - include: tasks/timers-setup.yml
+    - include: tasks/tmux-setup.yml
+    - include: tasks/zoom.yml
+    - include: tasks/zsh-setup.yml
