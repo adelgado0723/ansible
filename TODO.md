@@ -1,14 +1,27 @@
 # To Do
 
-- [ ] add volumeicon and i3 install for Arch
-- [ ] add trash-cli install for Arch
-- [x] notifications
+- [ ] organize and improve tags of nix packages
+- [ ] migrate to using nix packages as much as possible
 - [ ] fix qtile floating space - https://gitlab.com/dwt1/dotfiles/-/issues/26
+- [ ] add more personal github repos to dev setup 
+    - [ ] hue controller backend
+    - [ ] hue controller frontend
+- [ ] [set up printer](https://unix.stackexchange.com/questions/359531/installing-hp-printer-driver-for-arch-linux)
+  - [ ] [sane](https://wiki.archlinux.org/title/SANE) for scanning
+  - [ ] hp-plugin
+- [ ] set upstreem for github projects
+- [ ] improve tagging scheme
+- [ ] fix linter warnings
+
+## Done 
+
 - [x] blueman-applet - https://www.how2shout.com/linux/how-to-install-blueman-on-linux-mint-or-ubuntu-20-04/
 - [x] multiple monitors
-- [ ] radiotray-ng
+- [x] radiotray-ng
 - [x] install gtk theme - https://draculatheme.com/gtk -- activation doesn't always work, so use the lxappearance gui
-- [ ] add more personal github repos to dev setup 
+- [x] add volumeicon and i3 install for Arch
+- [x] add trash-cli install for Arch
+- [x] notifications
 - [ ] install dmscript dependencies
   - [x] a nerd font
   - [x] alsa
@@ -45,14 +58,15 @@
   - [x] xwallpaper or swaybg
   - [x] yad
   - [x] youtube-dl
-- [ ] install shell scripts
+- [x] install shell scripts
   - [x] docker kill
   - [x] tmux-sessionizer
   - [x] tmux-cht.sh
-- [ ] [set up printer](https://unix.stackexchange.com/questions/359531/installing-hp-printer-driver-for-arch-linux)
-  - [ ] [sane](https://wiki.archlinux.org/title/SANE) for scanning
-  - [ ] hp-plugin
-- [ ] install apps
+- [x] install apps
+  - [x] libreoffice
+  - [ ] etcher - not working on debian
+    - [ ] [ubuntu](https://www.linuxfordevices.com/tutorials/ubuntu/install-etcher-on-ubuntu)
+    - [x] arch - `paru -S etcher-bin`
   - [x] beekeeper
   - [x] discord
   - [x] zoom
@@ -60,10 +74,6 @@
   - [x] thunderbird
   - [x] audacity
   - [x] obs
-  - [x] libreoffice
-  - [ ] etcher - not working on debian
-    - [ ] [ubuntu](https://www.linuxfordevices.com/tutorials/ubuntu/install-etcher-on-ubuntu)
-    - [x] arch - `paru -S etcher-bin`
   - [x] hueadm tool
   - [x] kdenlive
 - [x] setup debuggers
@@ -72,10 +82,6 @@
 - [x] setup LSPs
   - [x] ansible
   - [x] MongoDB  -- none exists!
-- [ ] set upstreem for github projects
-- [ ] improve tagging scheme
-- [ ] fix linter warnings
-
 - [x] install fonts
   - [x] Fira Code
   - [x] Hack

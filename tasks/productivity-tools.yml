@@ -30,39 +30,6 @@
     - productivity
   when: ansible_os_family == "Debian"
 
-# - name: VSCodium - Install Snap - Debian -- Not working with live share
-#   become: true
-#   ansible.builtin.command: snap install codium --classic
-#   tags:
-#     - productivity
-#   when: ansible_os_family == "Debian"
-
-- name: altair graphql editor - Install Snap - Debian
-  become: true
-  ansible.builtin.command: snap install altair
-  tags:
-    - productivity
-  when: ansible_os_family == "Debian"
-
-- name: altair graphql editor - Install from AUR - Arch
-  ansible.builtin.command: paru --noconfirm -S altair
-  tags:
-    - productivity
-  when: ansible_os_family == "Archlinux"
-
-- name: Postman - Install Snap - Debian
-  become: true
-  ansible.builtin.command: snap install postman
-  tags:
-    - productivity
-  when: ansible_os_family == "Debian"
-
-- name: Postman - Install from AUR - Arch
-  ansible.builtin.command: paru --noconfirm -S postman-bin
-  tags:
-    - productivity
-  when: ansible_os_family == "Archlinux"
-
 - name: poppler (pdftoppm) - Install from AUR - Arch
   ansible.builtin.command: paru --noconfirm -S poppler
   tags:

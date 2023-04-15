@@ -57,7 +57,6 @@
         "pkg-config",
         "python",
         "python-pip",
-        "radiotray",
         "stow",
         "wget",
       ]
@@ -129,35 +128,12 @@
         "pavucontrol",
         "python3",
         "python3-pip",
-        "snapd",
-        "trash-cli",
-        "volumeicon-alsa",
         "wget",
       ]
   tags:
     - install
     - core
   when: ansible_os_family == "Debian"
-
-# - name: Install Flatpack - Debian
-#   become: true
-#   ansible.builtin.apt:
-#     name: flatpack
-#   tags:
-#     - install
-#     - neovim
-#     - alacritty
-#     - core
-#   when: ansible_os_family == "Debian"
-#
-# - name: Add Flathub repo to flatpack
-#   ansible.builtin.command: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-#   tags:
-#     - install
-#     - neovim
-#     - alacritty
-#     - core
-#   when: ansible_os_family == "Debian"
 
 - name: Install Clang - Debian
   become: true
@@ -169,31 +145,6 @@
     - alacritty
     - core
   when: ansible_os_family == "Debian"
-
-# - name: Set up radiotray lite ppa
-#   become: true
-#   ansible.builtin.apt_repository:
-#     repo: ppa:nilarimogard/webupd8
-#     state: present
-#     update_cache: True
-#   tags:
-#     - install
-#     - neovim
-#     - alacritty
-#     - core
-#   when: ansible_os_family == "Debian"
-#
-# - name: Install radiotray lite
-#   become: true
-#   ansible.builtin.apt:
-#     name:
-#       - radiotray-lite
-#   tags:
-#     - install
-#     - neovim
-#     - alacritty
-#     - core
-#   when: ansible_os_family == "Debian"
 
 - name: Install commonly named packages
   become: true

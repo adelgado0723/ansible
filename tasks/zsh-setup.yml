@@ -38,10 +38,3 @@
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git' 
     dest: '{{ home }}/.oh-my-zsh/plugins/zsh-autosuggestions'
   tags: *tags_for_zsh_tasks
-
-# Didn't like this one!
-# - name: install fzf-tab
-#   ansible.builtin.git:
-#     repo: 'https://github.com/Aloxaf/fzf-tab.git'
-#     dest: '{{ home }}/.oh-my-zsh/plugins/fzf-tab'
-#   tags: *tags_for_zsh_tasks

@@ -4,6 +4,18 @@
     - install
     - nix
 
+- name: Install volumeicon
+  ansible.builtin.command: 'nix-env -iA nixpkgs.volumeicon'
+  tags:
+    - install
+    - nix-packages
+
+- name: Install trash-cli
+  ansible.builtin.command: 'nix-env -iA nixpkgs.trash-cli'
+  tags:
+    - install
+    - nix-packages
+
 # other versions of stow are broken
 - name: Install stow
   ansible.builtin.command: 'nix-env -iA stow -f https://github.com/NixOS/nixpkgs/archive/4599f2bb9a5a6b1482e72521ead95cb24e0aa819.tar.gz'
@@ -63,6 +75,24 @@
 
 - name: Install slack
   ansible.builtin.shell: 'export NIXPKGS_ALLOW_UNFREE=1 && nix-env -iA nixpkgs.slack'
+  tags:
+    - install
+    - nix-packages
+
+- name: Install postman
+  ansible.builtin.shell: 'export NIXPKGS_ALLOW_UNFREE=1 && nix-env -iA nixpkgs.postman'
+  tags:
+    - install
+    - nix-packages
+
+- name: Install altair graphql editor
+  ansible.builtin.command: 'nix-env -iA nixpkgs.altair'
+  tags:
+    - install
+    - nix-packages
+
+- name: Install radiotray-ng
+  ansible.builtin.command: 'nix-env -iA nixpkgs.radiotray-ng'
   tags:
     - install
     - nix-packages

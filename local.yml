@@ -65,10 +65,9 @@
     # - include: tasks/qtile-setup.yml
     - include: tasks/ranger-setup.yml
     - include: tasks/scripts-and-utils-setup.yml
-    - include: tasks/slack-setup.yml
     - include: tasks/ssh.yml
     - include: tasks/themes.yml
-    - include: tasks/thunderbird.yml
+    # - include: tasks/thunderbird.yml
     - include: tasks/timers-setup.yml
     - include: tasks/tmux-setup.yml
     - include: tasks/zoom.yml
