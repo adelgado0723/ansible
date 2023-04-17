@@ -152,22 +152,23 @@
     name:
       - acpi
       - arandr
-      - fzf
-      - vlc
-      # - rhythmbox
-      - xdg-utils
-      - ripgrep
-      - xfce4-power-manager
-      - font-manager
-      - tree
-      - unzip
-      - unrar
-      - nmap
       - autorandr
-      - lxinput
-      - qalculate-gtk
       - ffmpegthumbnailer
+      - font-manager
+      - fzf
+      - i3lock
       # - imwheel # needs to be configured - `bash <(curl -s http://www.nicknorton.net/mousewheel.sh)` https://dev.to/bbavouzet/ubuntu-20-04-mouse-scroll-wheel-speed-536o
+      - lxinput
+      - nmap
+      - qalculate-gtk
+      # - rhythmbox
+      - ripgrep
+      - tree
+      - unrar
+      - unzip
+      - vlc
+      - xdg-utils
+      - xfce4-power-manager
   tags:
     - install
     - neovim

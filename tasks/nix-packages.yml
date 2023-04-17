@@ -2,7 +2,7 @@
   ansible.builtin.command: 'nix-env -iA nixpkgs.i3'
   tags:
     - install
-    - nix
+    - nix-packages
 
 - name: Install volumeicon
   ansible.builtin.command: 'nix-env -iA nixpkgs.volumeicon'
