@@ -1,0 +1,15 @@
+- name: Install meson build system
+  become: true
+  ansible.builtin.pip:
+    name: meson
+  tags:
+    - pip-packages
+    - i3lock
+
+- name: Install ninja
+  become: true
+  ansible.builtin.pip:
+    name: ninja
+  tags:
+    - pip-packages
+    - i3lock

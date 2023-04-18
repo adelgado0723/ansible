@@ -52,6 +52,8 @@
     - include: tasks/git-setup.yml
     - include: tasks/go-packages.yml
     - include: tasks/go-setup.yml
+    - include: tasks/pip-packages.yml
+    - include: tasks/i3lock.yml
     - include: tasks/lsp-setup.yml
     - include: tasks/mpd-setup.yml
     - include: tasks/nix-packages.yml

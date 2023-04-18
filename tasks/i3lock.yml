@@ -1,0 +1,87 @@
+- name: Install i3lock dependencies - Arch
+  become: true
+  ansible.builtin.pacman:
+    name:
+      - i3lock
+    state: present
+  tags:
+    - i3lock
+  when: ansible_os_family == "Archlinux"
+
+- name: Install i3lock dependencies - Debian
+  become: true
+  ansible.builtin.apt:
+    name:
+      - libpkgconf
+      - libxcb1
+      - libxcb-util-dev
+      - libpam0g-dev
+      - libcairo2-dev
+      - libxcb-xinerama0-dev
+      - libxcb-xkb-dev
+      - libxcb-randr0-dev
+      - libev-dev
+      - libx11-dev
+      - libx11-xcb-dev
+      - libxkbcommon-dev
+      - libxkbcommon-x11-dev
+      - libxcb-image0-dev
+      - libxcb-xrm-dev
+      - libxcb-xkb1
+    state: present
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
+
+- name: Remove i3lock
+  ansible.builtin.file:
+    path: '{{ home }}/i3lock/'
+    state: absent
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
+
+- name: Clone i3lock
+  ansible.builtin.git:
+    repo: 'https://github.com/i3/i3lock.git'
+    dest: '{{ home }}/i3lock'
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
+
+# - name: Remove i3lock build folder
+#   ansible.builtin.file:
+#     path: '{{ home }}/i3lock/build/'
+#     state: absent
+#   tags:
+#     - i3lock
+#   when: ansible_os_family == "Debian"
+
+- name: Create folder for the new build
+  become: true
+  ansible.builtin.file:
+    path: '{{ home }}/i3lock/build'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
+
+- name: build i3lock
+  become: true
+  ansible.builtin.shell:
+    cmd: 'meson .. -Dprefix=/usr && ninja'
+    chdir: '{{ home }}/i3lock/build'
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
+
+- name: install i3lock
+  become: true
+  ansible.builtin.shell:
+    cmd: 'ninja install'
+    chdir: '{{ home }}/i3lock/build'
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
