@@ -1,0 +1,58 @@
+- name: Install i3lock-color - Arch
+  ansible.builtin.command: paru --noconfirm -S i3lock-color
+  tags:
+    - i3lock
+  when: ansible_os_family == "Archlinux"
+
+- name: Install i3lock-color dependencies - Debian
+  become: true
+  ansible.builtin.apt:
+    name:
+      - autoconf
+      - gcc
+      - make
+      - pkg-config
+      - libpam0g-dev
+      - libcairo2-dev
+      - libfontconfig1-dev
+      - libxcb-composite0-dev
+      - libev-dev
+      - libx11-xcb-dev
+      - libxcb-xkb-dev
+      - libxcb-xinerama0-dev
+      - libxcb-randr0-dev
+      - libxcb-image0-dev
+      - libxcb-util0-dev
+      - libxcb-xrm-dev
+      - libxkbcommon-dev
+      - libxkbcommon-x11-dev
+      - libjpeg-dev
+    state: present
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
+
+- name: Remove i3lock-color
+  ansible.builtin.file:
+    path: '{{ home }}/i3lock-color/'
+    state: absent
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
+
+- name: Clone i3lock-color
+  ansible.builtin.git:
+    repo: 'https://github.com/Raymo111/i3lock-color.git'
+    dest: '{{ home }}/i3lock-color'
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
+
+- name: build and install i3lock-color
+  become: true
+  ansible.builtin.shell:
+    cmd: './install-i3lock-color.sh'
+    chdir: '{{ home }}/i3lock-color'
+  tags:
+    - i3lock
+  when: ansible_os_family == "Debian"
