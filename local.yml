@@ -65,7 +65,6 @@
     - include: tasks/obs.yml
     - include: tasks/productivity-tools.yml
     # - include: tasks/qtile-setup.yml
-    - include: tasks/ranger-setup.yml
     - include: tasks/scripts-and-utils-setup.yml
     - include: tasks/ssh.yml
     - include: tasks/themes.yml

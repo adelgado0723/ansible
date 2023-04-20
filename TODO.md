@@ -1,6 +1,8 @@
 # To Do
 
 - [ ] organize and improve tags of nix packages
+- [ ] investigate switching to a terminal that supports some image protocol
+    - update image previews
 - [ ] migrate to using nix packages as much as possible
 - [ ] fix qtile floating space - https://gitlab.com/dwt1/dotfiles/-/issues/26
 - [ ] add more personal github repos to dev setup 

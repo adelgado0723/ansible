@@ -96,3 +96,9 @@
   tags:
     - install
     - nix-packages
+
+- name: Install ranger
+  ansible.builtin.command: 'nix-env -iA nixpkgs.ranger'
+  tags:
+    - install
+    - nix-packages
