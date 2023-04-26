@@ -102,3 +102,9 @@
   tags:
     - install
     - nix-packages
+
+- name: Install ueberzug
+  ansible.builtin.command: 'nix-env -iA nixpkgs.ueberzug'
+  tags:
+    - install
+    - nix-packages
