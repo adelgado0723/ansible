@@ -4,7 +4,6 @@
     name: meson
   tags:
     - pip-packages
-    - i3lock
 
 - name: Install ninja
   become: true
@@ -12,4 +11,3 @@
     name: ninja
   tags:
     - pip-packages
-    - i3lock

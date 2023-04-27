@@ -156,7 +156,6 @@
       - ffmpegthumbnailer
       - font-manager
       - fzf
-      - i3lock
       # - imwheel # needs to be configured - `bash <(curl -s http://www.nicknorton.net/mousewheel.sh)` https://dev.to/bbavouzet/ubuntu-20-04-mouse-scroll-wheel-speed-536o
       - lxinput
       - nmap
