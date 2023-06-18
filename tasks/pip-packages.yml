@@ -11,3 +11,10 @@
     name: ninja
   tags:
     - pip-packages
+
+- name: Install the AWS cli
+  become: true
+  ansible.builtin.pip:
+    name: awscli
+  tags:
+    - pip-packages

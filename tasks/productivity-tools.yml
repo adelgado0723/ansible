@@ -9,16 +9,6 @@
     - productivity
   when: ansible_os_family == "Archlinux"
 
-- name: kdenlive ppa (ppa:kdenlive/kdenlive-stable)
-  become: true
-  apt_repository:
-    repo: ppa:kdenlive/kdenlive-stable
-    state: present
-    update_cache: True
-  tags:
-    - productivity
-  when: ansible_os_family == "Debian"
-
 - name: Install productivity tools - Debian
   become: true
   apt:
@@ -47,7 +37,6 @@
       - tldr
       - ripgrep
       - maim
-      - kdenlive
       - flameshot
       - jq
       - qutebrowser
