@@ -168,7 +168,7 @@
       - vlc
       - xdg-utils
       - xfce4-power-manager
-      - picta # not sure if arch has this one
+      - pinta # not sure if arch has this one
   tags:
     - install
     - neovim

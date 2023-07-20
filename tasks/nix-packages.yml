@@ -24,13 +24,6 @@
     - nix-packages
   when: ansible_os_family == "Debian"
 
-- name: Install brave
-  ansible.builtin.command: 'nix-env -iA nixpkgs.brave'
-  tags:
-    - install
-    - nix-packages
-  when: ansible_os_family == "Debian"
-
 - name: Install chafa
   ansible.builtin.command: 'nix-env -iA nixpkgs.chafa'
   tags:
@@ -69,12 +62,6 @@
 
 - name: Install audacity
   ansible.builtin.command: 'nix-env -iA nixpkgs.audacity'
-  tags:
-    - install
-    - nix-packages
-
-- name: Install slack
-  ansible.builtin.shell: 'export NIXPKGS_ALLOW_UNFREE=1 && nix-env -iA nixpkgs.slack'
   tags:
     - install
     - nix-packages

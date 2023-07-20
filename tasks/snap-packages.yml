@@ -1,0 +1,9 @@
+- name: Install brave
+  become: true
+  community.general.snap:
+    name:
+      - brave
+    classic: true
+  tags:
+    - snap
+  when: ansible_os_family == "Debian"

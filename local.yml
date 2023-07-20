@@ -34,6 +34,10 @@
   roles:
     - role: nix-install
 
+  collections:
+    - community.general.snap
+    - community.general.flatpak
+
   tasks:
     - include: tasks/alacritty-build.yml
     - include: tasks/bluetooth-setup.yml
@@ -49,6 +53,8 @@
     # - include: tasks/etcher.yml
     - include: tasks/fonts-setup.yml
       #   - include: tasks/games.yml
+    - include: tasks/flatpak.yml
+    - include: tasks/snap-packages.yml
     - include: tasks/git-setup.yml
     - include: tasks/go-packages.yml
     - include: tasks/go-setup.yml

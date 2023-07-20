@@ -1,0 +1,23 @@
+- name: Install Flatpak and Gnome Plugin
+  become: true
+  ansible.builtin.apt:
+    name: ["flatpak", "gnome-software-plugin-flatpak"]
+  tags:
+    - flatpak
+  when: ansible_os_family == "Debian"
+
+- name: Add Flathub
+  ansible.builtin.command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  tags:
+    - flatpak
+  when: ansible_os_family == "Debian"
+
+# flatpak install -y --noninteractive --user com.slack.Slack
+- name: Install Slack
+  community.general.flatpak:
+    name: com.slack.Slack
+    state: present
+    method: user
+  tags:
+    - flatpak
+  when: ansible_os_family == "Debian"
