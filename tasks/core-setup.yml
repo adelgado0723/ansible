@@ -169,6 +169,8 @@
       - xdg-utils
       - xfce4-power-manager
       - pinta # not sure if arch has this one
+      - sshfs # not sure if arch has this one
+
   tags:
     - install
     - neovim
