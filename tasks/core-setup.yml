@@ -129,6 +129,10 @@
         'python3',
         'python3-pip',
         'wget',
+        'libkrb5-dev',
+        'libsystemd-dev',
+        'mtp-tools'
+
       ]
   tags:
     - install
@@ -168,9 +172,8 @@
       - vlc
       - xdg-utils
       - xfce4-power-manager
-      - pinta # not sure if arch has this one
-      - sshfs # not sure if arch has this one
-
+      - pinta
+      - sshfs
   tags:
     - install
     - neovim
