@@ -1,0 +1,83 @@
+- name: Update Package Manager - Arch - Pacman -Syu
+  become: true
+  community.general.pacman:
+    update_cache: true
+    upgrade: true
+  tags:
+    - update
+  when: ansible_os_family == "Archlinux"
+
+- name: Update Package Manager - Debian - Apt
+  become: true
+  ansible.builtin.apt:
+    force_apt_get: true
+    update_cache: true
+    state: present
+  tags:
+    - update
+  when: ansible_os_family == "Debian"
+
+- name: Upgrade all flatpaks 📅
+  ansible.builtin.command: flatpak update --noninteractive
+  # register: flatpak_update_output
+  # changed_when: "'app/' in flatpak_update_output.stdout"
+  tags:
+    - update
+
+- name: Upgrade all Cargo Packages
+  ansible.builtin.command: cargo install-update --all
+  # register: cargo_update_output
+  # changed_when: "'app/' in cargo_update_output.stdout"
+  tags:
+    - update
+
+- name: Upgrade all Go Packages
+  ansible.builtin.command: go-global-update
+  # register: go_update_output
+  # changed_when: "'app/' in go_update_output.stdout"
+  tags:
+    - update
+
+- name: Install golangci_lint - it fails to update sometimes
+  ansible.builtin.command: /usr/local/go/bin/go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+  # register: golint_update_output
+  # changed_when: "'app/' in golint_update_output.stdout"
+  tags:
+    - update
+
+- name: Upgrade Nix Packages
+  ansible.builtin.command: "nix-env -u '*'"
+  # register: nix_update_output
+  # changed_when: "'app/' in nix_update_output.stdout"
+  tags:
+    - update
+
+- name: Upgrade NPM Packages
+  ansible.builtin.shell: 'npm update --global && npm upgrade --global && npm audit fix'
+  # register: npm_update_output
+  # changed_when: "'app/' in npm_update_output.stdout"
+  tags:
+    - update
+
+- name: Upgrade Pip3 Packages
+  ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+  # register: pip3_update_output
+  # changed_when: "'app/' in pip3_update_output.stdout"
+  tags:
+    - update
+
+- name: Upgrade Root Pip3 Packages
+  become: true
+  ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+  # register: pip3_root_update_output
+  # changed_when: "'app/' in pip3_root_update_output.stdout"
+  tags:
+    - update
+
+- name: Upgrade all Snaps
+  ansible.builtin.command: snap refresh
+  become: true
+  # register: snap_update_output
+  # changed_when: "'app/' in snap_update_output.stdout"
+  tags:
+    - update

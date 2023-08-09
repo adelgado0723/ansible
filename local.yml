@@ -12,7 +12,7 @@
   pre_tasks:
     - name: Update Package Manager - Arch - Pacman -Syu
       become: true
-      ansible.builtin.pacman:
+      community.general.pacman:
         update_cache: true
         upgrade: true
       tags:
@@ -37,6 +37,7 @@
   collections:
     - community.general.snap
     - community.general.flatpak
+    - community.general.pacman
 
   tasks:
     - include: tasks/alacritty-build.yml
@@ -79,3 +80,4 @@
     - include: tasks/tmux-setup.yml
     - include: tasks/zoom.yml
     - include: tasks/zsh-setup.yml
+    - include: tasks/update-all-packages.yml

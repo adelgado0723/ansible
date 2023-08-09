@@ -59,6 +59,8 @@
         'python-pip',
         'stow',
         'wget',
+        'virtualbox',
+        'virtualbox-host-modules-arch',
       ]
     state: present
   tags:
@@ -131,8 +133,8 @@
         'wget',
         'libkrb5-dev',
         'libsystemd-dev',
-        'mtp-tools'
-
+        'mtp-tools',
+        'virtualbox',
       ]
   tags:
     - install
