@@ -64,7 +64,7 @@
   # register: pip3_update_output
   # changed_when: "'app/' in pip3_update_output.stdout"
   tags:
-    - update
+    - update-pip
 
 - name: Upgrade Root Pip3 Packages
   become: true
@@ -72,7 +72,7 @@
   # register: pip3_root_update_output
   # changed_when: "'app/' in pip3_root_update_output.stdout"
   tags:
-    - update
+    - update-pip-root
 
 - name: Upgrade all Snaps
   ansible.builtin.command: snap refresh
