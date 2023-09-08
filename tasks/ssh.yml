@@ -156,7 +156,7 @@
 
 - name: Decrypt brave stuff
   copy:
-    src: '../brave/*'
+    src: '../brave/'
     dest: '{{ home }}/.ssh/brave'
     mode: 0644
     owner: '{{ user }}'

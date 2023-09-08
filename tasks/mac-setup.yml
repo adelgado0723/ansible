@@ -151,6 +151,15 @@
   tags:
     - mac-setup
 
+- name: Install Compass
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/mongodb-compass
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
 - name: Install Amethyst
   become: true
   community.general.homebrew:
