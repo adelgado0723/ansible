@@ -111,7 +111,9 @@
 
 # "yamlls"
 - name: Install yamlls
-  ansible.builtin.command: yarn global add yaml-language-server
+  ansible.builtin.npm:
+    name: yaml-language-server
+    global: true
   tags:
     - install
     - lsp
