@@ -14,7 +14,6 @@
   when: ansible_os_family == "Debian"
 
 - name: install zsh - MacOSX
-  become: true
   community.general.homebrew:
     name: zsh
     state: present

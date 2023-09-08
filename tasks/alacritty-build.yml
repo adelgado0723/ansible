@@ -133,7 +133,6 @@
 # cp extra/completions/_alacritty ${ZDOTDIR:-~}/.zsh_functions/_alacritty
 
 - name: Install Alacritty - Mac
-  become: true
   community.general.homebrew:
     name: homebrew/cask/alacritty
     state: present

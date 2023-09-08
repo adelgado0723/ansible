@@ -1,5 +1,4 @@
 - name: Install ranger
-  become: true
   community.general.homebrew:
     name: ranger
     state: present
@@ -8,7 +7,6 @@
     - mac-setup
 
 - name: Install fzf
-  become: true
   community.general.homebrew:
     name: fzf
     state: present
@@ -17,7 +15,6 @@
     - mac-setup
 
 - name: Install chafa
-  become: true
   community.general.homebrew:
     name: chafa
     state: present
@@ -26,7 +23,6 @@
     - mac-setup
 
 - name: Install beekeeper
-  become: true
   community.general.homebrew:
     name: homebrew/cask/beekeeper-studio
     state: present
@@ -35,7 +31,6 @@
     - mac-setup
 
 - name: Install ninja build system tool
-  become: true
   community.general.homebrew:
     name: ninja
     state: present
@@ -44,7 +39,6 @@
     - mac-setup
 
 - name: Install make
-  become: true
   community.general.homebrew:
     name: make
     state: present
@@ -53,7 +47,6 @@
     - mac-setup
 
 - name: Install pandoc
-  become: true
   community.general.homebrew:
     name: pandoc
     state: present
@@ -62,7 +55,6 @@
     - mac-setup
 
 - name: Install stow
-  become: true
   community.general.homebrew:
     name: stow
     state: present
@@ -71,7 +63,6 @@
     - mac-setup
 
 - name: Install stow
-  become: true
   community.general.homebrew:
     name: stow
     state: present
@@ -80,7 +71,6 @@
     - mac-setup
 
 - name: Install trash
-  become: true
   community.general.homebrew:
     name: trash
     state: present
@@ -89,7 +79,6 @@
     - mac-setup
 
 - name: Install ripgrep
-  become: true
   community.general.homebrew:
     name: ripgrep
     state: present
@@ -98,7 +87,6 @@
     - mac-setup
 
 - name: Install jq
-  become: true
   community.general.homebrew:
     name: jq
     state: present
@@ -107,7 +95,6 @@
     - mac-setup
 
 - name: Install meson
-  become: true
   community.general.homebrew:
     name: meson
     state: present
@@ -116,7 +103,6 @@
     - mac-setup
 
 - name: Install Brave
-  become: true
   community.general.homebrew:
     name: homebrew/cask/brave-browser
     state: present
@@ -125,7 +111,6 @@
     - mac-setup
 
 - name: Install Slack
-  become: true
   community.general.homebrew:
     name: homebrew/cask/brave-browser
     state: present
@@ -134,7 +119,6 @@
     - mac-setup
 
 - name: Install Chrome
-  become: true
   community.general.homebrew:
     name: homebrew/cask/google-chrome
     state: present
@@ -143,7 +127,6 @@
     - mac-setup
 
 - name: Install Postman
-  become: true
   community.general.homebrew:
     name: homebrew/cask/postman
     state: present
@@ -152,7 +135,6 @@
     - mac-setup
 
 - name: Install Compass
-  become: true
   community.general.homebrew:
     name: homebrew/cask/mongodb-compass
     state: present
@@ -161,7 +143,6 @@
     - mac-setup
 
 - name: Install Amethyst
-  become: true
   community.general.homebrew:
     name: homebrew/cask/amethyst
     state: present
@@ -170,7 +151,6 @@
     - mac-setup
 
 - name: Install pyenv
-  become: true
   community.general.homebrew:
     name: pyenv
     state: present

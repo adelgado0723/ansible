@@ -30,7 +30,6 @@
   when: ansible_os_family == "Debian"
 
 - name: Install go
-  become: true
   community.general.homebrew:
     name: go
     state: present

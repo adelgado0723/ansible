@@ -58,7 +58,6 @@
     - docker
 
 - name: Install docker
-  become: true
   community.general.homebrew:
     name: docker
     state: present
@@ -68,7 +67,6 @@
     - mac-setup
 
 - name: Install docker compose
-  become: true
   community.general.homebrew:
     name: docker-compose
     state: present
