@@ -22,13 +22,14 @@
   tags:
     - mac-setup
 
-- name: Install beekeeper
-  community.general.homebrew:
-    name: homebrew/cask/beekeeper-studio
-    state: present
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
+# installs, but throws an error
+# - name: Install beekeeper
+#   community.general.homebrew:
+#     name: homebrew/cask/beekeeper-studio
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
 
 - name: Install ninja build system tool
   community.general.homebrew:
@@ -49,14 +50,6 @@
 - name: Install pandoc
   community.general.homebrew:
     name: pandoc
-    state: present
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
-
-- name: Install stow
-  community.general.homebrew:
-    name: stow
     state: present
   when: ansible_distribution == 'MacOSX'
   tags:
@@ -102,53 +95,68 @@
   tags:
     - mac-setup
 
-- name: Install Brave
-  community.general.homebrew:
-    name: homebrew/cask/brave-browser
-    state: present
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
+# installs, but throws an error
+# - name: Install Brave
+#   community.general.homebrew:
+#     name: homebrew/cask/brave-browser
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
 
-- name: Install Slack
-  community.general.homebrew:
-    name: homebrew/cask/brave-browser
-    state: present
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
+# installs, but throws an error
+# - name: Install Slack
+#   community.general.homebrew:
+#     name: homebrew/cask/slack
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
 
-- name: Install Chrome
-  community.general.homebrew:
-    name: homebrew/cask/google-chrome
-    state: present
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
+# installs, but throws a missing checksum error
+# - name: Install Chrome
+#   community.general.homebrew:
+#     name: homebrew/cask/google-chrome
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
 
-- name: Install Postman
-  community.general.homebrew:
-    name: homebrew/cask/postman
-    state: present
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
+# installs, but throws an error
+# - name: Install Postman
+#   community.general.homebrew:
+#     name: homebrew/cask/postman
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
 
-- name: Install Compass
-  community.general.homebrew:
-    name: homebrew/cask/mongodb-compass
-    state: present
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
+# installs, but throws an error
+# - name: Install Nordlayer VPN
+#   community.general.homebrew:
+#     name: homebrew/cask/nordlayer
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
 
-- name: Install Amethyst
-  community.general.homebrew:
-    name: homebrew/cask/amethyst
-    state: present
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
+# installs, but throws an error
+# - name: Install Compass
+#   community.general.homebrew:
+#     name: homebrew/cask/mongodb-compass
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
+
+# installs, but throws an error
+# - name: Install Amethyst
+#   community.general.homebrew:
+#     name: homebrew/cask/amethyst
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
 
 - name: Install pyenv
   community.general.homebrew:
@@ -158,26 +166,34 @@
   tags:
     - mac-setup
 
-- name: Install python version
-  ansible.builtin.shell: pyenv install 3.11.5
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
+# - name: Install python version
+#   ansible.builtin.shell: pyenv install 3.11.5
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
+# 
+# - name: Update zshrc - set pyenv root
+#   ansible.builtin.shell: echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
+# 
+# - name: Update zshrc - export it on path
+#   ansible.builtin.shell: echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
+# 
+# - name: Update zshrc - set pyenv init in terminal
+#   ansible.builtin.shell: echo 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init --path)"\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
 
-- name: Update zshrc - set pyenv root
-  ansible.builtin.shell: echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
-
-- name: Update zshrc - export it on path
-  ansible.builtin.shell: echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
-
-- name: Update zshrc - set pyenv init in terminal
-  ansible.builtin.shell: echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init --path)"\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+- name: cmake
+  community.general.homebrew:
+    name: cmake
+    state: present
   when: ansible_distribution == 'MacOSX'
   tags:
     - mac-setup
