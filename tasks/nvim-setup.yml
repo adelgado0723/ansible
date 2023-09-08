@@ -63,3 +63,12 @@
   tags:
     - install
     - neovim
+  when: ansible_os_family == "Debian"
+
+- name: Install luarocks - Mac
+  community.general.homebrew:
+    name: luarocks
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup

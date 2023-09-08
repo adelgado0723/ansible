@@ -3,8 +3,17 @@
   ansible.builtin.package:
     name: fontconfig
     state: present
+  when: ansible_distribution != 'MacOSX'
   tags:
     - fonts
+
+- name: Install fontconfig - Mac
+  community.general.homebrew:
+    name: fontconfig
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
 - name: Fonts - create folder if it doesn't exist
   ansible.builtin.file:
@@ -16,6 +25,7 @@
     - install
     - fonts
 
+# broken url
 - name: Install agave nerd font
   ansible.builtin.command: curl -fLo "agave regular Nerd Font Complete.ttf"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Agave/complete/agave%20regular%20Nerd%20Font%20Complete.ttf
   args:
@@ -24,6 +34,7 @@
     - install
     - fonts
 
+# broken url
 - name: Install big blue terminal font
   ansible.builtin.command: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
   args:
@@ -47,7 +58,7 @@
   tags:
     - install
     - fonts
-
+#
 - name: Install fantasque sans mono font - bold
   ansible.builtin.command: curl -fLo "Fantasque Sans Mono Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Bold/complete/Fantasque%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete.ttf
   args:

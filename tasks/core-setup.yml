@@ -177,6 +177,7 @@
       - pinta
       - sshfs
       - android-sdk # on arch?
+  when: ansible_distribution != 'MacOSX'
   tags:
     - install
     - neovim
