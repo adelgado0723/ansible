@@ -1,19 +1,19 @@
 - name: Install lazygit
-  ansible.builtin.command: '/usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest'
+  ansible.builtin.command: '/opt/homebrew/bin/go install github.com/jesseduffield/lazygit@latest'
   tags:
     - install
     - core
     - go
 
 - name: Install gum
-  ansible.builtin.command: '/usr/local/go/bin/go install github.com/charmbracelet/gum@latest'
+  ansible.builtin.command: '/opt/homebrew/bin/go install github.com/charmbracelet/gum@latest'
   tags:
     - install
     - core
     - go
 
 - name: Install go-global-update
-  ansible.builtin.command: '/usr/local/go/bin/go install github.com/Gelio/go-global-update@latest'
+  ansible.builtin.command: '/opt/homebrew/bin/go install github.com/Gelio/go-global-update@latest'
   tags:
     - install
     - core
