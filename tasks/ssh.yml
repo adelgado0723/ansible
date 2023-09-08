@@ -15,11 +15,39 @@
     owner: '{{ user }}'
   tags:
     - ssh
+
 - name: Install ssh key public - id_rsa
   copy:
     src: '../.ssh/id_rsa.pub'
     dest: '{{ home }}/.ssh/id_rsa.pub'
     mode: 0644
+    owner: '{{ user }}'
+  tags:
+    - ssh
+
+- name: Install ssh key - id_rsa_2
+  copy:
+    src: '../.ssh/id_rsa_2'
+    dest: '{{ home }}/.ssh/id_rsa_2'
+    mode: 0600
+    owner: '{{ user }}'
+  tags:
+    - ssh
+
+- name: Install ssh key - id_rsa_3
+  copy:
+    src: '../.ssh/id_rsa_3'
+    dest: '{{ home }}/.ssh/id_rsa_3'
+    mode: 0600
+    owner: '{{ user }}'
+  tags:
+    - ssh
+
+- name: Install ssh key - belleview-microgreens
+  copy:
+    src: '../.ssh/belleview-microgreens'
+    dest: '{{ home }}/.ssh/belleview-microgreens'
+    mode: 0600
     owner: '{{ user }}'
   tags:
     - ssh
@@ -94,6 +122,69 @@
   copy:
     src: '../.ssh/config'
     dest: '{{ home }}/.ssh/config'
+    mode: 0644
+    owner: '{{ user }}'
+  tags:
+    - ssh
+
+- name: Ensure git secrets directory exists.
+  file:
+    dest: '{{ home }}/.ssh/git/'
+    mode: 0700
+    owner: '{{ user }}'
+    state: directory
+  tags:
+    - ssh
+
+- name: Decrypt git toks
+  copy:
+    src: '../git/toks'
+    dest: '{{ home }}/.ssh/git'
+    mode: 0644
+    owner: '{{ user }}'
+  tags:
+    - ssh
+
+- name: Ensure brave secrets directory exists.
+  file:
+    dest: '{{ home }}/.ssh/brave/'
+    mode: 0700
+    owner: '{{ user }}'
+    state: directory
+  tags:
+    - ssh
+
+- name: Decrypt brave stuff
+  copy:
+    src: '../brave/*'
+    dest: '{{ home }}/.ssh/brave'
+    mode: 0644
+    owner: '{{ user }}'
+  tags:
+    - ssh
+
+- name: Copy system env file
+  copy:
+    src: '../env/.env'
+    dest: '{{ home }}/.env'
+    mode: 0644
+    owner: '{{ user }}'
+  tags:
+    - ssh
+
+- name: Copy pass file
+  copy:
+    src: '../env/.vp.txt'
+    dest: '{{ home }}/.vp.txt'
+    mode: 0644
+    owner: '{{ user }}'
+  tags:
+    - ssh
+
+- name: Copy history file
+  copy:
+    src: '../env/.zsh_history'
+    dest: '{{ home }}/.zsh_history'
     mode: 0644
     owner: '{{ user }}'
   tags:

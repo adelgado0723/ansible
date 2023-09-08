@@ -23,3 +23,12 @@
   tags:
     - notes
   when: ansible_distribution != 'MacOSX'
+
+- name: copy notes
+  copy:
+    src: '../notes/notes.7z'
+    dest: '{{ home }}/notes/'
+    mode: 0755
+    owner: '{{ user }}'
+  tags:
+    - notes
