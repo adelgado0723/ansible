@@ -9,6 +9,56 @@
     - productivity
   when: ansible_os_family == "Archlinux"
 
+- name: Install wireshark - Mac
+  become: true
+  community.general.homebrew:
+    name: wireshark
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - productivity
+
+- name: Install libreoffice - Mac
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/libreoffice
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - productivity
+
+- name: Install flameshot - Mac
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/flameshot
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - productivity
+
+- name: Install gimp - Mac
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/gimp 
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - productivity
+
+- name: Install xclip - Mac
+  become: true
+  community.general.homebrew:
+    name: xclip
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - productivity
+
 - name: Install productivity tools - Debian
   become: true
   apt:

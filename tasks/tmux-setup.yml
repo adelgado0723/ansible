@@ -3,9 +3,20 @@
   ansible.builtin.package:
     name: tmux
     state: present
+  when: ansible_distribution != 'MacOSX'
   tags:
     - install
     - dotfiles
+    - tmux
+
+- name: Install tmux
+  become: true
+  community.general.homebrew:
+    name: tmux
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
     - tmux
 
 - name: create tpm plugins folder if it doesn't exist

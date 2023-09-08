@@ -31,6 +31,13 @@
         - core
       when: ansible_os_family == "Debian"
 
+    - name: Update Homebrew on Mac
+      become: true
+      community.general.homebrew:
+        update_homebrew: true
+        upgrade_all: true
+      when: ansible_distribution == 'MacOSX'
+
   roles:
     - role: nix-install
 
@@ -38,6 +45,7 @@
     - community.general.snap
     - community.general.flatpak
     - community.general.pacman
+    - community.general.homebrew
 
   tasks:
     - include: tasks/alacritty-build.yml
@@ -81,3 +89,4 @@
     - include: tasks/zoom.yml
     - include: tasks/zsh-setup.yml
     - include: tasks/update-all-packages.yml
+    - include: tasks/mac-setup.yml

@@ -1,0 +1,194 @@
+- name: Install ranger
+  become: true
+  community.general.homebrew:
+    name: ranger
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install fzf
+  become: true
+  community.general.homebrew:
+    name: fzf
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install chafa
+  become: true
+  community.general.homebrew:
+    name: chafa
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install beekeeper
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/beekeeper-studio
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install ninja build system tool
+  become: true
+  community.general.homebrew:
+    name: ninja
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install make
+  become: true
+  community.general.homebrew:
+    name: make
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install pandoc
+  become: true
+  community.general.homebrew:
+    name: pandoc
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install stow
+  become: true
+  community.general.homebrew:
+    name: stow
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install stow
+  become: true
+  community.general.homebrew:
+    name: stow
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install trash
+  become: true
+  community.general.homebrew:
+    name: trash
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install ripgrep
+  become: true
+  community.general.homebrew:
+    name: ripgrep
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install jq
+  become: true
+  community.general.homebrew:
+    name: jq
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install meson
+  become: true
+  community.general.homebrew:
+    name: meson
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install Brave
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/brave-browser
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install Slack
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/brave-browser
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install Chrome
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/google-chrome
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install Postman
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/postman
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install Amethyst
+  become: true
+  community.general.homebrew:
+    name: homebrew/cask/amethyst
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install pyenv
+  become: true
+  community.general.homebrew:
+    name: pyenv
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install python version
+  ansible.builtin.shell: pyenv install 3.11.5
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Update zshrc - set pyenv root
+  ansible.builtin.shell: echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Update zshrc - export it on path
+  ansible.builtin.shell: echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Update zshrc - set pyenv init in terminal
+  ansible.builtin.shell: echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init --path)"\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup

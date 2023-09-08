@@ -26,8 +26,8 @@
 
 - name: Upgrade all Cargo Packages
   ansible.builtin.command: cargo install-update --all
-  # register: cargo_update_output
-  # changed_when: "'app/' in cargo_update_output.stdout"
+  register: cargo_update_output
+  changed_when: "'app/' in cargo_update_output.stdout"
   tags:
     - update
 

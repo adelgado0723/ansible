@@ -176,6 +176,7 @@
       - xfce4-power-manager
       - pinta
       - sshfs
+      - android-sdk # on arch?
   tags:
     - install
     - neovim

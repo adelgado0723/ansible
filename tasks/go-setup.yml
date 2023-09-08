@@ -6,6 +6,7 @@
     - install
     - core
     - go
+  when: ansible_os_family == "Debian"
 
 - name: extract tar file
   become: true
@@ -16,6 +17,7 @@
     - install
     - core
     - go
+  when: ansible_os_family == "Debian"
 
 - name: remove tar file
   ansible.builtin.file:
@@ -25,3 +27,14 @@
     - install
     - core
     - go
+  when: ansible_os_family == "Debian"
+
+- name: Install go
+  become: true
+  community.general.homebrew:
+    name: go
+    state: present
+  tags:
+    - go
+    - mac-setup
+  when: ansible_distribution == 'MacOSX'

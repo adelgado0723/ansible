@@ -4,6 +4,7 @@
     name: meson
   tags:
     - pip-packages
+  when: ansible_distribution != 'MacOSX'
 
 - name: Install ninja
   become: true
@@ -11,6 +12,7 @@
     name: ninja
   tags:
     - pip-packages
+  when: ansible_distribution != 'MacOSX'
 
 - name: Install the AWS cli
   become: true

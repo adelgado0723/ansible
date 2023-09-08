@@ -6,6 +6,7 @@
     owner: '{{ user }}'
   tags:
     - notes
+  when: ansible_distribution != 'MacOSX'
 
 - name: BUMCTrustees - clone from github
   ansible.builtin.git:
@@ -13,6 +14,7 @@
     dest: '{{ home }}/notes/BUMCTrustees'
   tags:
     - notes
+  when: ansible_distribution != 'MacOSX'
 
 - name: Brag repo - clone from github
   ansible.builtin.git:
@@ -20,3 +22,4 @@
     dest: '{{ home }}/notes/brag'
   tags:
     - notes
+  when: ansible_distribution != 'MacOSX'
