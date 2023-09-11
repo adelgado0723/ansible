@@ -1,6 +1,7 @@
 # To Do
 
 - [ ] update font urls
+- [ ] don't update zshrc if pyenv stuff is there
 - [ ] organize and improve tags of nix packages
 - [ ] investigate switching to a terminal that supports some image protocol
     - update image previews

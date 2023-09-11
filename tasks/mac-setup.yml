@@ -143,29 +143,38 @@
   tags:
     - mac-setup
 
-# - name: Install python version
-#   ansible.builtin.shell: pyenv install 3.11.5
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
-# 
-# - name: Update zshrc - set pyenv root
-#   ansible.builtin.shell: echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
-# 
-# - name: Update zshrc - export it on path
-#   ansible.builtin.shell: echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
-# 
-# - name: Update zshrc - set pyenv init in terminal
-#   ansible.builtin.shell: echo 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init --path)"\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Check if python version is installed
+  ansible.builtin.stat:
+    path: '{{ home }}/.pyenv/versions/{{ python_version }}'
+  register: python_version_exists 
+  tags:
+    - mac-setup
+
+- name: Install python version
+  ansible.builtin.shell: 'pyenv install {{ python_version }}'
+  when:
+    - ansible_distribution == 'MacOSX'
+    - not python_version_exists.stat.exists
+  tags:
+    - mac-setup
+
+- name: Update zshrc - set pyenv root
+  ansible.builtin.shell: echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Update zshrc - export it on path
+  ansible.builtin.shell: echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Update zshrc - set pyenv init in terminal
+  ansible.builtin.shell: echo 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init --path)"\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
 - name: Install VSCode
   ansible.builtin.command: 'brew install --cask visual-studio-code'
@@ -181,40 +190,21 @@
   tags:
     - mac-setup
 
-# - name: Install Nerd Fonts
-#   ansible.builtin.shell: brew tap homebrew/cask-fonts
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
-#
-# - name: Install FantasqueSansM Nerd Font
-#   community.general.homebrew:
-#     name: homebrew/cask/font-fantasque-sans-mono-nerd-font
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
-#
-# - name: Install Fira Code
-#   community.general.homebrew:
-#     name: homebrew/cask/font-fira-code-nerd-font
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
-#
-# - name: Install Terminess TTF Nerd Font
-#   community.general.homebrew:
-#     name: homebrew/cask/font-terminess-ttf-nerd-font
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
-#
-# - name: Install Hack Nerd Font
-#   community.general.homebrew:
-#     name: homebrew/cask/font-hack-nerd-font
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install Nerd Fonts
+  ansible.builtin.shell: |
+    brew tap homebrew/cask-fonts
+    brew install --cask font-fantasque-sans-mono-nerd-font
+    brew install --cask font-fira-code-nerd-font
+    brew install --cask font-terminess-ttf-nerd-font
+    brew install --cask font-hack-nerd-font
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install and start SHKD
+  ansible.builtin.shell: |
+    brew install koekeishiya/formulae/skhd
+    skhd --start-service
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
