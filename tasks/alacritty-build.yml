@@ -115,6 +115,7 @@
   tags:
     - alacritty
   when: ansible_distribution != 'MacOSX'
+
 # Man Page
 #
 # sudo mkdir -p /usr/local/share/man/man1 # gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
@@ -131,12 +132,3 @@
 # Then copy the completion file to this directory:
 #
 # cp extra/completions/_alacritty ${ZDOTDIR:-~}/.zsh_functions/_alacritty
-
-# - name: Install Alacritty - Mac
-#   community.general.homebrew:
-#     name: homebrew/cask/alacritty
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#   #  - mac-setup
-#     - alacritty

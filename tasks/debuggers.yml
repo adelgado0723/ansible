@@ -30,7 +30,7 @@
     - debuggers
 
 - name: Install delve
-  ansible.builtin.command: '/usr/local/go/bin/go install github.com/go-delve/delve/cmd/dlv@latest'
+  ansible.builtin.command: '{{ go_bin_path }}/go install github.com/go-delve/delve/cmd/dlv@latest'
   tags:
     - debuggers
 

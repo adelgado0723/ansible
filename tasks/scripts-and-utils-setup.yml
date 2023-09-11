@@ -4,6 +4,7 @@
     state: directory
     mode: 0755
     owner: '{{ user }}'
+  when: ansible_distribution != 'MacOSX'
   tags:
     - install
     - scripts-setup
@@ -13,6 +14,7 @@
     accept_hostkey: true
     repo: 'git@github.com:adelgado0723/dmenu.git'
     dest: '{{ home }}/.config/dmenu/dmenu/'
+  when: ansible_distribution != 'MacOSX'
   tags:
     - install
     - scripts-setup
@@ -22,6 +24,7 @@
   ansible.builtin.command: make clean install
   args:
     chdir: '{{ home }}/.config/dmenu/dmenu'
+  when: ansible_distribution != 'MacOSX'
   tags:
     - install
     - scripts-setup
@@ -49,6 +52,7 @@
   ansible.builtin.command: make clean build install
   args:
     chdir: '{{ home }}/.config/dmenu/dmscripts'
+  when: ansible_distribution != 'MacOSX'
   tags:
     - install
     - scripts-setup
@@ -76,6 +80,7 @@
   ansible.builtin.command: make clean install
   args:
     chdir: '{{ home }}/.config/slock'
+  when: not slock.stat.exists and ansible_distribution != 'MacOSX'
   tags:
     - install
     - scripts-setup
@@ -90,14 +95,14 @@
     - install
     - scripts-setup
 
-- name: Scripts - clone from github
-  ansible.builtin.git:
-    accept_hostkey: true
-    repo: 'git@github.com:adelgado0723/scripts.git'
-    dest: '{{ home }}/scripts/'
-  tags:
-    - install
-    - scripts-setup
+# - name: Scripts - clone from github
+#   ansible.builtin.git:
+#     accept_hostkey: true
+#     repo: 'git@github.com:adelgado0723/scripts.git'
+#     dest: '{{ home }}/scripts/'
+#   tags:
+#     - install
+#     - scripts-setup
 
 - name: Scripts - install
   become: true

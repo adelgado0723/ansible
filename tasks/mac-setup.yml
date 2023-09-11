@@ -190,6 +190,15 @@
 #   tags:
 #     - mac-setup
 
+# installs, but throws an error
+# - name: Install VSCode
+#   community.general.homebrew:
+#     name: homebrew/cask/visual-studio-code
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
+
 - name: cmake
   community.general.homebrew:
     name: cmake
@@ -197,3 +206,41 @@
   when: ansible_distribution == 'MacOSX'
   tags:
     - mac-setup
+
+# - name: Install Nerd Fonts
+#   ansible.builtin.shell: brew tap homebrew/cask-fonts
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
+#
+# - name: Install FantasqueSansM Nerd Font
+#   community.general.homebrew:
+#     name: homebrew/cask/font-fantasque-sans-mono-nerd-font
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
+#
+# - name: Install Fira Code
+#   community.general.homebrew:
+#     name: homebrew/cask/font-fira-code-nerd-font
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
+#
+# - name: Install Terminess TTF Nerd Font
+#   community.general.homebrew:
+#     name: homebrew/cask/font-terminess-ttf-nerd-font
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
+#
+# - name: Install Hack Nerd Font
+#   community.general.homebrew:
+#     name: homebrew/cask/font-hack-nerd-font
+#     state: present
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
