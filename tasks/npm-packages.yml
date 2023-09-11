@@ -13,13 +13,6 @@
   tags:
     - npm-packages
 
-- name: Install Typescript server
-  npm:
-    name: typescript-language-server
-    global: true
-  tags:
-    - npm-packages
-
 - name: Install Typescript
   npm:
     name: typescript
@@ -70,7 +63,7 @@
 
 - name: pm2 completion install
   become: true
-  ansible.builtin.command: pm2 completion instal
+  ansible.builtin.command: pm2 completion install
   tags:
     - npm-packages
 

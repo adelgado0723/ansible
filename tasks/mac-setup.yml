@@ -22,14 +22,11 @@
   tags:
     - mac-setup
 
-# installs, but throws an error
-# - name: Install beekeeper
-#   community.general.homebrew:
-#     name: homebrew/cask/beekeeper-studio
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install beekeeper
+  ansible.builtin.command: 'brew install --cask beekeeper-studio'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
 - name: Install ninja build system tool
   community.general.homebrew:
@@ -95,68 +92,48 @@
   tags:
     - mac-setup
 
-# installs, but throws an error
-# - name: Install Brave
-#   community.general.homebrew:
-#     name: homebrew/cask/brave-browser
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install Brave
+  ansible.builtin.command: 'brew install --cask brave-browser'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
-# installs, but throws an error
-# - name: Install Slack
-#   community.general.homebrew:
-#     name: homebrew/cask/slack
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install Slack
+  ansible.builtin.command: 'brew install --cask slack'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
 # installs, but throws a missing checksum error
-# - name: Install Chrome
-#   community.general.homebrew:
-#     name: homebrew/cask/google-chrome
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install Chrome
+  ansible.builtin.command: 'brew install --cask google-chrome'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
-# installs, but throws an error
-# - name: Install Postman
-#   community.general.homebrew:
-#     name: homebrew/cask/postman
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install Postman
+  ansible.builtin.command: 'brew install --cask postman'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
-# installs, but throws an error
-# - name: Install Nordlayer VPN
-#   community.general.homebrew:
-#     name: homebrew/cask/nordlayer
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install Nordlayer VPN
+  ansible.builtin.command: 'brew install --cask nordlayer'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
-# installs, but throws an error
-# - name: Install Compass
-#   community.general.homebrew:
-#     name: homebrew/cask/mongodb-compass
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install Compass
+  ansible.builtin.command: 'brew install --cask mongodb-compass'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
-# installs, but throws an error
-# - name: Install Amethyst
-#   community.general.homebrew:
-#     name: homebrew/cask/amethyst
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install Amethyst
+  ansible.builtin.command: 'brew install --cask amethyst'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
 - name: Install pyenv
   community.general.homebrew:
@@ -190,14 +167,11 @@
 #   tags:
 #     - mac-setup
 
-# installs, but throws an error
-# - name: Install VSCode
-#   community.general.homebrew:
-#     name: homebrew/cask/visual-studio-code
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
+- name: Install VSCode
+  ansible.builtin.command: 'brew install --cask visual-studio-code'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
 
 - name: cmake
   community.general.homebrew:

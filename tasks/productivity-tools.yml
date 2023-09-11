@@ -18,35 +18,26 @@
     - mac-setup
     - productivity
 
-# installs, but throws an error
-#- name: Install libreoffice - Mac
-#  community.general.homebrew:
-#    name: homebrew/cask/libreoffice
-#    state: present
-#  when: ansible_distribution == 'MacOSX'
-#  tags:
-#    - mac-setup
-#    - productivity
+- name: Install libreoffice - Mac
+  ansible.builtin.command: 'brew install --cask libreoffice'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - productivity
 
-# installs, but mac doesn't like it (can't verify it's not malware)
-#- name: Install flameshot - Mac
-#  community.general.homebrew:
-#    name: homebrew/cask/flameshot
-#    state: present
-#  when: ansible_distribution == 'MacOSX'
-#  tags:
-#    - mac-setup
-#    - productivity
+- name: Install flameshot - Mac
+  ansible.builtin.command: 'brew install --cask flameshot'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - productivity
 
-# installs, but throws an error
-# - name: Install gimp - Mac
-#   community.general.homebrew:
-#     name: homebrew/cask/gimp 
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
-#     - productivity
+- name: Install gimp - Mac
+  ansible.builtin.command: 'brew install --cask gimp'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - productivity
 
 - name: Install xclip - Mac
   community.general.homebrew:
