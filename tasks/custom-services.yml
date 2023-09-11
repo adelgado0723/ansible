@@ -21,6 +21,7 @@
     dest: '/etc/systemd/system/lock.service'
     mode: 0775
     owner: '{{ user }}'
+  when: ansible_distribution != 'MacOSX'
   tags:
     - install
     - scripts-setup
@@ -31,7 +32,7 @@
     enabled: true
     masked: false
     scope: user
-  when: mpd_config
+  when: ansible_distribution != 'MacOSX'
   tags:
     - install
     - scripts-setup

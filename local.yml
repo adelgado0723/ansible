@@ -5,6 +5,8 @@
   vars:
     home: "{{ lookup('env', 'HOME') }}"
     user: "{{ lookup('env', 'USER') }}"
+    # go_bin_path: "/opt/homebrew/bin" # Mac
+    go_bin_path: "/usr/local/go/bin" # Linux
     go_version: '1.19.1'
     golangci_lint_version: '1.49.0'
     node_version: '16'
