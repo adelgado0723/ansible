@@ -36,12 +36,9 @@
     - zoom
   when: ansible_os_family == "Archlinux"
 
-# installs, but throws an error
-# - name: Install Zoom
-#   community.general.homebrew:
-#     name: homebrew/cask/zoom
-#     state: present
-#   when: ansible_distribution == 'MacOSX'
-#   tags:
-#     - mac-setup
-#     - zoom
+- name: Install Zoom - Mac
+  ansible.builtin.command: 'brew install --cask zoom'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - zoom

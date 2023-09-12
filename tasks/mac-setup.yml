@@ -208,3 +208,39 @@
   when: ansible_distribution == 'MacOSX'
   tags:
     - mac-setup
+
+- name: htop
+  community.general.homebrew:
+    name: htop
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install osxfuse
+  ansible.builtin.command: 'brew install --cask osxfuse'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install sshfs
+  community.general.homebrew:
+    name: sshfs
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install 7z
+  community.general.homebrew:
+    name: sevenzip
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install Karabiner Elements
+  ansible.builtin.command: 'brew install --cask karabiner-elements'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup

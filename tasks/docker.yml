@@ -66,10 +66,49 @@
     - docker
     - mac-setup
 
+- name: Install docker-machine
+  community.general.homebrew:
+    name: docker-machine
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - docker
+    - mac-setup
+
 - name: Install docker compose
   community.general.homebrew:
     name: docker-compose
     state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - docker
+    - mac-setup
+
+# this is a dependency here, but can't istall for arm using brew
+# - name: Install VirtualBox
+#   ansible.builtin.command: 'brew install --cask virtualbox'
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - docker
+#     - mac-setup
+#
+
+- name: Create VirtualBox Driver for docker-machine
+  ansible.builtin.command: 'docker-machine create --driver virtualbox default'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - docker
+    - mac-setup
+
+- name: Restart docker-machine
+  ansible.builtin.command: 'docker-machine restart'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - docker
+    - mac-setup
+
+- name: Regenerate Certs and Restart
+  ansible.builtin.shell: docker-machine regenerate-certs && docker-machine restart
   when: ansible_distribution == 'MacOSX'
   tags:
     - docker
