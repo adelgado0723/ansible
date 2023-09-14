@@ -123,9 +123,17 @@
   tags:
     - mac-setup
 
-- name: Install Compass
+- name: Install MongoDB Compass
   ansible.builtin.command: 'brew install --cask mongodb-compass'
   when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install MongoDB Tools
+  ansible.builtin.shell: |
+    brew tap mongodb/brew
+    brew install mongodb-database-tools
+    brew upgrade mongodb-database-tools
   tags:
     - mac-setup
 
@@ -217,20 +225,6 @@
   tags:
     - mac-setup
 
-- name: Install osxfuse
-  ansible.builtin.command: 'brew install --cask osxfuse'
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
-
-- name: Install sshfs
-  community.general.homebrew:
-    name: sshfs
-    state: present
-  when: ansible_distribution == 'MacOSX'
-  tags:
-    - mac-setup
-
 - name: Install 7z
   community.general.homebrew:
     name: sevenzip
@@ -239,8 +233,16 @@
   tags:
     - mac-setup
 
-- name: Install Karabiner Elements
-  ansible.builtin.command: 'brew install --cask karabiner-elements'
+- name: Install Zsh Completions
+  community.general.homebrew:
+    name: zsh-completions
+    state: present
   when: ansible_distribution == 'MacOSX'
   tags:
     - mac-setup
+
+# - name: Force Rebuild zcompdump
+#   ansible.builtin.shell: rm -f ~/.zcompdump && zsh -c "builtin autoload -XUz /usr/share/zsh/5.9/functions"
+#   when: ansible_distribution == 'MacOSX'
+#   tags:
+#     - mac-setup
