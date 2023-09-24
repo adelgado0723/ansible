@@ -206,10 +206,19 @@
     - install
     - lsp
 
-- name: Install astro
+- name: Install astro ls
   ansible.builtin.npm:
     name: '@astrojs/language-server'
     global: true
   tags:
     - install
     - lsp
+
+- name: Install docker compose ls
+  ansible.builtin.npm:
+    name: '@microsoft/compose-language-service'
+    global: true
+  tags:
+    - install
+    - lsp
+

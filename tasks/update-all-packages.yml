@@ -59,22 +59,22 @@
   tags:
     - update
 
-- name: Upgrade Pip3 Packages
-  # ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
-  ansible.builtin.shell: "pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
-  # register: pip3_update_output
-  # changed_when: "'app/' in pip3_update_output.stdout"
-  tags:
-    - update
+# - name: Upgrade Pip3 Packages
+#   # ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+#   ansible.builtin.shell: "pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+#   # register: pip3_update_output
+#   # changed_when: "'app/' in pip3_update_output.stdout"
+#   tags:
+#     - update
 
-- name: Upgrade Root Pip3 Packages
-  become: true
-  # ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
-  ansible.builtin.shell: "pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
-  # register: pip3_root_update_output
-  # changed_when: "'app/' in pip3_root_update_output.stdout"
-  tags:
-    - update
+# - name: Upgrade Root Pip3 Packages
+#   become: true
+#   # ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+#   ansible.builtin.shell: "pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+#   # register: pip3_root_update_output
+#   # changed_when: "'app/' in pip3_root_update_output.stdout"
+#   tags:
+#     - update
 
 - name: Upgrade all Snaps
   ansible.builtin.command: snap refresh

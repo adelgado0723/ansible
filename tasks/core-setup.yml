@@ -61,6 +61,7 @@
         'wget',
         'virtualbox',
         'virtualbox-host-modules-arch',
+        'libgirepository',
       ]
     state: present
   tags:
@@ -135,6 +136,7 @@
         'libsystemd-dev',
         'mtp-tools',
         'virtualbox',
+        'libgirepository1.0-dev',
       ]
   tags:
     - install
@@ -176,7 +178,8 @@
       - xfce4-power-manager
       - pinta
       - sshfs
-      - android-sdk # on arch?
+      - android-sdk
+      - redshift
   when: ansible_distribution != 'MacOSX'
   tags:
     - install
