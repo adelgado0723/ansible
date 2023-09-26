@@ -37,6 +37,7 @@
       - xwallpaper
       - yad
     state: present
+  when: ansible_distribution != 'MacOSX'
   tags:
     - dmscripts
 
@@ -71,6 +72,7 @@
   ansible.builtin.command: make clean install
   args:
     chdir: '{{ home }}/.config/dmenu/dmenu'
+  when: ansible_distribution != 'MacOSX'
   tags:
     - dmscripts
 
@@ -96,5 +98,6 @@
   ansible.builtin.command: make clean build install
   args:
     chdir: '{{ home }}/.config/dmenu/dmscripts'
+  when: ansible_distribution != 'MacOSX'
   tags:
     - dmscripts

@@ -1,6 +1,6 @@
 - hosts: localhost
   name: New System Setup
-  gather_facts: true
+  gather_facts: false
 
   vars:
     home: "{{ lookup('env', 'HOME') }}"
