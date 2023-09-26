@@ -1,5 +1,6 @@
 # To Do
 
+- [ ] set go path based on gathered facts
 - [ ] update font urls
 - [ ] don't update zshrc if pyenv stuff is there
 - [ ] organize and improve tags of nix packages
