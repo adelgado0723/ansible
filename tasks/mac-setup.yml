@@ -156,7 +156,7 @@
 - name: Check if python version is installed
   ansible.builtin.stat:
     path: '{{ home }}/.pyenv/versions/{{ python_version }}'
-  register: python_version_exists 
+  register: python_version_exists
   tags:
     - mac-setup
 
@@ -257,11 +257,41 @@
 #   tags:
 #     - mac-setup
 #
-#
-#
+# add `export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"` and `export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"`
+# to .zshrc for this to show up on the path and allow compilers to find it.
+- name: Install Java 11
+  community.general.homebrew:
+    name: java11
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Symlink the Java Installation
+  become: true
+  ansible.builtin.command: 'ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install OpenAPI Generator Tools
+  community.general.homebrew:
+    name: openapi-generator
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
 - name: Install Redis CLI Tools
   community.general.homebrew:
     name: redis
+    state: present
+  tags:
+    - mac-setup
+
+- name: Install GitHub CLI
+  community.general.homebrew:
+    name: gh
     state: present
   tags:
     - mac-setup
@@ -283,7 +313,7 @@
     - mac-setup
 # input the line below into the file you are editing.
 #  replace <yabai> with the path to the yabai binary (output of: which yabai).
-#  replace <user> with your username (output of: whoami). 
+#  replace <user> with your username (output of: whoami).
 #  replace <hash> with the sha256 hash of the yabai binary (output of: shasum -a 256 $(which yabai)).
 #   this hash must be updated manually after running brew upgrade.
 # <user> ALL=(root) NOPASSWD: sha256:<hash> <yabai> --load-sa
