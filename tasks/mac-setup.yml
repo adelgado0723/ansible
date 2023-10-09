@@ -296,6 +296,23 @@
   tags:
     - mac-setup
 
+- name: Install SketchyBar
+  ansible.builtin.shell: |
+    brew tap FelixKratz/formulae
+    brew install sketchybar
+    brew services start sketchybar
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+
+- name: Install sketchybar-app-font
+  ansible.builtin.get_url:
+    url: https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.17/sketchybar-app-font.ttf
+    dest: '{{ home }}/Library/Fonts'
+  tags:
+    - mac-setup
+
 - name: Install Yabai
   ansible.builtin.shell: |
     brew install koekeishiya/formulae/yabai
