@@ -17,12 +17,34 @@
     - update
   when: ansible_os_family == "Debian"
 
+- name: Update all packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+  tags:
+    - update
+  when: ansible_os_family == "Debian"
+
+- name: Upgrade the OS (apt-get dist-upgrade)
+  ansible.builtin.apt:
+    upgrade: dist
+  tags:
+    - update
+  when: ansible_os_family == "Debian"
+
+- name: Update Homebrew
+  community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true
+  when: ansible_distribution == 'MacOSX'
+
 - name: Upgrade all flatpaks 📅
   ansible.builtin.command: flatpak update --noninteractive
   # register: flatpak_update_output
   # changed_when: "'app/' in flatpak_update_output.stdout"
   tags:
     - update
+  when: ansible_os_family == "Debian"
 
 - name: Upgrade all Cargo Packages
   ansible.builtin.command: cargo install-update --all
@@ -51,6 +73,7 @@
   # changed_when: "'app/' in nix_update_output.stdout"
   tags:
     - update
+  when: ansible_os_family == "Debian"
 
 - name: Upgrade NPM Packages
   ansible.builtin.shell: 'npm update --global && npm upgrade --global && npm audit fix'
@@ -59,22 +82,22 @@
   tags:
     - update
 
-# - name: Upgrade Pip3 Packages
-#   # ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
-#   ansible.builtin.shell: "pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
-#   # register: pip3_update_output
-#   # changed_when: "'app/' in pip3_update_output.stdout"
-#   tags:
-#     - update
+- name: Upgrade Pip3 Packages
+  # ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+  ansible.builtin.shell: "pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+  # register: pip3_update_output
+  # changed_when: "'app/' in pip3_update_output.stdout"
+  tags:
+    - update
 
-# - name: Upgrade Root Pip3 Packages
-#   become: true
-#   # ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
-#   ansible.builtin.shell: "pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
-#   # register: pip3_root_update_output
-#   # changed_when: "'app/' in pip3_root_update_output.stdout"
-#   tags:
-#     - update
+- name: Upgrade Root Pip3 Packages
+  become: true
+  # ansible.builtin.shell: "set -o pipefail pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+  ansible.builtin.shell: "pip3 list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U"
+  # register: pip3_root_update_output
+  # changed_when: "'app/' in pip3_root_update_output.stdout"
+  tags:
+    - update
 
 - name: Upgrade all Snaps
   ansible.builtin.command: snap refresh
@@ -83,3 +106,4 @@
   # changed_when: "'app/' in snap_update_output.stdout"
   tags:
     - update
+  when: ansible_os_family == "Debian"

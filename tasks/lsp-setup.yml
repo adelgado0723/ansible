@@ -44,12 +44,12 @@
     - lsp
 
 # "gopls"
-- name: Install gopls
-  ansible.builtin.command: '{{ go_bin_path }}/go install golang.org/x/tools/gopls@latest'
-  tags:
-    - install
-    - lsp
-
+# - name: Install gopls
+#   ansible.builtin.command: '{{ go_bin_path }}/go install golang.org/x/tools/gopls@latest'
+#   tags:
+#     - install
+#     - lsp
+#
 # "golangci_lint_ls"
 - name: Install golangci_lint_ls
   ansible.builtin.command: '{{ go_bin_path }}/go install github.com/nametake/golangci-lint-langserver@latest'
