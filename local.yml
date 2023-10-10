@@ -1,6 +1,6 @@
 - hosts: localhost
   name: New System Setup
-  gather_facts: false
+  gather_facts: true
 
   vars:
     home: "{{ lookup('env', 'HOME') }}"
@@ -37,7 +37,6 @@
     - name: Update Homebrew on Mac
       community.general.homebrew:
         update_homebrew: true
-        upgrade_all: true
       when: ansible_distribution == 'MacOSX'
 
   roles:
