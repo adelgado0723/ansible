@@ -309,7 +309,8 @@
 - name: Install sketchybar-app-font
   ansible.builtin.get_url:
     url: https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.17/sketchybar-app-font.ttf
-    dest: '{{ home }}/Library/Fonts'
+    # dest: '{{ home }}/Library/Fonts'
+    dest: '/Library/Fonts'
   tags:
     - mac-setup
 
