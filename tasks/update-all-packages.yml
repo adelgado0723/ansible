@@ -61,7 +61,7 @@
     - update
 
 - name: Install golangci_lint - it fails to update sometimes
-  ansible.builtin.command: /usr/local/go/bin/go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+  ansible.builtin.command: "{{ go_bin_path }}/go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest"
   # register: golint_update_output
   # changed_when: "'app/' in golint_update_output.stdout"
   tags:
