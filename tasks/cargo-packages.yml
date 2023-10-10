@@ -12,3 +12,8 @@
   ansible.builtin.command: 'cargo install stylua'
   tags:
     - cargo-packages
+
+- name: Install cargo-update
+  ansible.builtin.command: 'cargo install cargo-update'
+  tags:
+    - cargo-packages
