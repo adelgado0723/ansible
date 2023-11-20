@@ -3,18 +3,18 @@
   tags:
     - install
     - core
-    - go
+    - go-packages
 
 - name: Install gum
   ansible.builtin.command: '{{ go_bin_path }}/go install github.com/charmbracelet/gum@latest'
   tags:
     - install
     - core
-    - go
+    - go-packages
 
 - name: Install go-global-update
   ansible.builtin.command: '{{ go_bin_path }}/go install github.com/Gelio/go-global-update@latest'
   tags:
     - install
     - core
-    - go
+    - go-packages

@@ -49,45 +49,45 @@
     - community.general.homebrew
 
   tasks:
-    - include: tasks/alacritty-build.yml
-    - include: tasks/bluetooth-setup.yml
-    - include: tasks/cargo-packages.yml
-    - include: tasks/cleanup.yml
-    - include: tasks/core-setup.yml
-    - include: tasks/custom-services.yml
-    - include: tasks/debuggers.yml
-    - include: tasks/dev-setup.yml
-    - include: tasks/dmscripts-setup.yml
-    - include: tasks/docker.yml
-    - include: tasks/dotfiles.yml
-    # - include: tasks/etcher.yml
-    - include: tasks/fonts-setup.yml
-      #   - include: tasks/games.yml
-    - include: tasks/flatpak.yml
-    - include: tasks/snap-packages.yml
-    - include: tasks/git-setup.yml
-    - include: tasks/go-packages.yml
-    - include: tasks/go-setup.yml
-    - include: tasks/pip-packages.yml
-    - include: tasks/i3lock-color.yml
-    - include: tasks/lsp-setup.yml
-    - include: tasks/mpd-setup.yml
-    - include: tasks/nix-packages.yml
-    - include: tasks/node-setup.yml
-    - include: tasks/notes-setup.yml
-    - include: tasks/notifications-setup.yml
-    - include: tasks/npm-packages.yml
-    - include: tasks/nvim-setup.yml
-    - include: tasks/obs.yml
-    - include: tasks/productivity-tools.yml
-    # - include: tasks/qtile-setup.yml
-    - include: tasks/scripts-and-utils-setup.yml
-    - include: tasks/ssh.yml
-    - include: tasks/themes.yml
-    # - include: tasks/thunderbird.yml
-    - include: tasks/timers-setup.yml
-    - include: tasks/tmux-setup.yml
-    - include: tasks/zoom.yml
-    - include: tasks/zsh-setup.yml
-    - include: tasks/update-all-packages.yml
-    - include: tasks/mac-setup.yml
+    - import_tasks: tasks/alacritty-build.yml
+    - import_tasks: tasks/bluetooth-setup.yml
+    - import_tasks: tasks/cargo-packages.yml
+    - import_tasks: tasks/cleanup.yml
+    - import_tasks: tasks/core-setup.yml
+    - import_tasks: tasks/custom-services.yml
+    - import_tasks: tasks/debuggers.yml
+    - import_tasks: tasks/dev-setup.yml
+    - import_tasks: tasks/dmscripts-setup.yml
+    - import_tasks: tasks/docker.yml
+    - import_tasks: tasks/dotfiles.yml
+    # - import_tasks: tasks/etcher.yml
+    - import_tasks: tasks/fonts-setup.yml
+      #   - import_tasks: tasks/games.yml
+    - import_tasks: tasks/flatpak.yml
+    - import_tasks: tasks/snap-packages.yml
+    - import_tasks: tasks/git-setup.yml
+    - import_tasks: tasks/go-packages.yml
+    - import_tasks: tasks/go-setup.yml
+    - import_tasks: tasks/pip-packages.yml
+    - import_tasks: tasks/i3lock-color.yml
+    - import_tasks: tasks/lsp-setup.yml
+    - import_tasks: tasks/mpd-setup.yml
+    - import_tasks: tasks/nix-packages.yml
+    - import_tasks: tasks/node-setup.yml
+    - import_tasks: tasks/notes-setup.yml
+    - import_tasks: tasks/notifications-setup.yml
+    - import_tasks: tasks/npm-packages.yml
+    - import_tasks: tasks/nvim-setup.yml
+    - import_tasks: tasks/obs.yml
+    - import_tasks: tasks/productivity-tools.yml
+    # - import_tasks: tasks/qtile-setup.yml
+    - import_tasks: tasks/scripts-and-utils-setup.yml
+    - import_tasks: tasks/ssh.yml
+    - import_tasks: tasks/themes.yml
+    # - import_tasks: tasks/thunderbird.yml
+    - import_tasks: tasks/timers-setup.yml
+    - import_tasks: tasks/tmux-setup.yml
+    - import_tasks: tasks/zoom.yml
+    - import_tasks: tasks/zsh-setup.yml
+    - import_tasks: tasks/update-all-packages.yml
+    - import_tasks: tasks/mac-setup.yml
