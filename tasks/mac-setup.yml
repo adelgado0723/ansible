@@ -198,8 +198,20 @@
   tags:
     - mac-setup
 
+- name: Install android-studio
+  ansible.builtin.command: 'brew install --cask android-studio'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
 - name: Install temurin8 (android-sdk dependancy)
   ansible.builtin.command: 'brew install --cask homebrew/cask-versions/temurin8'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
+- name: Install cyberduck
+  ansible.builtin.command: 'brew install --cask cyberduck'
   when: ansible_distribution == 'MacOSX'
   tags:
     - mac-setup
