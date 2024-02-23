@@ -18,6 +18,13 @@
     - mac-setup
     - productivity
 
+- name: Intall wireshark Support for Mac
+  ansible.builtin.command: 'brew install --cask wireshark-chmodbpf'
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+    - productivity
+
 - name: Install libreoffice - Mac
   ansible.builtin.command: 'brew install --cask libreoffice'
   when: ansible_distribution == 'MacOSX'
