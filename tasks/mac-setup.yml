@@ -259,6 +259,14 @@
   tags:
     - mac-setup
 
+- name: lua
+  community.general.homebrew:
+    name: lua
+    state: present
+  when: ansible_distribution == 'MacOSX'
+  tags:
+    - mac-setup
+
 - name: Install 7z
   community.general.homebrew:
     name: sevenzip

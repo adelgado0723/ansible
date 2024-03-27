@@ -92,6 +92,7 @@
   # changed_when: "'app/' in pip3_root_update_output.stdout"
   tags:
     - update
+    - pip3-root
 
 - name: Upgrade all Snaps
   ansible.builtin.command: snap refresh
@@ -100,4 +101,5 @@
   # changed_when: "'app/' in snap_update_output.stdout"
   tags:
     - update
+    - snaps
   when: ansible_os_family == "Debian"

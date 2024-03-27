@@ -63,7 +63,20 @@
   tags:
     - install
     - neovim
-  when: ansible_os_family == "Debian"
+
+- name: Neovim Plugin Development 3 lua-curl
+  become: true
+  ansible.builtin.command: luarocks install lua-curl
+  tags:
+    - install
+    - neovim
+
+- name: Neovim Plugin Development 4 xml2lua
+  become: true
+  ansible.builtin.command: luarocks install xml2lua
+  tags:
+    - install
+    - neovim
 
 - name: Install luarocks - Mac
   community.general.homebrew:
