@@ -5,6 +5,7 @@
     state: present
   when: ansible_distribution != 'MacOSX'
   tags:
+    - wsl
     - install
     - dotfiles
     - tmux
@@ -25,6 +26,7 @@
     mode: 0755
     owner: '{{ user }}'
   tags:
+    - wsl
     - install
     - dotfiles
     - tmux
@@ -34,6 +36,7 @@
     repo: 'git@github.com:tmux-plugins/tpm.git'
     dest: '{{ home }}/.tmux/plugins/tpm'
   tags:
+    - wsl
     - install
     - dotfiles
     - tmux
@@ -41,6 +44,7 @@
       #- name: source tmux config
       #  shell: 'tmux source {{ home }}/.tmux.conf'
       #  tags:
+    # - wsl
       #    - install
       #    - dotfiles
       #    - tmux
@@ -48,6 +52,7 @@
 - name: install tpm plugins
   shell: '{{ home }}/.tmux/plugins/tpm/bin/install_plugins'
   tags:
+    - wsl
     - install
     - dotfiles
     - tmux

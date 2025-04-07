@@ -26,25 +26,25 @@
     - fonts
 
 # broken url
-- name: Install agave nerd font
-  ansible.builtin.command: curl -fLo "agave regular Nerd Font Complete.ttf"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Agave/complete/agave%20regular%20Nerd%20Font%20Complete.ttf
-  args:
-    chdir: '{{ home }}/.local/share/fonts'
-  tags:
-    - install
-    - fonts
+# - name: Install agave nerd font
+#   ansible.builtin.command: curl -fLo "agave regular Nerd Font Complete.ttf"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Agave/complete/agave%20regular%20Nerd%20Font%20Complete.ttf
+#   args:
+#     chdir: '{{ home }}/.local/share/fonts'
+#   tags:
+#     - install
+#     - fonts
 
 # broken url
-- name: Install big blue terminal font
-  ansible.builtin.command: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
-  args:
-    chdir: '{{ home }}/.local/share/fonts'
-  tags:
-    - install
-    - fonts
+# - name: Install big blue terminal font
+#   ansible.builtin.command: curl -fLo "BigBlue TerminalPlus Nerd Font Complete.TTF"   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/BigBlueTerminal/complete/BigBlue%20TerminalPlus%20Nerd%20Font%20Complete.TTF
+#   args:
+#     chdir: '{{ home }}/.local/share/fonts'
+#   tags:
+#     - install
+#     - fonts
 
 - name: Install fantasque sans mono font
-  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
+  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/FantasqueSansMono/Regular/FantasqueSansMNerdFont-Regular.ttf 
   args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
@@ -52,7 +52,7 @@
     - fonts
 
 - name: Install fantasque sans mono font - italic
-  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Italic/complete/Fantasque%20Sans%20Mono%20Italic%20Nerd%20Font%20Complete.ttf
+  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/FantasqueSansMono/Italic/FantasqueSansMNerdFont-Italic.ttf
   args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
@@ -60,7 +60,7 @@
     - fonts
 #
 - name: Install fantasque sans mono font - bold
-  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Bold/complete/Fantasque%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete.ttf
+  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/FantasqueSansMono/Bold/FantasqueSansMNerdFont-Bold.ttf
   args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:
@@ -68,7 +68,7 @@
     - fonts
 
 - name: Install fantasque sans mono font - bold-italic
-  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Bold Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Bold-Italic/complete/Fantasque%20Sans%20Mono%20Bold%20Italic%20Nerd%20Font%20Complete.ttf
+  ansible.builtin.command: curl -fLo "Fantasque Sans Mono Bold Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/FantasqueSansMono/Bold-Italic/FantasqueSansMNerdFont-Bold-Italic.ttf
   args:
     chdir: '{{ home }}/.local/share/fonts'
   tags:

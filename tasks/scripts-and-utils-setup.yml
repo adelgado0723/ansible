@@ -6,6 +6,7 @@
     owner: '{{ user }}'
   when: ansible_distribution != 'MacOSX'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -16,6 +17,7 @@
     dest: '{{ home }}/.config/dmenu/dmenu/'
   when: ansible_distribution != 'MacOSX'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -26,6 +28,7 @@
     chdir: '{{ home }}/.config/dmenu/dmenu'
   when: ansible_distribution != 'MacOSX'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -34,6 +37,7 @@
     path: '{{ home }}/.config/dmenu/dmscripts'
   register: dmscripts
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -43,6 +47,7 @@
     repo: 'git@github.com:adelgado0723/dmscripts.git'
     dest: '{{ home }}/.config/dmenu/dmscripts'
   tags:
+    - wsl
     - install
     - scripts-setup
   when: not dmscripts.stat.exists
@@ -54,6 +59,7 @@
     chdir: '{{ home }}/.config/dmenu/dmscripts'
   when: ansible_distribution != 'MacOSX'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -62,6 +68,7 @@
     path: '{{ home }}/.config/slock'
   register: slock
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -71,6 +78,7 @@
     repo: 'git@github.com:adelgado0723/slock.git'
     dest: '{{ home }}/.config/slock'
   tags:
+    - wsl
     - install
     - scripts-setup
   when: not slock.stat.exists
@@ -82,6 +90,7 @@
     chdir: '{{ home }}/.config/slock'
   when: not slock.stat.exists and ansible_distribution != 'MacOSX'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -92,17 +101,19 @@
     mode: 0755
     owner: '{{ user }}'
   tags:
+    - wsl
     - install
     - scripts-setup
 
-# - name: Scripts - clone from github
-#   ansible.builtin.git:
-#     accept_hostkey: true
-#     repo: 'git@github.com:adelgado0723/scripts.git'
-#     dest: '{{ home }}/scripts/'
-#   tags:
-#     - install
-#     - scripts-setup
+- name: Scripts - clone from github
+  ansible.builtin.git:
+    accept_hostkey: true
+    repo: 'git@github.com:adelgado0723/scripts.git'
+    dest: '{{ home }}/scripts/'
+  tags:
+    - wsl
+    - install
+    - scripts-setup
 
 - name: Scripts - install
   become: true
@@ -110,6 +121,7 @@
   args:
     chdir: '{{ home }}/scripts/'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -120,6 +132,7 @@
     mode: 0755
     owner: '{{ user }}'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -129,6 +142,7 @@
     repo: 'git@github.com:adelgado0723/wallpapers.git'
     dest: '{{ home }}/wallpapers/wallpapers_public'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -138,6 +152,7 @@
     repo: 'git@gitlab.com:dwt1/wallpapers.git'
     dest: '{{ home }}/wallpapers/dt_wallpapers'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -148,6 +163,7 @@
     mode: 0755
     owner: '{{ user }}'
   tags:
+    - wsl
     - install
     - scripts-setup
 
@@ -157,5 +173,6 @@
     repo: 'git@github.com:adelgado0723/sounds.git'
     dest: '{{ home }}/music/sound_effects'
   tags:
+    - wsl
     - install
     - scripts-setup

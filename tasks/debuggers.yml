@@ -50,7 +50,7 @@
     - debuggers
 
 - name: Install vscode-go
-  ansible.builtin.shell: 'npm install && npm run compile'
+  ansible.builtin.shell: 'go mod tidy'
   args:
     chdir: '{{ home }}/debuggers/vscode-go'
   tags:

@@ -6,6 +6,7 @@
     - install
     - dotfiles
     - stow
+    - wsl
 
 - name: Cloning dotfiles
   ansible.builtin.git:
@@ -16,6 +17,7 @@
     - install
     - dotfiles
     - stow
+    - wsl
   when: not dotfiles.stat.exists
 
 - name: Stow dotfiles
@@ -26,6 +28,7 @@
     - install
     - dotfiles
     - stow
+    - wsl
 
 - name: Xresources - exists
   ansible.builtin.stat:
@@ -35,6 +38,7 @@
     - install
     - dotfiles
     - stow
+    - wsl
 
 - name: Dracula Themed Xresources - clone from github
   ansible.builtin.git:
@@ -45,6 +49,7 @@
     - install
     - dotfiles
     - stow
+    - wsl
   when: not xresources.stat.exists
 
 - name: Copy bin to path
@@ -57,4 +62,5 @@
     - install
     - dotfiles
     - stow
+    - wsl
   when: not xresources.stat.exists

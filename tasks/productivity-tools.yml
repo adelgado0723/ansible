@@ -76,13 +76,14 @@
       - tldr
       - ripgrep
       - maim
-      - flameshot
+      # - flameshot
       - jq
-      - qutebrowser
+      # - qutebrowser
       # - zoxide
     state: present
   when: ansible_distribution != "MacOSX"
   tags:
+    - wsl
     - productivity
 
 - name: Install Github CLI
@@ -94,6 +95,7 @@
     && apt update \
     && apt install gh -y'
   tags:
+    - wsl
     - productivity
     - git
   when: ansible_os_family == "Debian"
@@ -103,6 +105,7 @@
   ansible.builtin.pacman:
     name: github-cli
   tags:
+    - wsl
     - productivity
     - git
   when: ansible_os_family == "Archlinux"

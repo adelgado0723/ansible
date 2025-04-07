@@ -1,19 +1,23 @@
 - name: Install dust
   ansible.builtin.command: 'cargo install du-dust'
   tags:
+    - wsl
     - cargo-packages
 
 - name: Install cbfmt
   ansible.builtin.command: 'cargo install cbfmt'
   tags:
+    - wsl
     - cargo-packages
 
 - name: Install stylua
   ansible.builtin.command: 'cargo install stylua'
   tags:
+    - wsl
     - cargo-packages
 
 - name: Install cargo-update
   ansible.builtin.command: 'cargo install cargo-update'
   tags:
+    - wsl
     - cargo-packages

@@ -3,6 +3,7 @@
     cmd: 'wget https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz'
     chdir: '/tmp/'
   tags:
+    - wsl
     - install
     - core
     - go
@@ -14,6 +15,7 @@
     cmd: 'tar -C /usr/local -xzf go{{ go_version }}.linux-amd64.tar.gz'
     chdir: '/tmp/'
   tags:
+    - wsl
     - install
     - core
     - go
@@ -24,6 +26,7 @@
     path: '/tmp/go{{ go_version }}.linux-amd64.tar.gz'
     state: absent
   tags:
+    - wsl
     - install
     - core
     - go
@@ -34,6 +37,7 @@
     name: go
     state: present
   tags:
+    - wsl
     - go
     - mac-setup
   when: ansible_distribution == 'MacOSX'

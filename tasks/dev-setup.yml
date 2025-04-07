@@ -6,3 +6,4 @@
     owner: '{{ user }}'
   tags:
     - dev
+    - wsl

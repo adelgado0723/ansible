@@ -1,4 +1,4 @@
-- name: Install GTK Theme Setting GUI - Debiian
+- name: Install GTK Theme Setting GUI - Debian
   become: true
   ansible.builtin.apt:
     name: lxappearance

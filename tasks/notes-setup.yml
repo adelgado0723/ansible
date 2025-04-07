@@ -5,6 +5,7 @@
     mode: 0755
     owner: '{{ user }}'
   tags:
+    - wsl
     - notes
   when: ansible_distribution != 'MacOSX'
 
@@ -13,6 +14,7 @@
     repo: 'git@github.com:adelgado0723/BUMCTrustees.git'
     dest: '{{ home }}/notes/BUMCTrustees'
   tags:
+    - wsl
     - notes
   when: ansible_distribution != 'MacOSX'
 
@@ -21,6 +23,7 @@
     repo: 'git@github.com:adelgado0723/brag.git'
     dest: '{{ home }}/notes/brag'
   tags:
+    - wsl
     - notes
   when: ansible_distribution != 'MacOSX'
 
@@ -31,4 +34,5 @@
     mode: 0755
     owner: '{{ user }}'
   tags:
+    - wsl
     - notes

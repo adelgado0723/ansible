@@ -7,6 +7,7 @@
     recursive: true
     dest: '{{ home }}/sumneko'
   tags:
+    - wsl
     - install
     - lsp
 
@@ -15,6 +16,7 @@
   args:
     chdir: '{{ home }}/sumneko/3rd/luamake'
   tags:
+    - wsl
     - install
     - lsp
 
@@ -23,6 +25,7 @@
     cmd: ./3rd/luamake/luamake rebuild
     chdir: '{{ home }}/sumneko/'
   tags:
+    - wsl
     - install
     - lsp
 
@@ -32,6 +35,7 @@
     name: vscode-langservers-extracted
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -40,6 +44,7 @@
   ansible.builtin.pip:
     name: pyright
   tags:
+    - wsl
     - install
     - lsp
 
@@ -47,6 +52,7 @@
 # - name: Install gopls
 #   ansible.builtin.command: '{{ go_bin_path }}/go install golang.org/x/tools/gopls@latest'
 #   tags:
+    # - wsl
 #     - install
 #     - lsp
 #
@@ -54,12 +60,14 @@
 - name: Install golangci_lint_ls
   ansible.builtin.command: '{{ go_bin_path }}/go install github.com/nametake/golangci-lint-langserver@latest'
   tags:
+    - wsl
     - install
     - lsp
 
 - name: Install golangci_lint
   ansible.builtin.shell: 'curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v{{ golangci_lint_version }}'
   tags:
+    - wsl
     - install
     - lsp
 
@@ -70,6 +78,7 @@
     name: dockerfile-language-server-nodejs
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -79,6 +88,7 @@
     name: svelte-language-server
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -88,6 +98,7 @@
     name: typescript-language-server
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -97,6 +108,7 @@
     name: bash-language-server
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -106,6 +118,7 @@
     name: sql-language-server
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -113,6 +126,7 @@
 - name: Install yamlls
   ansible.builtin.command: yarn global add yaml-language-server
   tags:
+    - wsl
     - install
     - lsp
 
@@ -123,6 +137,7 @@
     name: prettier
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -131,6 +146,7 @@
   ansible.builtin.pip:
     name: black
   tags:
+    - wsl
     - install
     - lsp
 
@@ -140,6 +156,7 @@
     name: ansible-language-server
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -148,6 +165,7 @@
   ansible.builtin.pip:
     name: ansible-lint
   tags:
+    - wsl
     - install
     - lsp
 
@@ -156,6 +174,7 @@
     name: markdownlint-cli
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -164,6 +183,7 @@
     name: '@fsouza/prettierd'
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -172,6 +192,7 @@
     name: eslint_d
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -179,6 +200,7 @@
   ansible.builtin.pip:
     name: flake8
   tags:
+    - wsl
     - install
     - lsp
 
@@ -187,6 +209,7 @@
     name: '@stoplight/spectral-cli'
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -195,6 +218,7 @@
     name: '@prisma/language-server'
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -203,6 +227,7 @@
     name: 'emmet-ls'
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -211,6 +236,7 @@
     name: '@astrojs/language-server'
     global: true
   tags:
+    - wsl
     - install
     - lsp
 
@@ -219,6 +245,7 @@
     name: '@microsoft/compose-language-service'
     global: true
   tags:
+    - wsl
     - install
     - lsp
 

@@ -3,6 +3,7 @@
   ansible.builtin.pip:
     name: meson
   tags:
+    - wsl
     - pip-packages
   when: ansible_distribution != 'MacOSX'
 
@@ -11,6 +12,7 @@
   ansible.builtin.pip:
     name: ninja
   tags:
+    - wsl
     - pip-packages
   when: ansible_distribution != 'MacOSX'
 
@@ -19,4 +21,5 @@
   ansible.builtin.pip:
     name: awscli
   tags:
+    - wsl
     - pip-packages

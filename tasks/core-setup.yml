@@ -80,6 +80,7 @@
     - neovim
     - alacritty
     - core
+    - wsl
   when: ansible_os_family == "Debian"
 
 - name: Install System Packages 2 - Debian (lua, libtool, libtool-bin, gettext)
@@ -91,6 +92,7 @@
     - neovim
     - alacritty
     - core
+    - wsl
   when: ansible_os_family == "Debian"
 
 - name: Install System Packages 3 - Debian (the rest)
@@ -141,6 +143,7 @@
   tags:
     - install
     - core
+    - wsl
   when: ansible_os_family == "Debian"
 
 - name: Install Clang - Debian
@@ -152,6 +155,7 @@
     - neovim
     - alacritty
     - core
+    - wsl
   when: ansible_os_family == "Debian"
 
 - name: Install commonly named packages

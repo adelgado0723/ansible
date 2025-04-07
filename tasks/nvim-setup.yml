@@ -3,6 +3,7 @@
     path: '{{ home }}/neovim/'
     state: absent
   tags:
+    - wsl
     - install
     - neovim
 
@@ -11,6 +12,7 @@
     repo: 'https://github.com/wbthomason/packer.nvim'
     dest: '{{ home }}/.local/share/nvim/site/pack/packer/start/packer.nvim'
   tags:
+    - wsl
     - install
     - neovim
 
@@ -19,6 +21,7 @@
     repo: 'https://github.com/neovim/neovim.git'
     dest: '{{ home }}/neovim'
   tags:
+    - wsl
     - install
     - neovim
 
@@ -27,6 +30,7 @@
   args:
     chdir: '{{ home }}/neovim'
   tags:
+    - wsl
     - install
     - neovim
 
@@ -36,6 +40,7 @@
   args:
     chdir: '{{ home }}/neovim'
   tags:
+    - wsl
     - install
     - neovim
 
@@ -45,6 +50,7 @@
     name: 'luarocks'
     state: present
   tags:
+    - wsl
     - install
     - neovim
   when: ansible_os_family == "Archlinux"
@@ -53,6 +59,7 @@
   become: true
   ansible.builtin.apt: name=luarocks
   tags:
+    - wsl
     - install
     - neovim
   when: ansible_os_family == "Debian"
@@ -61,6 +68,7 @@
   become: true
   ansible.builtin.command: luarocks install luacheck
   tags:
+    - wsl
     - install
     - neovim
   when: ansible_os_family == "Debian"
@@ -71,4 +79,5 @@
     state: present
   when: ansible_distribution == 'MacOSX'
   tags:
+    - wsl
     - mac-setup

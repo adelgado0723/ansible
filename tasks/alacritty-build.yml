@@ -20,6 +20,8 @@
   register: cargo_exists
   ignore_errors: true
   tags:
+    - cargo
+    - wsl
     - alacritty
 
 - name: Download installer
@@ -30,12 +32,16 @@
     mode: '0755'
     force: 'yes'
   tags:
+    - cargo
+    - wsl
     - alacritty
 
 - name: Install rust/cargo
   when: cargo_exists is failed
   ansible.builtin.command: /tmp/sh.rustup.rs -y
   tags:
+    - cargo
+    - wsl
     - alacritty
 
 - name: Make env update file executable
@@ -45,6 +51,8 @@
     owner: '{{ user }}'
     mode: '0775'
   tags:
+    - cargo
+    - wsl
     - alacritty
 
 - name: Install rust compiler with rustup
@@ -53,6 +61,8 @@
   args:
     chdir: '{{ home }}/alacritty/'
   tags:
+    - cargo
+    - wsl
     - alacritty
 
 - name: Build the super duper fast terminal

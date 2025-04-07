@@ -4,6 +4,7 @@
     scope: global
     value: 'adelgado0723@gmail.com'
   tags:
+    - wsl
     - git-personal
 - name: Git personal setup name
   git_config:
@@ -11,4 +12,5 @@
     scope: global
     value: 'adelgado'
   tags:
+    - wsl
     - git-personal

@@ -3,7 +3,7 @@
   pacman:
     name: 'zsh'
     state: present
-  tags: &tags_for_zsh_tasks ['install', 'productivity', 'dotfiles', 'zsh']
+  tags: &tags_for_zsh_tasks ['wsl', 'install', 'productivity', 'dotfiles', 'zsh']
   when: ansible_os_family == "Archlinux"
 
 - name: install zsh - Debian

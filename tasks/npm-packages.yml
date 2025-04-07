@@ -4,6 +4,7 @@
     name: yarn
     global: true
   tags:
+    - wsl
     - npm-packages
 
 - name: Install eslint
@@ -11,6 +12,7 @@
     name: eslint
     global: true
   tags:
+    - wsl
     - npm-packages
 
 - name: Install Typescript
@@ -18,6 +20,7 @@
     name: typescript
     global: true
   tags:
+    - wsl
     - npm-packages
 
 - name: Install TS-Node
@@ -25,6 +28,7 @@
     name: ts-node
     global: true
   tags:
+    - wsl
     - npm-packages
 
 - name: Install webpack
@@ -32,6 +36,7 @@
     name: webpack
     global: true
   tags:
+    - wsl
     - npm-packages
 
 - name: Install husky
@@ -39,6 +44,7 @@
     name: husky
     global: true
   tags:
+    - wsl
     - npm-packages
 
 - name: Install live-server
@@ -46,6 +52,7 @@
     name: live-server
     global: true
   tags:
+    - wsl
     - npm-packages
 
 - name: Install pm2
@@ -53,18 +60,21 @@
     name: pm2
     global: true
   tags:
+    - wsl
     - npm-packages
 
 - name: pm2 update
   become: true
   ansible.builtin.command: pm2 update
   tags:
+    - wsl
     - npm-packages
 
 - name: pm2 completion install
   become: true
   ansible.builtin.command: pm2 completion install
   tags:
+    - wsl
     - npm-packages
 
 - name: Install bullmq
@@ -72,6 +82,7 @@
     name: bullmq
     global: true
   tags:
+    - wsl
     - npm-packages
 
 # - name: Install rimraf - used by jq
@@ -79,6 +90,7 @@
 #     name: rimraf 
 #     global: true
 #   tags:
+    # - wsl
 #     - npm-packages
 #
 # - name: Install async - used by jq
@@ -86,6 +98,7 @@
 #     name: async 
 #     global: true
 #   tags:
+    # - wsl
 #     - npm-packages
 #
 # - name: Install commander - used by jq
@@ -93,6 +106,7 @@
 #     name: commander
 #     global: true
 #   tags:
+    # - wsl
 #     - npm-packages
 #
 # - name: Install jq # installing through distro package manager
@@ -100,6 +114,7 @@
 #     name: jq
 #     global: true
 #   tags:
+    # - wsl
 #     - npm-packages
 
 - name: install jest
@@ -107,6 +122,7 @@
     name: jest
     global: true
   tags:
+    - wsl
     - npm-packages
 
 - name: install hueadm
@@ -114,4 +130,5 @@
     name: hueadm
     global: true
   tags:
+    - wsl
     - npm-packages

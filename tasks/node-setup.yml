@@ -12,6 +12,7 @@
   ansible.builtin.apt:
     name: ['nodejs', 'npm']
   tags:
+    - wsl
     - node
   when: ansible_os_family == "Debian"
 
@@ -30,11 +31,13 @@
     mode: 0755
     owner: '{{ user }}'
   tags:
+    - wsl
     - node
 
 - name: Npmjs global settings
   ansible.builtin.command: npm config set prefix '{{ home }}/.local/.npm-global'
   tags:
+    - wsl
     - install
     - node
 
@@ -43,6 +46,7 @@
     name: n
     global: true
   tags:
+    - wsl
     - node
 
 # N needs to write to /usr/local
@@ -55,10 +59,12 @@
     mode: 0755
     owner: '{{ user }}'
   tags:
+    - wsl
     - node
 
 - name: Install node version specified in ../local.yml
   become: true
   ansible.builtin.shell: '{{ home }}/.local/.npm-global/bin/n {{ node_version }}'
   tags:
+    - wsl
     - node
