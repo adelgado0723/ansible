@@ -132,3 +132,11 @@
   tags:
     - wsl
     - npm-packages
+
+- name: install gradle
+  npm:
+    name: gradle
+    global: true
+  tags:
+    - wsl
+    - npm-packages
