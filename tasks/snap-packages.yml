@@ -8,3 +8,13 @@
     - wsl
     - snap
   when: ansible_os_family == "Debian"
+
+- name: Install kotlin
+  become: true
+  community.general.snap:
+    name:
+      - kotlin
+    classic: true
+  tags:
+    - wsl
+    - snap
