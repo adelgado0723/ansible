@@ -109,3 +109,9 @@
     - productivity
     - git
   when: ansible_os_family == "Archlinux"
+
+- name: Install sdkman
+  ansible.builtin.command: 'curl -s "https://get.sdkman.io" | bash'
+  tags:
+    - wsl
+    - productivity
