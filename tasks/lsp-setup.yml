@@ -52,7 +52,7 @@
 # - name: Install gopls
 #   ansible.builtin.command: '{{ go_bin_path }}/go install golang.org/x/tools/gopls@latest'
 #   tags:
-    # - wsl
+# - wsl
 #     - install
 #     - lsp
 #
@@ -249,3 +249,46 @@
     - install
     - lsp
 
+- name: Clone kotlin lsp
+  ansible.builtin.git:
+    repo: 'git@github.com:fwcd/kotlin-language-server.git'
+    recursive: true
+    dest: '{{ home }}/kotlin-language-server'
+  tags:
+    - wsl
+    - install
+    - lsp
+    - kotlin
+
+- name: Build kotlin lsp
+  ansible.builtin.command: ./gradlew :server:installDist
+  args:
+    chdir: '{{ home }}/kotlin-language-server'
+  tags:
+    - wsl
+    - install
+    - lsp
+    - kotlin
+
+- name: Ensure Mason Kotlin language server directories exist
+  file:
+    path: '{{ home }}/.local/share/nvim/mason/packages/kotlin-language-server/server/bin'
+    state: directory
+    mode: '0755'
+    recurse: yes
+
+- name: Copy built Kotlin language server files to Mason directory
+  copy:
+    src: '{{ home }}/kotlin-language-server/server/build/install/server/'
+    dest: '{{ home }}/.local/share/nvim/mason/packages/kotlin-language-server/server/'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: '0755'
+    remote_src: yes
+
+- name: Symlink kotlin-language-server binary to Mason bin
+  file:
+    src: '{{ home }}/.local/share/nvim/mason/packages/kotlin-language-server/server/bin/kotlin-language-server'
+    dest: '{{ home }}/.local/share/nvim/mason/bin/kotlin-language-server'
+    state: link
+    force: yes
